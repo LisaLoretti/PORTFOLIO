@@ -5,15 +5,17 @@ import type { ToolIconKey } from "@/components/about/toolIcons";
 export type Tool =
   /** Logo issu de components/about/toolIcons.ts */
   | { name: string; icon: ToolIconKey; background?: string }
-  /** Monogramme dans la couleur de la marque (logo absent de Simple Icons) */
+  /** Logo fourni en image (public/images/tools) : « cover » remplit la tuile, « contain » laisse une marge */
+  | { name: string; image: { src: string; fit: "cover" | "contain" }; background?: string }
+  /** Monogramme dans la couleur de la marque (logo indisponible) */
   | { name: string; monogram: string; background: string };
 
 export const tools: { category: string; items: Tool[] }[] = [
   {
     category: "Bureautique",
     items: [
-      { name: "Microsoft Office", monogram: "Of", background: "#D83B01" },
-      { name: "Google Workspace", icon: "google" },
+      { name: "Microsoft Office", image: { src: "/images/tools/microsoft-office.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Google Workspace", image: { src: "/images/tools/google.webp", fit: "contain" }, background: "#FFFFFF" },
     ],
   },
   {
@@ -27,8 +29,8 @@ export const tools: { category: string; items: Tool[] }[] = [
   {
     category: "Création multimédia",
     items: [
-      { name: "Adobe Creative Cloud", monogram: "Cc", background: "#FA0F00" },
-      { name: "Canva", monogram: "C", background: "#00C4CC" },
+      { name: "Adobe Creative Cloud", image: { src: "/images/tools/adobe-creative-cloud.webp", fit: "cover" } },
+      { name: "Canva", image: { src: "/images/tools/canva.webp", fit: "cover" } },
       { name: "CapCut", monogram: "Cc", background: "#000000" },
     ],
   },
@@ -63,7 +65,7 @@ export const tools: { category: string; items: Tool[] }[] = [
     category: "Intelligence artificielle",
     items: [
       { name: "Claude", icon: "claude" },
-      { name: "ChatGPT", monogram: "AI", background: "#10A37F" },
+      { name: "ChatGPT", image: { src: "/images/tools/chatgpt.webp", fit: "contain" }, background: "#000000" },
     ],
   },
 ];
