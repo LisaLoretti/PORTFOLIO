@@ -18,6 +18,12 @@ export function SiteFooter() {
           >
             {siteConfig.contact.email}
           </a>
+          <a
+            href={siteConfig.contact.phone.href}
+            className="w-fit whitespace-nowrap rounded-sm text-body hover:text-sage focus-visible:outline-cream"
+          >
+            {siteConfig.contact.phone.label}
+          </a>
           <Link
             href="/contact"
             className="group inline-flex w-fit items-center gap-2 rounded-sm text-lead focus-visible:outline-cream"

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const { email, location, availability } = siteConfig.contact;
+  const { email, phone, location, availability } = siteConfig.contact;
 
   return (
     <>
@@ -37,12 +37,25 @@ export default function ContactPage() {
             >
               {email}
             </a>
-            <Button href={`mailto:${email}`} arrow>
-              Envoyer un e-mail
-            </Button>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href={`mailto:${email}`} arrow>
+                Envoyer un e-mail
+              </Button>
+              <Button href={phone.href} variant="secondary">
+                Appeler
+              </Button>
+            </div>
           </div>
 
-          <dl className="grid gap-6 md:grid-cols-3 md:gap-8">
+          <dl className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+            <div className="flex flex-col gap-1 border-t border-line pt-4">
+              <dt className="text-caption font-medium uppercase text-ink-muted">Téléphone</dt>
+              <dd>
+                <a href={phone.href} className="whitespace-nowrap rounded-sm text-lead hover:text-olive">
+                  {phone.label}
+                </a>
+              </dd>
+            </div>
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Disponibilité</dt>
               <dd className="text-lead">{availability}</dd>
