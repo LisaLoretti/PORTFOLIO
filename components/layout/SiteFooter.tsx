@@ -12,6 +12,12 @@ export function SiteFooter() {
             <span aria-hidden="true" className="text-sage">.</span>
           </p>
           <p className="text-small text-ink-muted">{siteConfig.role}</p>
+          <a
+            href={`mailto:${siteConfig.contact.email}`}
+            className="w-fit rounded-sm text-body hover:text-sage focus-visible:outline-cream"
+          >
+            {siteConfig.contact.email}
+          </a>
           <Link
             href="/contact"
             className="group inline-flex w-fit items-center gap-2 rounded-sm text-lead focus-visible:outline-cream"

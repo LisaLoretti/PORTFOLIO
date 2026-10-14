@@ -20,7 +20,12 @@ export function Timeline({ steps }: TimelineProps) {
               {step.period && <> · {step.period}</>}
             </p>
             <h3 className="max-w-[28ch] font-display text-title font-bold text-heading">{step.title}</h3>
-            {step.detail && <p className="text-small text-ink-muted">{step.detail}</p>}
+            {(step.organisation || step.place) && (
+              <p className="text-body font-medium text-forest">
+                {[step.organisation, step.place].filter(Boolean).join(" — ")}
+              </p>
+            )}
+            {step.detail && <p className="max-w-prose text-small text-ink-muted">{step.detail}</p>}
           </div>
         </li>
       ))}

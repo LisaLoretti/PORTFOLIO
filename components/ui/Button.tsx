@@ -63,6 +63,15 @@ export function Button({ variant = "primary", arrow, className, children, ...pro
   );
 
   if (props.href !== undefined) {
+    // Liens e-mail, téléphone ou externes : simple <a>, sans routage Next.js.
+    if (/^(mailto:|tel:|https?:)/.test(props.href)) {
+      const { href, ...anchorProps } = props as ButtonAsLink;
+      return (
+        <a href={href} className={classes} {...(anchorProps as ComponentPropsWithoutRef<"a">)}>
+          {content}
+        </a>
+      );
+    }
     return (
       <Link className={classes} {...(props as ButtonAsLink)}>
         {content}

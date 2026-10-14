@@ -8,6 +8,11 @@ export const siteConfig = {
   description:
     "Créer du lien, des rencontres et du partage. Valoriser les projets qui ont du sens. Portfolio de Lisa Loretti, gestion de projets en événementiel et communication.",
   locale: "fr_FR",
+  contact: {
+    email: "lisaloretti@yahoo.com",
+    location: "Paris & Île-de-France",
+    availability: "Disponible à partir d’octobre 2026",
+  },
 } as const;
 
 export type NavItem = {

@@ -36,6 +36,10 @@ export default function HomePage() {
               Valoriser les projets qui ont du sens.
             </Text>
           </div>
+          <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5 text-small">
+            <span aria-hidden="true" className="size-2 rounded-full bg-olive" />
+            {siteConfig.contact.availability} · {siteConfig.contact.location}
+          </p>
           <div className="flex flex-wrap items-center gap-4">
             <Button href="/a-propos#parcours" arrow>
               Voir mon parcours
@@ -61,7 +65,7 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
-            {projects.map((project, index) => (
+            {projects.slice(0, 2).map((project, index) => (
               <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
             ))}
           </div>
