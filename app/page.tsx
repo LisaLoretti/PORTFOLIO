@@ -1,9 +1,13 @@
 import Image from "next/image";
+import { AboutStory } from "@/components/about/AboutStory";
+import { Skills } from "@/components/about/Skills";
+import { Timeline } from "@/components/about/Timeline";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { parcours } from "@/data/parcours";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 
@@ -56,7 +60,7 @@ export default function HomePage() {
               {siteConfig.contact.availability} · {siteConfig.contact.location}
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Button href="/a-propos#parcours" arrow>
+              <Button href="/#parcours" arrow>
                 Voir mon parcours
               </Button>
               <Button href="/contact" variant="secondary">
@@ -67,7 +71,9 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Section tone="sand" aria-labelledby="realisations-titre">
+      <AboutStory />
+
+      <Section aria-labelledby="realisations-titre">
         <Container className="flex flex-col gap-12">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div className="flex flex-col gap-4">
@@ -87,6 +93,22 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
+      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <div className="flex flex-col gap-4 lg:col-span-4">
+            <Eyebrow>Formation & expériences</Eyebrow>
+            <Heading id="parcours-titre" size="display-l">
+              Mon parcours
+            </Heading>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <Timeline steps={parcours} />
+          </div>
+        </Container>
+      </Section>
+
+      <Skills />
 
       <Section tone="forest" aria-labelledby="contact-titre">
         <Container className="flex flex-col items-start gap-8">

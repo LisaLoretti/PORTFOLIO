@@ -22,8 +22,7 @@ export type NavItem = {
 
 /** Pages principales, partagées par la navigation et le footer. */
 export const mainNav: NavItem[] = [
-  { label: "Accueil", href: "/" },
-  { label: "À propos", href: "/a-propos" },
+  { label: "À propos", href: "/" },
   { label: "Réalisations", href: "/realisations" },
   { label: "Contact", href: "/contact" },
 ];
