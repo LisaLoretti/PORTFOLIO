@@ -10,7 +10,7 @@ export type ParcoursStep = {
 
 /** Parcours, du plus ancien au plus récent. */
 export const parcours: ParcoursStep[] = [
-  { title: "Baccalauréat", kind: "Formation", period: "2020" },
+  { title: "Baccalauréat ES — spécialité Mathématiques", kind: "Formation", period: "2020" },
   {
     title: "Bachelor Marketing & Business Performance Management",
     kind: "Formation",
@@ -34,18 +34,23 @@ export const parcours: ParcoursStep[] = [
     period: "2022 – 2023",
     detail: "Événements internes de 60 à 300 participants, animations mensuelles, plan de communication marque employeur et optimisation de l’intranet.",
   },
-  { title: "Un an en Australie", kind: "International", period: "2023 – 2024" },
+  {
+    title: "Un an en Australie",
+    kind: "International",
+    period: "2023 – 2024",
+    detail: "Fille au pair, serveuse et femme de chambre, et voyage pour découvrir le pays.",
+  },
   {
     title: "Master Management du Tourisme et de l’Événementiel",
     kind: "Formation",
     organisation: "Excelia — Paris",
     period: "2024 – 2026",
-    detail: "Reprise des études. Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
+    detail: "Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
   },
   {
     title: "Chargée d’événementiel & de communication",
     kind: "Alternance",
-    organisation: "Office national de garantie des séjours linguistiques et éducatifs",
+    organisation: "L’Office national de garantie des séjours linguistiques et éducatifs",
     place: "Paris",
     period: "2024 – 2026",
     detail: "Stratégie et plans de communication, contenus pour les réseaux sociaux, refonte du site web, et organisation d’événements de A à Z : assemblées générales, Village des séjours linguistiques, tournée « Meet Our Members », webinaires.",
