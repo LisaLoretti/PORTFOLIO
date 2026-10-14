@@ -5,6 +5,7 @@ const labels: Record<ParcoursStep["kind"], [singular: string, plural: string]> =
   Formation: ["formation", "formations"],
   Alternance: ["alternance", "alternances"],
   Stage: ["stage", "stages"],
+  Freelance: ["activité freelance", "activités freelance"],
   International: ["expérience à l’étranger", "expériences à l’étranger"],
 };
 
