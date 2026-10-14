@@ -19,7 +19,13 @@ export function ContactBand() {
         />
       </svg>
       <Container className="relative flex flex-col items-start gap-8">
-        <Heading id="contact-titre" size="display-l" className="scroll-slide max-w-[16ch]">
+        <Heading
+          id="contact-titre"
+          size="display-l"
+          underline
+          underlineClassName="text-sage"
+          className="scroll-slide max-w-[16ch]"
+        >
           Un projet qui rassemble ? Parlons-en.
         </Heading>
         <div className="reveal-pop">

@@ -45,7 +45,7 @@ export default function HomePage() {
 
           <div className="stagger relative flex flex-col gap-8 lg:col-span-7">
             <Eyebrow>{siteConfig.role}</Eyebrow>
-            <Heading as="h1" size="display-xl" className="max-w-[8ch]">
+            <Heading as="h1" size="display-xl" underline="load" className="max-w-[8ch]">
               {siteConfig.name}
               <span className="text-olive">.</span>
             </Heading>
@@ -80,7 +80,7 @@ export default function HomePage() {
           <div className="flex flex-col gap-8 self-start lg:col-span-4 lg:[@media(min-height:46rem)]:sticky lg:[@media(min-height:46rem)]:top-[calc(var(--spacing-header)+2rem)]">
             <div className="reveal flex flex-col gap-4">
               <Eyebrow>Formation & expériences</Eyebrow>
-              <Heading id="parcours-titre" size="display-l">
+              <Heading id="parcours-titre" size="display-l" underline>
                 Mon parcours
               </Heading>
             </div>
@@ -102,7 +102,7 @@ export default function HomePage() {
           <div className="reveal flex flex-wrap items-end justify-between gap-6">
             <div className="flex flex-col gap-4">
               <Eyebrow>Réalisations</Eyebrow>
-              <Heading id="realisations-titre" size="display-l">
+              <Heading id="realisations-titre" size="display-l" underline>
                 Quelques réalisations
               </Heading>
             </div>

@@ -47,7 +47,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
           </span>
           <span className="text-caption font-medium uppercase text-ink-muted">{category}</span>
         </p>
-        <Heading id={`${slug}-titre`} size="display-l" className="max-w-[18ch]">
+        <Heading id={`${slug}-titre`} size="display-l" underline className="max-w-[18ch]">
           {title}
         </Heading>
         {subtitle && <p className="text-lead font-medium text-forest">{subtitle}</p>}

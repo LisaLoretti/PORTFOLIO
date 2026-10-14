@@ -14,25 +14,8 @@ export function Skills() {
       <Container className="flex flex-col gap-16">
         <div className="reveal flex flex-col gap-4">
           <Eyebrow>Savoir-faire & savoir-être</Eyebrow>
-          <Heading id="competences-titre" size="display-l" className="relative w-fit pb-4">
+          <Heading id="competences-titre" size="display-l" underline>
             Compétences
-            {/* Trait ondulé qui se dessine au défilement */}
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 300 20"
-              preserveAspectRatio="none"
-              className="absolute bottom-0 left-0 h-4 w-full text-olive"
-            >
-              <path
-                d="M3 12C40 3 70 19 110 11s70-9 105 1 60 6 82-4"
-                pathLength={1}
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="4"
-                strokeLinecap="round"
-                className="scroll-draw-stroke"
-              />
-            </svg>
           </Heading>
         </div>
 
