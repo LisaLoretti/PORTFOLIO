@@ -11,9 +11,12 @@ type ProjectFeatureProps = {
 
 /** Présentation détaillée d'un projet : contexte, média, rôle et résultats. */
 export function ProjectFeature({ project, index }: ProjectFeatureProps) {
-  const { slug, title, subtitle, category, summary, context, roles, figures, image, video } = project;
+  const { slug, title, subtitle, category, summary, context, roles, figures, image, video, shorts } = project;
   const number = String(index + 1).padStart(2, "0");
   const reversed = index % 2 === 1;
+  const vertical = Boolean(shorts?.length);
+  // Rôles sans description : affichés en étiquettes plutôt qu'en grille détaillée
+  const roleTags = roles?.every((role) => !role.text);
 
   return (
     <article id={slug} aria-labelledby={`${slug}-titre`} className="flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-12">
@@ -30,29 +33,58 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
         </div>
       </header>
 
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <figure className={cn("reveal-zoom flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
-          <div className={cn("relative aspect-video overflow-hidden rounded-lg", video ? "bg-charcoal" : "bg-sage")}>
-            {video ? (
-              <VideoEmbed youtubeId={video.youtubeId} title={title} />
-            ) : (
-              <Image
-                src={image.src}
-                alt={image.alt}
-                fill
-                sizes="(min-width: 64rem) 55vw, 100vw"
-                unoptimized={image.src.endsWith(".svg")}
-                className="object-cover"
-              />
-            )}
-          </div>
-          {video?.credit && <figcaption className="text-small text-ink-muted">{video.credit}</figcaption>}
-        </figure>
+      <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
+        {vertical ? (
+          /* Exemples de vidéos verticales dans des téléphones, le second décalé */
+          <figure
+            aria-label="Exemples de vidéos"
+            className={cn("reveal-zoom flex items-start justify-center gap-4 sm:gap-6 lg:col-span-5", reversed && "lg:order-2")}
+          >
+            {shorts?.map((short, shortIndex) => (
+              <div
+                key={short.youtubeId}
+                className={cn(
+                  "relative aspect-9/16 w-[min(42vw,15rem)] overflow-clip rounded-[2rem] border-[6px] border-charcoal bg-charcoal shadow-lift",
+                  shortIndex % 2 === 1 && "mt-16",
+                )}
+              >
+                <VideoEmbed youtubeId={short.youtubeId} title={`${title} — exemple ${shortIndex + 1}`} />
+              </div>
+            ))}
+          </figure>
+        ) : (
+          <figure className={cn("reveal-zoom flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
+            <div className={cn("relative aspect-video overflow-hidden rounded-lg", video ? "bg-charcoal" : "bg-sage")}>
+              {video ? (
+                <VideoEmbed youtubeId={video.youtubeId} title={title} />
+              ) : (
+                image && (
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(min-width: 64rem) 55vw, 100vw"
+                    unoptimized={image.src.endsWith(".svg")}
+                    className="object-cover"
+                  />
+                )
+              )}
+            </div>
+            {video?.credit && <figcaption className="text-small text-ink-muted">{video.credit}</figcaption>}
+          </figure>
+        )}
 
-        <div className={cn("reveal flex flex-col gap-5 lg:col-span-5", reversed && "lg:order-1")}>
-          {(context ?? [summary]).map((paragraph) => (
-            <Text key={paragraph}>{paragraph}</Text>
-          ))}
+        <div className={cn("reveal flex flex-col gap-5", vertical ? "lg:col-span-7" : "lg:col-span-5", reversed && "lg:order-1")}>
+          {(context ?? [summary]).map((item) =>
+            typeof item === "string" ? (
+              <Text key={item}>{item}</Text>
+            ) : (
+              <div key={item.title} className="flex flex-col gap-1">
+                <h3 className="font-display text-title font-bold text-heading">{item.title}</h3>
+                <Text>{item.text}</Text>
+              </div>
+            ),
+          )}
         </div>
       </div>
 
@@ -62,20 +94,36 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
             <Heading as="h3" size="title">
               Mon rôle
             </Heading>
-            <ol className="grid gap-6 sm:grid-cols-2">
-              {roles.map((role, roleIndex) => (
-                <li key={role.title} className="reveal flex flex-col gap-2 border-t border-line-strong pt-4">
-                  <span className="text-caption font-medium text-ink-muted">{String(roleIndex + 1).padStart(2, "0")}</span>
-                  <p className="font-display text-body font-bold text-heading">{role.title}</p>
-                  <p className="text-small text-ink-muted">{role.text}</p>
-                </li>
-              ))}
-            </ol>
+            {roleTags ? (
+              <ul className="reveal-bounce-children flex flex-wrap gap-2">
+                {roles.map((role) => (
+                  <li key={role.title} className="rounded-full bg-sage px-4 py-2 text-small font-medium text-forest">
+                    {role.title}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <ol className="grid gap-6 sm:grid-cols-2">
+                {roles.map((role, roleIndex) => (
+                  <li key={role.title} className="reveal flex flex-col gap-2 border-t border-line-strong pt-4">
+                    <span className="text-caption font-medium text-ink-muted">{String(roleIndex + 1).padStart(2, "0")}</span>
+                    <p className="font-display text-body font-bold text-heading">{role.title}</p>
+                    {role.text && <p className="text-small text-ink-muted">{role.text}</p>}
+                  </li>
+                ))}
+              </ol>
+            )}
           </section>
         )}
 
         {figures && figures.length > 0 && (
-          <section aria-label="Les résultats" className="reveal tone-inverse flex flex-col gap-6 self-start rounded-xl bg-forest p-8 text-ink lg:col-span-4">
+          <section
+            aria-label="Les résultats"
+            className={cn(
+              "reveal tone-inverse flex flex-col gap-6 self-start rounded-xl bg-forest p-8 text-ink lg:col-span-4",
+              !roles?.length && "lg:col-start-9",
+            )}
+          >
             <Heading as="h3" size="title">
               Les résultats
             </Heading>

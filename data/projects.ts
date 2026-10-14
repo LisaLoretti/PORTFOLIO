@@ -5,8 +5,12 @@ export type ProjectFigure = {
 
 export type ProjectRole = {
   title: string;
-  text: string;
+  /** Sans texte, les rôles s'affichent en étiquettes. */
+  text?: string;
 };
+
+/** Paragraphe simple, ou paragraphe précédé d'un intertitre. */
+export type ProjectContext = string | { title: string; text: string };
 
 export type Project = {
   slug: string;
@@ -17,20 +21,23 @@ export type Project = {
   /** Résumé court, affiché sur les cartes. */
   summary: string;
   /** Paragraphes de présentation du projet. */
-  context?: string[];
+  context?: ProjectContext[];
   /** Mon rôle, découpé par grandes missions. */
   roles?: ProjectRole[];
   /** Chiffres clés. */
   figures?: ProjectFigure[];
-  image: {
+  image?: {
     src: string;
     /** Laisser vide pour un visuel purement décoratif. */
     alt: string;
   };
+  /** Vidéo au format paysage. */
   video?: {
     youtubeId: string;
     credit?: string;
   };
+  /** Exemples de vidéos verticales (Shorts), affichés dans des téléphones. */
+  shorts?: { youtubeId: string }[];
 };
 
 export const projects: Project[] = [
@@ -112,5 +119,64 @@ export const projects: Project[] = [
       alt: "Entrée de l’Espace Champerret, lieu du salon",
     },
     video: { youtubeId: "tgFNrcRRnoc", credit: "© PicNic Production" },
+  },
+  {
+    slug: "tournee-membres",
+    title: "Tournée à la rencontre de nos membres",
+    subtitle: "Un concept événementiel déployé dans plusieurs villes",
+    category: "Événementiel · Contenus vidéo",
+    summary:
+      "Aller à la rencontre des organismes labellisés par L’Office et leur donner la parole à travers une série de vidéos tournées sur le terrain.",
+    context: [
+      {
+        title: "Mon idée",
+        text: "Aller à la rencontre des organismes labellisés par L’Office pour découvrir leurs équipes, leurs activités et leur quotidien.",
+      },
+      {
+        title: "Les objectifs",
+        text: "Présenter les missions de L’Office, renforcer les liens avec les membres et leur donner la parole à travers des interviews réalisées directement sur le terrain.",
+      },
+      "Une série de vidéos authentiques, humaines et incarnées, pour mettre en lumière celles et ceux qui font vivre le réseau.",
+    ],
+    roles: [
+      { title: "Planification" },
+      { title: "Prise de contact" },
+      { title: "Coordination" },
+      { title: "Préparation des interviews" },
+      { title: "Tournage" },
+      { title: "Montage" },
+      { title: "Diffusion" },
+    ],
+    figures: [
+      { value: "27", label: "organismes rencontrés" },
+      { value: "21", label: "vidéos réalisées" },
+      { value: "+30 000", label: "vues sur LinkedIn, Instagram & TikTok" },
+    ],
+    shorts: [{ youtubeId: "Bbk5Sh3JHY4" }, { youtubeId: "bh07cWYqAVM" }],
+  },
+  {
+    slug: "conseils-de-l-office",
+    title: "Série de vidéos : Conseils de L’Office",
+    subtitle: "Chez L’Office",
+    category: "Communication digitale · Vidéo",
+    summary:
+      "Une série de courtes vidéos de conseils pour sensibiliser les jeunes aux bénéfices d’un séjour à l’étranger de qualité.",
+    context: [
+      "Pour mettre en avant L’Office et sa mission, j’ai imaginé une série de courtes vidéos de conseils, diffusées sur plusieurs semaines.",
+      {
+        title: "Objectif",
+        text: "Dynamiser les réseaux sociaux tout en sensibilisant les jeunes aux bénéfices d’un séjour à l’étranger de qualité et à l’importance de bien préparer leur expérience.",
+      },
+      {
+        title: "Réalisation",
+        text: "J’ai tourné les vidéos, avant de les monter sur CapCut. Les contenus ont ensuite été programmés via Metricool et adaptés aux différents réseaux sociaux : Instagram, Facebook, LinkedIn, TikTok & YouTube.",
+      },
+      {
+        title: "Déploiement",
+        text: "La campagne a été lancée dès le mois de septembre, à l’occasion de la rentrée scolaire, et intégrée à une stratégie de communication plus large comprenant une campagne de lancement d’un Guide des voyages scolaires, ainsi que des publications d’information et d’actualité. Le dispositif est prévu jusqu’au mois de novembre.",
+      },
+    ],
+    figures: [{ value: "14", label: "vidéos réalisées" }],
+    shorts: [{ youtubeId: "d1-C1g3Ek0U" }, { youtubeId: "jtmo_AyEM0c" }],
   },
 ];

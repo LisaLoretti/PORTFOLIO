@@ -16,20 +16,22 @@ type ProjectCardProps = {
  * Toute la carte est cliquable via un lien étendu sur le titre (un seul lien par carte).
  */
 export function ProjectCard({ project, priority = false, className }: ProjectCardProps) {
-  const { slug, title, subtitle, category, summary, figures, image, video } = project;
+  const { slug, title, subtitle, category, summary, figures, image, video, shorts } = project;
+  // Vidéo dont la miniature illustre la carte : paysage, sinon premier exemple vertical
+  const thumbnailId = video?.youtubeId ?? shorts?.[0]?.youtubeId;
 
   return (
     <article className={cn("group relative flex flex-col gap-5", className)}>
       <div className="reveal-clip relative aspect-video overflow-hidden rounded-lg bg-sage">
-        {video ? (
+        {thumbnailId ? (
           <YouTubeThumbnail
-            youtubeId={video.youtubeId}
+            youtubeId={thumbnailId}
             alt={`Miniature de la vidéo : ${title}`}
             priority={priority}
             sizes="(min-width: 64rem) 40vw, (min-width: 48rem) 50vw, 100vw"
             className="transition-transform duration-(--duration-slow) ease-smooth group-hover:scale-[1.04]"
           />
-        ) : (
+        ) : image ? (
           <Image
             src={image.src}
             alt={image.alt}
@@ -39,8 +41,8 @@ export function ProjectCard({ project, priority = false, className }: ProjectCar
             unoptimized={image.src.endsWith(".svg")}
             className="object-cover transition-transform duration-(--duration-slow) ease-smooth group-hover:scale-[1.04]"
           />
-        )}
-        {video && (
+        ) : null}
+        {thumbnailId && (
           <span className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full bg-cream px-4 py-2 text-small font-medium text-forest shadow-soft">
             <svg aria-hidden="true" viewBox="0 0 16 16" className="size-3 fill-current">
               <path d="M4 2.5v11l9-5.5-9-5.5Z" />
