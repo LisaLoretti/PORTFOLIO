@@ -1,9 +1,10 @@
+import Image from "next/image";
 import type { ParcoursStep } from "@/data/parcours";
 import { ParcoursIcon } from "./ParcoursIcon";
 
 /** Fiche détaillée d'une étape du parcours (page Parcours). */
 export function ParcoursEntry({ step }: { step: ParcoursStep }) {
-  const { slug, title, kind, organisation, place, period, detail, missions } = step;
+  const { slug, title, kind, organisation, place, period, detail, missions, logos } = step;
 
   return (
     <article
@@ -25,6 +26,25 @@ export function ParcoursEntry({ step }: { step: ParcoursStep }) {
             {organisation}
             {place && <span className="block text-small font-normal text-ink-muted">{place}</span>}
           </p>
+        )}
+        {logos && logos.length > 0 && (
+          <ul className="reveal-bounce-children flex flex-wrap gap-3">
+            {logos.map((logo) => (
+              <li
+                key={logo.src}
+                className="flex h-20 items-center justify-center rounded-lg bg-white px-4 py-3 shadow-soft ring-1 ring-black/5"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={logo.width}
+                  height={logo.height}
+                  sizes="12rem"
+                  className="h-full w-auto max-w-44 object-contain"
+                />
+              </li>
+            ))}
+          </ul>
         )}
       </div>
 
