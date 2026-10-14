@@ -26,6 +26,7 @@ export default function ParcoursPage() {
         eyebrow="Parcours"
         title="Mon parcours"
         intro="Mes expériences et mes formations en détail, de la plus récente à la plus ancienne."
+        aside={<ParcoursSummary steps={parcours} />}
       >
         <nav aria-label="Sections du parcours" className="flex flex-wrap gap-3">
           {groups.map((group) => (
@@ -39,14 +40,6 @@ export default function ParcoursPage() {
           ))}
         </nav>
       </PageHeader>
-
-      <Section spacing="none" className="pb-section-compact">
-        <Container>
-          <div className="max-w-xl">
-            <ParcoursSummary steps={parcours} />
-          </div>
-        </Container>
-      </Section>
 
       {groups.map((group, index) => (
         <Section
