@@ -22,7 +22,7 @@ export const tools: { category: string; items: Tool[] }[] = [
     category: "Gestion de projet",
     items: [
       { name: "Trello", icon: "trello" },
-      { name: "Monday", monogram: "m", background: "#6161FF" },
+      { name: "Monday", image: { src: "/images/tools/monday.webp", fit: "contain" }, background: "#FFFFFF" },
       { name: "Notion", icon: "notion" },
     ],
   },
