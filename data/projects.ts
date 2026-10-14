@@ -157,7 +157,6 @@ export const projects: Project[] = [
   {
     slug: "conseils-de-l-office",
     title: "Série de vidéos : Conseils de L’Office",
-    subtitle: "Chez L’Office",
     category: "Communication digitale · Vidéo",
     summary:
       "Une série de courtes vidéos de conseils pour sensibiliser les jeunes aux bénéfices d’un séjour à l’étranger de qualité.",
