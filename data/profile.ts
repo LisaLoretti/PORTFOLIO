@@ -79,9 +79,10 @@ export const softSkills = [
   "Proactivité et sens des solutions",
 ];
 
+/** `cefr` : position sur l'échelle A1 → C2 (1 à 6) ; 4.5 = B2+. */
 export const languages = [
-  { name: "Français", level: "Langue maternelle" },
-  { name: "Anglais", level: "B2+ — intermédiaire avancé" },
+  { name: "Français", level: "Langue maternelle", cefr: 6 },
+  { name: "Anglais", level: "B2+ — intermédiaire avancé", cefr: 4.5 },
 ];
 
 export const trainings = [

@@ -22,7 +22,7 @@ export function ToolBadge({ tool }: { tool: Tool }) {
       <span
         aria-hidden="true"
         style={{ background, color }}
-        className="relative flex size-14 items-center overflow-hidden justify-center rounded-2xl shadow-soft ring-1 ring-black/5 transition-[translate,box-shadow,rotate] duration-(--duration-base) ease-smooth group-hover:-translate-y-1 group-hover:-rotate-6 group-hover:shadow-lift"
+        className="relative flex size-14 items-center overflow-hidden justify-center rounded-2xl shadow-soft ring-1 ring-black/5 transition-[translate,box-shadow] duration-(--duration-base) ease-smooth group-hover:-translate-y-1 group-hover:shadow-lift motion-safe:group-hover:animate-wiggle"
       >
         {image ? (
           <Image
