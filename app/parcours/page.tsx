@@ -69,7 +69,7 @@ export default function ParcoursPage() {
               <Eyebrow>
                 {group.steps.length} étape{group.steps.length > 1 ? "s" : ""}
               </Eyebrow>
-              <Heading id={`${group.id}-titre`} size="display-l">
+              <Heading id={`${group.id}-titre`} size="display-l" underline>
                 {group.title}
               </Heading>
             </div>

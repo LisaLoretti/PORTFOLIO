@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 import { cn } from "@/lib/cn";
+import { ScribbleUnderline } from "./ScribbleUnderline";
 
 /*
  * Hiérarchie typographique.
@@ -19,12 +20,35 @@ type HeadingProps = {
   size?: keyof typeof headingSizes;
   children: ReactNode;
   className?: string;
+  /** Ajoute un trait ondulé qui se dessine au défilement (`true`) ou au chargement (`"load"`). */
+  underline?: boolean | "load";
+  /** Classes du trait (sa couleur notamment). */
+  underlineClassName?: string;
 } & Omit<ComponentPropsWithoutRef<"h2">, "children" | "className">;
 
-export function Heading({ as: Tag = "h2", size = "display-m", className, children, ...props }: HeadingProps) {
+export function Heading({
+  as: Tag = "h2",
+  size = "display-m",
+  className,
+  children,
+  underline,
+  underlineClassName,
+  ...props
+}: HeadingProps) {
   return (
-    <Tag className={cn("font-display text-heading", headingSizes[size], className)} {...props}>
-      {children}
+    <Tag
+      className={cn("font-display text-heading", headingSizes[size], underline && "pb-[max(1.25rem,0.3em)]", className)}
+      {...props}
+    >
+      {underline ? (
+        /* Span en ligne : le trait suit la dernière ligne du titre, sur sa longueur */
+        <span className="relative">
+          {children}
+          <ScribbleUnderline trigger={underline === "load" ? "load" : "scroll"} className={underlineClassName} />
+        </span>
+      ) : (
+        children
+      )}
     </Tag>
   );
 }

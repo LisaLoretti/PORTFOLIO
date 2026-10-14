@@ -22,7 +22,7 @@ export function PageHeader({ eyebrow, title, intro, children, aside, titleSize =
       <Container className={cn(hasAside && "grid items-center gap-12 lg:grid-cols-12 lg:gap-10")}>
         <div className={cn("flex flex-col gap-6 motion-safe:animate-fade-up", hasAside && "lg:col-span-6")}>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <Heading as="h1" size={titleSize} className="max-w-[14ch]">
+          <Heading as="h1" size={titleSize} underline="load" className="max-w-[14ch]">
             {title}
           </Heading>
           {intro && (
