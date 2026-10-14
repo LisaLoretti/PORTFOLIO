@@ -10,17 +10,19 @@ type PageHeaderProps = {
   children?: ReactNode;
   /** Contenu affiché à droite du titre en grand écran (en dessous sur mobile). */
   aside?: ReactNode;
+  /** Taille du titre : à réduire quand un mot long côtoie l'aside. */
+  titleSize?: "display-xl" | "display-l";
 };
 
 /** En-tête commun des pages : surtitre, titre XXL et introduction. */
-export function PageHeader({ eyebrow, title, intro, children, aside }: PageHeaderProps) {
+export function PageHeader({ eyebrow, title, intro, children, aside, titleSize = "display-xl" }: PageHeaderProps) {
   const hasAside = Boolean(aside);
   return (
     <header className="pt-section-compact pb-section-compact">
       <Container className={cn(hasAside && "grid items-center gap-12 lg:grid-cols-12 lg:gap-10")}>
         <div className={cn("flex flex-col gap-6 motion-safe:animate-fade-up", hasAside && "lg:col-span-6")}>
           <Eyebrow>{eyebrow}</Eyebrow>
-          <Heading as="h1" size="display-xl" className="max-w-[14ch]">
+          <Heading as="h1" size={titleSize} className="max-w-[14ch]">
             {title}
           </Heading>
           {intro && (
