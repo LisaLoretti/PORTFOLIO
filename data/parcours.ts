@@ -4,6 +4,13 @@ export type MissionGroup = {
   items: string[];
 };
 
+export type ParcoursLogo = {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+};
+
 export type ParcoursStep = {
   /** Identifiant utilisé pour les ancres de la page Parcours (/parcours#slug). */
   slug: string;
@@ -17,6 +24,8 @@ export type ParcoursStep = {
   detail?: string;
   /** Détail des missions ou du programme, affiché sur la page Parcours. */
   missions?: MissionGroup[];
+  /** Logos ou visuels affichés sur la fiche (public/images/parcours). */
+  logos?: ParcoursLogo[];
 };
 
 /** Parcours, du plus ancien au plus récent. */
@@ -32,6 +41,10 @@ export const parcours: ParcoursStep[] = [
     title: "Bachelor Marketing & Business Performance Management",
     kind: "Formation",
     organisation: "IDRAC Business School & SKALE",
+    logos: [
+      { src: "/images/parcours/idrac.webp", alt: "Logo IDRAC Business School", width: 360, height: 213 },
+      { src: "/images/parcours/skale.webp", alt: "Logo SKALE Collaborative Business School", width: 360, height: 122 },
+    ],
     period: "2020 – 2023",
     detail: "Communication, gestion d’entreprise, gestion budgétaire, analyse de la performance et prise de décision stratégique. Dont un an d’études en Irlande et en Espagne.",
     missions: [
@@ -53,6 +66,7 @@ export const parcours: ParcoursStep[] = [
     title: "Assistante gestion de projets",
     kind: "Stage",
     organisation: "Impact Sales & Marketing",
+    logos: [{ src: "/images/parcours/impact-sales-marketing.webp", alt: "Logo Impact Sales & Marketing", width: 240, height: 239 }],
     place: "Levallois-Perret",
     period: "Avril – août 2022",
     detail: "Gestion des comptes Instagram et LinkedIn à destination des jeunes publics, partenariats avec des écoles et entretiens avec des candidats.",
@@ -104,6 +118,7 @@ export const parcours: ParcoursStep[] = [
     slug: "australie",
     title: "Un an en Australie",
     kind: "International",
+    logos: [{ src: "/images/parcours/australie.webp", alt: "Drapeau de l’Australie", width: 320, height: 160 }],
     period: "2023 – 2024",
     detail: "Fille au pair, serveuse et femme de chambre, et voyage pour découvrir le pays.",
     missions: [
@@ -136,6 +151,7 @@ export const parcours: ParcoursStep[] = [
     title: "Chargée d’événementiel & de communication",
     kind: "Alternance",
     organisation: "L’Office national de garantie des séjours linguistiques et éducatifs",
+    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office, la garantie des séjours linguistiques et éducatifs", width: 420, height: 117 }],
     place: "Paris",
     period: "2024 – 2026",
     detail: "Stratégie et plans de communication, contenus pour les réseaux sociaux, refonte du site web, et organisation d’événements de A à Z : assemblées générales, Village des séjours linguistiques, tournée « Meet Our Members », webinaires.",
