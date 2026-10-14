@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { AboutStory } from "@/components/about/AboutStory";
 import { Skills } from "@/components/about/Skills";
 import { Timeline } from "@/components/about/Timeline";
 import { Container } from "@/components/layout/Container";
@@ -71,7 +70,19 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <AboutStory />
+      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <div className="flex flex-col gap-4 lg:col-span-4">
+            <Eyebrow>Formation & expériences</Eyebrow>
+            <Heading id="parcours-titre" size="display-l">
+              Mon parcours
+            </Heading>
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <Timeline steps={parcours} />
+          </div>
+        </Container>
+      </Section>
 
       <Section aria-labelledby="realisations-titre">
         <Container className="flex flex-col gap-12">
@@ -90,20 +101,6 @@ export default function HomePage() {
             {projects.slice(0, 2).map((project, index) => (
               <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
             ))}
-          </div>
-        </Container>
-      </Section>
-
-      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-4 lg:col-span-4">
-            <Eyebrow>Formation & expériences</Eyebrow>
-            <Heading id="parcours-titre" size="display-l">
-              Mon parcours
-            </Heading>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <Timeline steps={parcours} />
           </div>
         </Container>
       </Section>
