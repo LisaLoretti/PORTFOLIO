@@ -18,12 +18,18 @@ export default function ContactPage() {
       <PageHeader
         eyebrow="Contact"
         title="Parlons de votre projet"
-        intro="De retour en France, je cherche ma prochaine aventure professionnelle : un projet dans lequel mettre mon énergie et ma créativité. Écrivez-moi !"
+        intro={
+          <>
+            Imaginer, créer et coordonner des projets qui mettent en valeur le travail de chacun, rassemblent les
+            personnes et créent des moments de partage.
+            <span className="mt-3 block font-medium text-forest">C’est ce que j’aime dans mon métier.</span>
+          </>
+        }
       />
 
       <Section spacing="none" className="pb-section">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col items-start gap-6 lg:col-span-7">
+        <Container className="flex flex-col gap-12">
+          <div className="flex flex-col items-start gap-6">
             <p className="text-caption font-medium uppercase text-ink-muted">E-mail</p>
             <a
               href={`mailto:${email}`}
@@ -36,7 +42,7 @@ export default function ContactPage() {
             </Button>
           </div>
 
-          <dl className="flex flex-col gap-6 lg:col-span-4 lg:col-start-9">
+          <dl className="grid gap-6 md:grid-cols-3 md:gap-8">
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Disponibilité</dt>
               <dd className="text-lead">{availability}</dd>
