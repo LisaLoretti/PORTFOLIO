@@ -1,4 +1,5 @@
 import type { ParcoursStep } from "@/data/parcours";
+import { ParcoursIcon } from "./ParcoursIcon";
 
 type TimelineProps = {
   steps: ParcoursStep[];
@@ -14,11 +15,11 @@ export function Timeline({ steps }: TimelineProps) {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="relative grid gap-2 pb-12 pl-8 last:pb-0 md:grid-cols-[6rem_1fr] md:gap-8 md:pl-12"
+            className="relative grid gap-2 pb-12 pl-10 last:pb-0 md:grid-cols-[6rem_1fr] md:gap-8 md:pl-14"
           >
-            <span
-              aria-hidden="true"
-              className="reveal-pop absolute -left-[7px] top-2 size-3.5 rounded-full border-2 border-cream bg-olive"
+            <ParcoursIcon
+              kind={step.kind}
+              className="reveal-pop absolute top-0 -left-5 border-2 border-olive md:top-1"
             />
             <span aria-hidden="true" className="reveal-left font-display text-display-m font-extrabold text-sage">
               {String(index + 1).padStart(2, "0")}
