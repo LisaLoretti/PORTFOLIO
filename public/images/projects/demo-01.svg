@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Visuel de démonstration">
+  <rect width="1200" height="900" fill="#C8D5B9"/>
+  <path d="M-40 620C120 470 300 520 430 410S640 140 860 170s340 210 380 360v410H-40Z" fill="#668F5B"/>
+  <path d="M-40 760c210-90 380-40 560-110s330-210 520-170 200 80 200 80v380H-40Z" fill="#183D2E"/>
+  <circle cx="880" cy="250" r="96" fill="#F7F2E7"/>
+  <text x="60" y="110" fill="#183D2E" font-family="sans-serif" font-size="36" font-weight="700" letter-spacing="4">DÉMO</text>
+</svg>
