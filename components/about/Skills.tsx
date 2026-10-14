@@ -8,7 +8,7 @@ export function Skills() {
   return (
     <Section tone="sand" aria-labelledby="competences-titre">
       <Container className="flex flex-col gap-16">
-        <div className="flex flex-col gap-4">
+        <div className="reveal flex flex-col gap-4">
           <Eyebrow>Savoir-faire & savoir-être</Eyebrow>
           <Heading id="competences-titre" size="display-l">
             Compétences
@@ -22,7 +22,7 @@ export function Skills() {
             </Heading>
             <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {tools.map((group) => (
-                <div key={group.category} className="flex flex-col gap-2 border-t border-line pt-4">
+                <div key={group.category} className="reveal flex flex-col gap-2 border-t border-line pt-4">
                   <dt className="text-caption font-medium uppercase text-ink-muted">{group.category}</dt>
                   <dd className="text-body">{group.items.join(", ")}</dd>
                 </div>
@@ -31,7 +31,7 @@ export function Skills() {
           </div>
 
           <div className="flex flex-col gap-12 lg:col-span-4 lg:col-start-9">
-            <div className="flex flex-col gap-4">
+            <div className="reveal flex flex-col gap-4">
               <Heading as="h3" size="title">
                 Savoir-être
               </Heading>
@@ -44,7 +44,7 @@ export function Skills() {
               </ul>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="reveal flex flex-col gap-4">
               <Heading as="h3" size="title">
                 Langues
               </Heading>
@@ -58,7 +58,7 @@ export function Skills() {
               </dl>
             </div>
 
-            <div className="flex flex-col gap-4">
+            <div className="reveal flex flex-col gap-4">
               <Heading as="h3" size="title">
                 Formations complémentaires
               </Heading>

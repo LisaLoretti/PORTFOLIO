@@ -4,6 +4,7 @@ import { Timeline } from "@/components/about/Timeline";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ProjectCard } from "@/components/projects/ProjectCard";
+import { Marquee } from "@/components/ui/Marquee";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
 import { parcours } from "@/data/parcours";
@@ -21,7 +22,7 @@ export default function HomePage() {
               aria-hidden="true"
               viewBox="20 40 540 520"
               preserveAspectRatio="none"
-              className="absolute -inset-[8%] size-[116%] rotate-[-8deg] text-sage"
+              className="absolute -inset-[8%] size-[116%] rotate-[-8deg] text-sage motion-safe:animate-float"
             >
               <path
                 fill="currentColor"
@@ -40,9 +41,9 @@ export default function HomePage() {
             </div>
           </div>
 
-          <div className="relative flex flex-col gap-8 lg:col-span-7">
+          <div className="stagger relative flex flex-col gap-8 lg:col-span-7">
             <Eyebrow>{siteConfig.role}</Eyebrow>
-            <Heading as="h1" size="display-xl" className="max-w-[8ch] motion-safe:animate-fade-up">
+            <Heading as="h1" size="display-xl" className="max-w-[8ch]">
               {siteConfig.name}
               <span className="text-olive">.</span>
             </Heading>
@@ -55,7 +56,10 @@ export default function HomePage() {
               </Text>
             </div>
             <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5 text-small">
-              <span aria-hidden="true" className="size-2 rounded-full bg-olive" />
+              <span aria-hidden="true" className="relative flex size-2">
+                <span className="absolute inset-0 rounded-full bg-olive motion-safe:animate-ping-soft" />
+                <span className="relative size-2 rounded-full bg-olive" />
+              </span>
               {siteConfig.contact.availability} · {siteConfig.contact.location}
             </p>
             <div className="flex flex-wrap items-center gap-4">
@@ -71,9 +75,14 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      <Marquee
+        label="Événementiel, communication, gestion de projets, coordination : créer du lien et rassembler."
+        items={["Événementiel", "Communication", "Gestion de projets", "Coordination", "Créer du lien", "Rassembler"]}
+      />
+
       <Section tone="sand" id="parcours" aria-labelledby="parcours-titre">
         <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-4 lg:col-span-4">
+          <div className="reveal flex flex-col gap-4 lg:col-span-4">
             <Eyebrow>Formation & expériences</Eyebrow>
             <Heading id="parcours-titre" size="display-l">
               Mon parcours
@@ -87,7 +96,7 @@ export default function HomePage() {
 
       <Section aria-labelledby="realisations-titre">
         <Container className="flex flex-col gap-12">
-          <div className="flex flex-wrap items-end justify-between gap-6">
+          <div className="reveal flex flex-wrap items-end justify-between gap-6">
             <div className="flex flex-col gap-4">
               <Eyebrow>Réalisations</Eyebrow>
               <Heading id="realisations-titre" size="display-l">
@@ -109,7 +118,7 @@ export default function HomePage() {
       <Skills />
 
       <Section tone="forest" aria-labelledby="contact-titre">
-        <Container className="flex flex-col items-start gap-8">
+        <Container className="reveal flex flex-col items-start gap-8">
           <Heading id="contact-titre" size="display-l" className="max-w-[16ch]">
             Un projet qui rassemble ? Parlons-en.
           </Heading>

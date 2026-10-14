@@ -31,7 +31,7 @@ export function SiteHeader() {
   const pageLinks = mainNav.filter((item) => item.href !== "/contact");
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line bg-cream/90 backdrop-blur-md">
+    <header className="scroll-shadow sticky top-0 z-40 border-b border-line bg-cream/90 backdrop-blur-md">
       <Container size="wide" className="flex h-header items-center justify-between gap-6">
         <Link
           href="/"

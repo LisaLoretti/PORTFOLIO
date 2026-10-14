@@ -17,7 +17,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
 
   return (
     <article id={slug} aria-labelledby={`${slug}-titre`} className="flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-12">
-      <header className={cn("flex flex-col gap-4 md:flex-row md:items-end md:gap-10", reversed && "md:flex-row-reverse md:text-right")}>
+      <header className={cn("reveal flex flex-col gap-4 md:flex-row md:items-end md:gap-10", reversed && "md:flex-row-reverse md:text-right")}>
         <span aria-hidden="true" className="font-display text-display-xl leading-none font-extrabold text-sage">
           {number}
         </span>
@@ -30,7 +30,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
         </div>
       </header>
 
-      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+      <div className="reveal grid gap-10 lg:grid-cols-12 lg:gap-12">
         <figure className={cn("flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
           <div className={cn("relative aspect-video overflow-hidden rounded-lg", video ? "bg-charcoal" : "bg-sage")}>
             {video ? (
@@ -64,7 +64,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
             </Heading>
             <ol className="grid gap-6 sm:grid-cols-2">
               {roles.map((role, roleIndex) => (
-                <li key={role.title} className="flex flex-col gap-2 border-t border-line-strong pt-4">
+                <li key={role.title} className="reveal flex flex-col gap-2 border-t border-line-strong pt-4">
                   <span className="text-caption font-medium text-ink-muted">{String(roleIndex + 1).padStart(2, "0")}</span>
                   <p className="font-display text-body font-bold text-heading">{role.title}</p>
                   <p className="text-small text-ink-muted">{role.text}</p>
@@ -75,7 +75,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
         )}
 
         {figures && figures.length > 0 && (
-          <section aria-label="Les résultats" className="tone-inverse flex flex-col gap-6 self-start rounded-xl bg-forest p-8 text-ink lg:col-span-4">
+          <section aria-label="Les résultats" className="reveal tone-inverse flex flex-col gap-6 self-start rounded-xl bg-forest p-8 text-ink lg:col-span-4">
             <Heading as="h3" size="title">
               Les résultats
             </Heading>

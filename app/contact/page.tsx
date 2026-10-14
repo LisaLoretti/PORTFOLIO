@@ -47,7 +47,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <dl className="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+          <dl className="reveal grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Téléphone</dt>
               <dd>
