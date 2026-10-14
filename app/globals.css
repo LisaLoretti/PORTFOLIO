@@ -86,6 +86,9 @@
 
   /* Animations légères ---------------------------------------------------- */
   --animate-fade-up: fade-up 0.9s var(--ease-smooth) both;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-marquee: marquee 45s linear infinite;
+  --animate-ping-soft: ping-soft 2.4s var(--ease-smooth) infinite;
 
   @keyframes fade-up {
     from {
@@ -95,6 +98,123 @@
     to {
       opacity: 1;
       transform: none;
+    }
+  }
+}
+
+/* Images clés complémentaires (hors @theme : utilisées par les utilitaires ci-dessous) */
+@keyframes float {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: -8deg;
+  }
+  50% {
+    translate: 0 -0.75rem;
+    rotate: -3deg;
+  }
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+@keyframes ping-soft {
+  0% {
+    scale: 1;
+    opacity: 0.7;
+  }
+  80%,
+  100% {
+    scale: 2.6;
+    opacity: 0;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+@keyframes grow-y {
+  from {
+    scale: 1 0;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+@keyframes header-shadow {
+  to {
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/*
+ * Animations liées au défilement (scroll-driven animations).
+ * Sans support navigateur ou avec « réduire les animations », le contenu
+ * reste simplement affiché, sans animation.
+ */
+@utility reveal {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 90%;
+    }
+  }
+}
+
+@utility scroll-draw {
+  transform-origin: top;
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: grow-y linear both;
+      animation-timeline: view();
+      animation-range: entry 40% cover 75%;
+    }
+  }
+}
+
+@utility scroll-shadow {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      animation: header-shadow linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 8rem;
+    }
+  }
+}
+
+/* Entrée en cascade des enfants directs au chargement */
+@utility stagger {
+  @media (prefers-reduced-motion: no-preference) {
+    & > * {
+      animation: var(--animate-fade-up);
+    }
+    & > :nth-child(2) {
+      animation-delay: 90ms;
+    }
+    & > :nth-child(3) {
+      animation-delay: 180ms;
+    }
+    & > :nth-child(4) {
+      animation-delay: 270ms;
+    }
+    & > :nth-child(5) {
+      animation-delay: 360ms;
+    }
+    & > :nth-child(n + 6) {
+      animation-delay: 450ms;
     }
   }
 }

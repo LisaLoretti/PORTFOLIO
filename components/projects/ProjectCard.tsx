@@ -19,7 +19,7 @@ export function ProjectCard({ project, priority = false, className }: ProjectCar
   const { slug, title, subtitle, category, summary, figures, image, video } = project;
 
   return (
-    <article className={cn("group relative flex flex-col gap-5", className)}>
+    <article className={cn("reveal group relative flex flex-col gap-5", className)}>
       <div className="relative aspect-video overflow-hidden rounded-lg bg-sage">
         {video ? (
           <YouTubeThumbnail
