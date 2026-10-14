@@ -291,6 +291,15 @@
   }
 }
 
+@keyframes grow-x {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
 @keyframes header-shadow {
   to {
     box-shadow: var(--shadow-soft);
@@ -482,6 +491,57 @@
       animation-range: entry 30% cover 45%;
     }
   }
+}
+
+/* Les enfants directs glissent depuis la droite, l'un après l'autre */
+@utility reveal-right-children {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      & > * {
+        animation: reveal-right linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 80%;
+      }
+      & > :nth-child(2) {
+        animation-range: entry 8% entry 88%;
+      }
+      & > :nth-child(3) {
+        animation-range: entry 16% entry 96%;
+      }
+      & > :nth-child(n + 4) {
+        animation-range: entry 20% entry 100%;
+      }
+    }
+  }
+}
+
+/* Grande carte : zoom d'apparition terminé dès que son haut est bien entré à l'écran */
+@utility reveal-card {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      animation: zoom-in linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 25%;
+    }
+  }
+}
+
+/* Barre de progression de lecture liée au défilement de la page */
+@utility scroll-progress {
+  transform-origin: left;
+  scale: 0 1;
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: scroll()) {
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+  }
+}
+
+/* Texte en contour seul (grands mots décoratifs) */
+@utility text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--color-line);
 }
 
 @utility scroll-shadow {
