@@ -6,7 +6,7 @@ import { Section } from "@/components/layout/Section";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Marquee } from "@/components/ui/Marquee";
 import { Button } from "@/components/ui/Button";
-import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { Eyebrow, Heading } from "@/components/ui/Typography";
 import { parcours } from "@/data/parcours";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
@@ -47,14 +47,6 @@ export default function HomePage() {
               {siteConfig.name}
               <span className="text-olive">.</span>
             </Heading>
-            <div className="flex max-w-2xl flex-col gap-1">
-              <Text variant="lead" className="font-display text-title font-bold text-heading">
-                Créer du lien, des rencontres et du partage.
-              </Text>
-              <Text variant="lead" className="text-ink-muted">
-                Valoriser les projets qui ont du sens.
-              </Text>
-            </div>
             <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5 text-small">
               <span aria-hidden="true" className="relative flex size-2">
                 <span className="absolute inset-0 rounded-full bg-olive motion-safe:animate-ping-soft" />
