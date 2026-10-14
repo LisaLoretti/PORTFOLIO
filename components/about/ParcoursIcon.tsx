@@ -12,6 +12,9 @@ export const kindTheme: Record<ParcoursKind, string> = {
   Formation: "tone-inverse bg-forest text-cream",
   Alternance: "bg-sage text-forest",
   Stage: "border border-line-strong bg-cream text-forest",
+  // Olive assombri : texte crème lisible (contraste AA)
+  "Job étudiant":
+    "tone-inverse bg-[color-mix(in_srgb,var(--color-olive)_70%,var(--color-forest))] text-cream [--color-ink-muted:var(--color-cream)]",
   Freelance: "tone-inverse bg-charcoal text-cream",
   International: "border border-line-strong bg-cream text-forest",
 };
@@ -45,6 +48,14 @@ const glyphs: Record<ParcoursKind, ReactNode> = {
       <rect x="5" y="6" width="14" height="15" rx="3" />
       <path d="M10 3h4v4h-4zM9 17h6" />
       <circle cx="12" cy="12.5" r="2" />
+    </>
+  ),
+  // Sac de boutique
+  "Job étudiant": (
+    <>
+      <path className="fill-current/25 stroke-none" d="M5 8h14l-1 12H6L5 8Z" />
+      <path d="M5 8h14l-1 12H6L5 8Z" />
+      <path d="M9 10.5V7a3 3 0 0 1 6 0v3.5" />
     </>
   ),
   // Étincelles

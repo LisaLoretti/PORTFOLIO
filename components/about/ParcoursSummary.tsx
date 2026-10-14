@@ -16,6 +16,7 @@ const tiles: Tile[] = [
   { kind: "Formation", label: ["formation", "formations"], layout: "" },
   { kind: "Alternance", label: ["alternance", "alternances"], layout: "" },
   { kind: "Stage", label: ["stage", "stages"], layout: "" },
+  { kind: "Job étudiant", label: ["job étudiant", "jobs étudiants"], layout: "" },
   { kind: "Freelance", label: ["activité freelance", "activités freelance"], layout: "", art: "sparkle" },
   { kind: "International", label: ["an à l’étranger", "expériences à l’étranger"], layout: "col-span-2", art: "flight" },
 ];
@@ -58,43 +59,46 @@ function SparkleArt() {
 /** Résumé du parcours en tuiles colorées, chiffres calculés depuis les données. */
 export function ParcoursSummary({ steps }: { steps: ParcoursStep[] }) {
   const count = (kind: ParcoursKind) => steps.filter((step) => step.kind === kind).length;
+  const visible = tiles.filter((tile) => count(tile.kind) > 0);
+  const smallTiles = visible.filter((tile) => tile.art !== "flight");
 
   return (
     <ul className="reveal-pop-children grid grid-cols-2 gap-3">
-      {tiles
-        .filter((tile) => count(tile.kind) > 0)
-        .map((tile) => {
-          const value = count(tile.kind);
-          const wide = tile.art === "flight";
-          return (
-            <li
-              key={tile.kind}
-              className={cn(
-                "group relative flex min-h-28 justify-between gap-3 overflow-clip rounded-lg p-4 shadow-soft transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-lift",
-                kindTheme[tile.kind],
-                wide ? "items-center" : "flex-col",
-                tile.layout,
-              )}
-            >
-              <div className={cn("relative flex flex-col", wide ? "gap-1" : "h-full justify-between gap-3")}>
-                <ParcoursGlyph
-                  kind={tile.kind}
-                  className="size-7 transition-transform duration-(--duration-base) ease-smooth group-hover:-rotate-8"
-                />
-                <p className="flex flex-col">
-                  <span className="font-display text-display-m font-extrabold leading-none text-heading">
-                    {value}
-                  </span>
-                  <span className="mt-1 text-small font-medium text-ink-muted">
-                    {tile.label[value > 1 ? 1 : 0]}
-                  </span>
-                </p>
-              </div>
-              {tile.art === "flight" && <FlightArt />}
-              {tile.art === "sparkle" && <SparkleArt />}
-            </li>
-          );
-        })}
+      {visible.map((tile) => {
+        const value = count(tile.kind);
+        const wide = tile.art === "flight";
+        // Nombre impair de petites tuiles : la dernière prend toute la largeur
+        const fill = !wide && smallTiles.length % 2 === 1 && tile === smallTiles.at(-1);
+        return (
+          <li
+            key={tile.kind}
+            className={cn(
+              "group relative flex min-h-28 justify-between gap-3 overflow-clip rounded-lg p-4 shadow-soft transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-lift",
+              kindTheme[tile.kind],
+              wide ? "items-center" : "flex-col",
+              tile.layout,
+              fill && "col-span-2",
+            )}
+          >
+            <div className={cn("relative flex flex-col", wide ? "gap-1" : "h-full justify-between gap-3")}>
+              <ParcoursGlyph
+                kind={tile.kind}
+                className="size-7 transition-transform duration-(--duration-base) ease-smooth group-hover:-rotate-8"
+              />
+              <p className="flex flex-col">
+                <span className="font-display text-display-m font-extrabold leading-none text-heading">
+                  {value}
+                </span>
+                <span className="mt-1 text-small font-medium text-ink-muted">
+                  {tile.label[value > 1 ? 1 : 0]}
+                </span>
+              </p>
+            </div>
+            {tile.art === "flight" && <FlightArt />}
+            {tile.art === "sparkle" && <SparkleArt />}
+          </li>
+        );
+      })}
     </ul>
   );
 }
