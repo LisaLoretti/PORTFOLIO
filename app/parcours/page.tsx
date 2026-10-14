@@ -12,8 +12,10 @@ export const metadata: Metadata = {
   description: "Mes expériences en événementiel et communication, et mes formations, en détail.",
 };
 
+// Étapes présentées sur cette page (le freelance n'y est pas détaillé)
+const pageSteps = parcours.filter((step) => step.kind !== "Freelance");
 // Du plus récent au plus ancien
-const recentFirst = [...parcours].reverse();
+const recentFirst = [...pageSteps].reverse();
 const groups = [
   { id: "experiences", title: "Expériences", steps: recentFirst.filter((step) => step.kind !== "Formation") },
   { id: "formations", title: "Formations", steps: recentFirst.filter((step) => step.kind === "Formation") },
@@ -32,7 +34,7 @@ export default function ParcoursPage() {
         eyebrow="Parcours"
         title="Mon parcours"
         intro="Mes expériences et mes formations en détail, de la plus récente à la plus ancienne."
-        aside={<ParcoursSummary steps={parcours} />}
+        aside={<ParcoursSummary steps={pageSteps} />}
       >
         <nav aria-label="Sections du parcours" className="flex flex-wrap gap-3">
           {groups.map((group) => (
