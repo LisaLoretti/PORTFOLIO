@@ -133,6 +133,7 @@ export const parcours: ParcoursStep[] = [
     title: "Master Management du Tourisme et de l’Événementiel",
     kind: "Formation",
     organisation: "Excelia — Paris",
+    logos: [{ src: "/images/parcours/excelia.webp", alt: "Logo Excelia", width: 360, height: 77 }],
     period: "2024 – 2026",
     detail: "Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
     missions: [
