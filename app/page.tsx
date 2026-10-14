@@ -59,8 +59,9 @@ export default function HomePage() {
               {siteConfig.contact.availability} · {siteConfig.contact.location}
             </p>
             <div className="flex flex-wrap items-center gap-4">
-              <Button href="/#parcours" arrow>
-                Voir mon parcours
+              <Button href={siteConfig.contact.linkedin} target="_blank" rel="noopener noreferrer" arrow>
+                Mon profil LinkedIn
+                <span className="sr-only"> (nouvel onglet)</span>
               </Button>
               <Button href="/contact" variant="secondary">
                 Contactez-moi

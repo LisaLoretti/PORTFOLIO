@@ -12,6 +12,7 @@ export const siteConfig = {
     email: "lisaloretti@yahoo.com",
     location: "Paris & Île-de-France",
     availability: "Disponible à partir d’octobre 2026",
+    linkedin: "https://www.linkedin.com/in/lisa-loretti-8040b4223/",
   },
 } as const;
 
@@ -37,5 +38,5 @@ export type SocialLink = {
  * Ajouter ici les entrées { label, href }.
  */
 export const socialLinks: SocialLink[] = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/lisa-loretti-8040b4223/" },
+  { label: "LinkedIn", href: siteConfig.contact.linkedin },
 ];
