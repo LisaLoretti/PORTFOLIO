@@ -21,7 +21,7 @@ export const tools: { category: string; items: Tool[] }[] = [
   {
     category: "Gestion de projet",
     items: [
-      { name: "Trello", icon: "trello" },
+      { name: "Trello", image: { src: "/images/tools/trello.webp", fit: "cover" } },
       { name: "Monday", image: { src: "/images/tools/monday.webp", fit: "contain" }, background: "#FFFFFF" },
       { name: "Notion", icon: "notion" },
     ],
@@ -46,7 +46,7 @@ export const tools: { category: string; items: Tool[] }[] = [
     category: "E-mailing & CRM",
     items: [
       { name: "Mailchimp", icon: "mailchimp" },
-      { name: "Brevo", icon: "brevo" },
+      { name: "Brevo", image: { src: "/images/tools/brevo.webp", fit: "cover" } },
     ],
   },
   {
