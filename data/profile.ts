@@ -31,7 +31,7 @@ export const tools: { category: string; items: Tool[] }[] = [
     items: [
       { name: "Adobe Creative Cloud", image: { src: "/images/tools/adobe-creative-cloud.webp", fit: "cover" } },
       { name: "Canva", image: { src: "/images/tools/canva.webp", fit: "cover" } },
-      { name: "CapCut", monogram: "Cc", background: "#000000" },
+      { name: "CapCut", image: { src: "/images/tools/capcut.webp", fit: "contain" }, background: "#000000" },
     ],
   },
   {
@@ -58,7 +58,7 @@ export const tools: { category: string; items: Tool[] }[] = [
       { name: "TikTok", icon: "tiktok" },
       { name: "YouTube", icon: "youtube" },
       { name: "Meta", icon: "meta" },
-      { name: "Metricool", monogram: "M", background: "#183D2E" },
+      { name: "Metricool", image: { src: "/images/tools/metricool.webp", fit: "cover" } },
     ],
   },
   {
