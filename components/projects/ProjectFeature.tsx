@@ -32,9 +32,9 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
 
       <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
         <figure className={cn("flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
-          <div className="relative aspect-video overflow-hidden rounded-lg bg-sage">
+          <div className={cn("relative aspect-video overflow-hidden rounded-lg", video ? "bg-charcoal" : "bg-sage")}>
             {video ? (
-              <VideoEmbed youtubeId={video.youtubeId} title={title} poster={image} />
+              <VideoEmbed youtubeId={video.youtubeId} title={title} />
             ) : (
               <Image
                 src={image.src}
