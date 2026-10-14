@@ -87,6 +87,11 @@ export default function HomePage() {
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
             <Timeline steps={parcours} />
+            <div className="reveal mt-12 md:ml-6">
+              <Button href="/parcours" arrow>
+                Voir mon parcours détaillé
+              </Button>
+            </div>
           </div>
         </Container>
       </Section>

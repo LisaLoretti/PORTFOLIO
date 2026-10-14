@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ParcoursStep } from "@/data/parcours";
 import { ParcoursIcon } from "./ParcoursIcon";
 
@@ -14,7 +15,7 @@ export function Timeline({ steps }: TimelineProps) {
       <ol className="relative border-l border-line-strong">
         {steps.map((step, index) => (
           <li
-            key={step.title}
+            key={step.slug}
             className="relative grid gap-2 pb-12 pl-10 last:pb-0 md:grid-cols-[6rem_1fr] md:gap-8 md:pl-14"
           >
             <ParcoursIcon
@@ -36,6 +37,18 @@ export function Timeline({ steps }: TimelineProps) {
                 </p>
               )}
               {step.detail && <p className="max-w-prose text-small text-ink-muted">{step.detail}</p>}
+              {step.missions && (
+                <Link
+                  href={`/parcours#${step.slug}`}
+                  className="group/link inline-flex w-fit items-center gap-1 rounded-sm text-small font-medium text-forest underline decoration-transparent underline-offset-4 transition-colors hover:decoration-olive"
+                >
+                  Voir le détail
+                  <span aria-hidden="true" className="transition-transform duration-(--duration-base) group-hover/link:translate-x-1">
+                    →
+                  </span>
+                  <span className="sr-only"> : {step.title}</span>
+                </Link>
+              )}
             </div>
           </li>
         ))}
