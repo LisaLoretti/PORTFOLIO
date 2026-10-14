@@ -92,6 +92,7 @@ export const parcours: ParcoursStep[] = [
     title: "Assistante événementiel & communication interne",
     kind: "Alternance",
     organisation: "EBP Informatique",
+    logos: [{ src: "/images/parcours/ebp.webp", alt: "Logo EBP", width: 360, height: 148 }],
     place: "Rambouillet",
     period: "2022 – 2023",
     detail: "Événements internes de 60 à 300 participants, animations mensuelles, plan de communication marque employeur et optimisation de l’intranet.",
