@@ -3,15 +3,15 @@ import { PageHeader } from "@/components/layout/PageHeader";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Formulaire et informations de contact.",
+  description: "Me contacter pour un projet en événementiel ou en communication.",
 };
 
 export default function ContactPage() {
   return (
     <PageHeader
-      eyebrow="Contact — page provisoire"
+      eyebrow="Contact"
       title="Parlons de votre projet"
-      intro="Cette page accueillera le formulaire de contact et mes coordonnées. Le formulaire n'est pas encore disponible."
+      intro="De retour en France en octobre, je cherche ma prochaine aventure professionnelle. Le formulaire et mes coordonnées arrivent très bientôt."
     />
   );
 }

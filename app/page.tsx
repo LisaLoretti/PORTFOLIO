@@ -1,7 +1,10 @@
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
+import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow, Heading, Text } from "@/components/ui/Typography";
+import { projects } from "@/data/projects";
+import { siteConfig } from "@/data/site";
 
 export default function HomePage() {
   return (
@@ -20,22 +23,59 @@ export default function HomePage() {
         </svg>
 
         <Container className="relative flex flex-col gap-8">
-          <Eyebrow>Accueil — page provisoire</Eyebrow>
-          <Heading as="h1" size="display-xl" className="max-w-[12ch] motion-safe:animate-fade-up">
-            Portfolio en construction<span className="text-olive">.</span>
+          <Eyebrow>{siteConfig.role}</Eyebrow>
+          <Heading as="h1" size="display-xl" className="max-w-[8ch] motion-safe:animate-fade-up">
+            {siteConfig.name}
+            <span className="text-olive">.</span>
           </Heading>
-          <Text variant="lead" className="max-w-prose text-ink-muted">
-            Cette page accueillera la présentation principale, une sélection de réalisations et un appel à la prise de
-            contact.
-          </Text>
+          <div className="flex max-w-2xl flex-col gap-1">
+            <Text variant="lead" className="font-display text-title font-bold text-heading">
+              Créer du lien, des rencontres et du partage.
+            </Text>
+            <Text variant="lead" className="text-ink-muted">
+              Valoriser les projets qui ont du sens.
+            </Text>
+          </div>
           <div className="flex flex-wrap items-center gap-4">
-            <Button href="/realisations" arrow>
-              Voir les réalisations
+            <Button href="/a-propos#parcours" arrow>
+              Voir mon parcours
             </Button>
             <Button href="/contact" variant="secondary">
-              Me contacter
+              Contactez-moi
             </Button>
           </div>
+        </Container>
+      </Section>
+
+      <Section tone="sand" aria-labelledby="realisations-titre">
+        <Container className="flex flex-col gap-12">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <div className="flex flex-col gap-4">
+              <Eyebrow>Réalisations</Eyebrow>
+              <Heading id="realisations-titre" size="display-l">
+                Quelques réalisations
+              </Heading>
+            </div>
+            <Button href="/realisations" variant="text">
+              Toutes les réalisations
+            </Button>
+          </div>
+          <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section tone="forest" aria-labelledby="contact-titre">
+        <Container className="flex flex-col items-start gap-8">
+          <Heading id="contact-titre" size="display-l" className="max-w-[16ch]">
+            Un projet qui rassemble ? Parlons-en.
+          </Heading>
+          <Button href="/contact" variant="light" arrow>
+            Contactez-moi
+          </Button>
         </Container>
       </Section>
     </>

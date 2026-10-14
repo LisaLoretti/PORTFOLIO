@@ -11,6 +11,7 @@ export function SiteFooter() {
             {siteConfig.logo}
             <span aria-hidden="true" className="text-sage">.</span>
           </p>
+          <p className="text-small text-ink-muted">{siteConfig.role}</p>
           <Link
             href="/contact"
             className="group inline-flex w-fit items-center gap-2 rounded-sm text-lead focus-visible:outline-cream"
@@ -55,7 +56,7 @@ export function SiteFooter() {
       </Container>
 
       <Container size="wide" className="border-t border-line py-6">
-        <p className="text-small text-ink-muted">© {siteConfig.title}</p>
+        <p className="text-small text-ink-muted">© {siteConfig.name}</p>
       </Container>
     </footer>
   );

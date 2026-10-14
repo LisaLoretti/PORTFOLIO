@@ -1,13 +1,12 @@
-/**
- * Configuration globale du site.
- * Les valeurs marquées « provisoire » sont à remplacer par le contenu définitif.
- */
+/** Configuration globale du site. */
 export const siteConfig = {
-  /** Logo typographique provisoire. */
-  logo: "Portfolio",
-  /** Titre par défaut (provisoire). */
-  title: "Portfolio",
-  description: "Portfolio personnel — design, projets et parcours.",
+  name: "Lisa Loretti",
+  /** Logo typographique. */
+  logo: "Lisa Loretti",
+  role: "Gestion de projets — événementiel & communication",
+  title: "Lisa Loretti — Gestion de projets événementiel & communication",
+  description:
+    "Créer du lien, des rencontres et du partage. Valoriser les projets qui ont du sens. Portfolio de Lisa Loretti, gestion de projets en événementiel et communication.",
   locale: "fr_FR",
 } as const;
 

@@ -1,40 +1,40 @@
+export type ProjectFigure = {
+  value: string;
+  label: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
   category: string;
-  description: string;
+  /** Présentation du projet et de mon rôle. */
+  description?: string;
+  /** Chiffres clés (participants, partenaires, budget…). */
+  figures?: ProjectFigure[];
   image: {
     src: string;
+    /** Laisser vide pour un visuel purement décoratif. */
     alt: string;
   };
-  /** Lien vers le projet (page de détail ou site externe). */
-  href: string;
-  /** true pour les données de démonstration, à retirer avant la mise en ligne. */
-  isDemo?: boolean;
+  /** Lien vers la vidéo du projet. */
+  videoUrl?: string;
 };
 
-/**
- * DONNÉES DE DÉMONSTRATION — ne représentent pas de véritables réalisations.
- * Elles servent uniquement à mettre au point le composant ProjectCard.
- * Les liens pointent vers /realisations tant que les pages de détail n'existent pas.
+/*
+ * À COMPLÉTER pour chaque projet : `description` (mon rôle), `figures` (chiffres)
+ * et `videoUrl` (lien vidéo). Les visuels actuels sont provisoires et décoratifs.
  */
-export const demoProjects: Project[] = [
+export const projects: Project[] = [
   {
-    slug: "projet-demo-01",
-    title: "Projet de démonstration 01",
-    category: "Catégorie exemple",
-    description: "Texte de remplacement décrivant brièvement un projet. À remplacer par un vrai contenu.",
-    image: { src: "/images/projects/demo-01.svg", alt: "Visuel de démonstration : formes organiques vertes" },
-    href: "/realisations",
-    isDemo: true,
+    slug: "village-sejours-linguistiques",
+    title: "Village des séjours linguistiques et éducatifs",
+    category: "Événementiel",
+    image: { src: "/images/projects/visuel-provisoire-1.svg", alt: "" },
   },
   {
-    slug: "projet-demo-02",
-    title: "Projet de démonstration 02",
-    category: "Catégorie exemple",
-    description: "Texte de remplacement décrivant brièvement un projet. À remplacer par un vrai contenu.",
-    image: { src: "/images/projects/demo-02.svg", alt: "Visuel de démonstration : composition géométrique sable et forêt" },
-    href: "/realisations",
-    isDemo: true,
+    slug: "assemblee-generale",
+    title: "Assemblée Générale",
+    category: "Événementiel",
+    image: { src: "/images/projects/visuel-provisoire-2.svg", alt: "" },
   },
 ];
