@@ -22,6 +22,12 @@ const groups = [
 export default function ParcoursPage() {
   return (
     <>
+      {/* Barre de progression de lecture, sous la navigation */}
+      <div
+        aria-hidden="true"
+        className="scroll-progress pointer-events-none fixed inset-x-0 top-(--spacing-header) z-30 h-1 bg-olive"
+      />
+
       <PageHeader
         eyebrow="Parcours"
         title="Mon parcours"
@@ -49,8 +55,15 @@ export default function ParcoursPage() {
           aria-labelledby={`${group.id}-titre`}
           className="scroll-mt-[var(--spacing-header)] overflow-x-clip"
         >
-          <Container className="flex flex-col gap-12">
-            <div className="reveal flex flex-col gap-4">
+          <Container className="relative flex flex-col gap-12">
+            {/* Grand mot en contour qui glisse au défilement */}
+            <span
+              aria-hidden="true"
+              className="text-outline scroll-slide pointer-events-none absolute -top-10 left-gutter font-display text-[clamp(4.5rem,15vw,13rem)] leading-none font-extrabold whitespace-nowrap select-none"
+            >
+              {group.title}
+            </span>
+            <div className="reveal relative flex flex-col gap-4 pt-16 md:pt-24">
               <Eyebrow>
                 {group.steps.length} étape{group.steps.length > 1 ? "s" : ""}
               </Eyebrow>
@@ -58,9 +71,15 @@ export default function ParcoursPage() {
                 {group.title}
               </Heading>
             </div>
-            <div className="flex flex-col gap-16">
-              {group.steps.map((step) => (
-                <ParcoursEntry key={step.slug} step={step} />
+            <div className="flex flex-col gap-10">
+              {group.steps.map((step, stepIndex) => (
+                <ParcoursEntry
+                  key={step.slug}
+                  step={step}
+                  index={stepIndex}
+                  total={group.steps.length}
+                  surface={index % 2 === 0 ? "cream" : "sand"}
+                />
               ))}
             </div>
           </Container>
