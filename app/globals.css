@@ -474,6 +474,12 @@
   }
 }
 
+/* Curseur personnalisé actif (voir CustomCursor) : masque le curseur système */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
 /* Respect des préférences de mouvement réduit */
 @media (prefers-reduced-motion: reduce) {
   html {
