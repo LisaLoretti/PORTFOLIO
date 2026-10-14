@@ -12,8 +12,8 @@ export const siteConfig = {
     email: "lisa.lisaloretti@gmail.com",
     /** Affichage lisible et format international pour le lien tel:. */
     phone: { label: "+33 6 51 82 15 49", href: "tel:+33651821549" },
-    location: "Paris & Île-de-France",
-    availability: "Disponible à partir d’octobre 2026",
+    location: "France",
+    availability: "Disponible à partir de novembre 2026",
     linkedin: "https://www.linkedin.com/in/lisa-loretti-8040b4223/",
   },
 } as const;
