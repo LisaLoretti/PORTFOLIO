@@ -33,7 +33,7 @@ export default function ContactPage() {
             <p className="text-caption font-medium uppercase text-ink-muted">E-mail</p>
             <a
               href={`mailto:${email}`}
-              className="rounded-sm font-display text-title font-bold [overflow-wrap:anywhere] sm:text-display-m text-heading underline decoration-olive decoration-2 underline-offset-8 transition-colors duration-(--duration-base) hover:text-olive"
+              className="relative rounded-sm pb-1 font-display text-title font-bold [overflow-wrap:anywhere] text-heading transition-colors duration-(--duration-base) after:absolute after:inset-x-0 after:bottom-0 after:h-0.5 after:origin-left after:bg-olive hover:text-olive motion-safe:after:animate-draw-x sm:text-display-m"
             >
               {email}
             </a>
@@ -47,7 +47,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <dl className="reveal grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+          <dl className="stagger grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Téléphone</dt>
               <dd>

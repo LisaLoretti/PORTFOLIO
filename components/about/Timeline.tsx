@@ -14,16 +14,16 @@ export function Timeline({ steps }: TimelineProps) {
         {steps.map((step, index) => (
           <li
             key={step.title}
-            className="reveal relative grid gap-2 pb-12 pl-8 last:pb-0 md:grid-cols-[6rem_1fr] md:gap-8 md:pl-12"
+            className="relative grid gap-2 pb-12 pl-8 last:pb-0 md:grid-cols-[6rem_1fr] md:gap-8 md:pl-12"
           >
             <span
               aria-hidden="true"
-              className="absolute -left-[7px] top-2 size-3.5 rounded-full border-2 border-cream bg-olive"
+              className="reveal-pop absolute -left-[7px] top-2 size-3.5 rounded-full border-2 border-cream bg-olive"
             />
-            <span aria-hidden="true" className="font-display text-display-m font-extrabold text-sage">
+            <span aria-hidden="true" className="reveal-left font-display text-display-m font-extrabold text-sage">
               {String(index + 1).padStart(2, "0")}
             </span>
-            <div className="flex flex-col gap-2 md:pt-2">
+            <div className="reveal-right flex flex-col gap-2 md:pt-2">
               <p className="text-caption font-medium uppercase text-ink-muted">
                 {step.kind}
                 {step.period && <> · {step.period}</>}

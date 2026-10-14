@@ -19,8 +19,8 @@ export function ProjectCard({ project, priority = false, className }: ProjectCar
   const { slug, title, subtitle, category, summary, figures, image, video } = project;
 
   return (
-    <article className={cn("reveal group relative flex flex-col gap-5", className)}>
-      <div className="relative aspect-video overflow-hidden rounded-lg bg-sage">
+    <article className={cn("group relative flex flex-col gap-5", className)}>
+      <div className="reveal-clip relative aspect-video overflow-hidden rounded-lg bg-sage">
         {video ? (
           <YouTubeThumbnail
             youtubeId={video.youtubeId}
@@ -50,7 +50,7 @@ export function ProjectCard({ project, priority = false, className }: ProjectCar
         )}
       </div>
 
-      <div className="flex flex-col gap-2">
+      <div className="reveal flex flex-col gap-2">
         <p className="text-caption font-medium uppercase text-ink-muted">{category}</p>
         <h3 className="font-display text-title font-bold text-heading">
           <Link

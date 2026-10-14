@@ -80,7 +80,8 @@ export default function HomePage() {
         items={["Événementiel", "Communication", "Gestion de projets", "Coordination", "Créer du lien", "Rassembler"]}
       />
 
-      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre">
+      {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
+      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
         <Container className="grid gap-12 lg:grid-cols-12">
           <div className="reveal flex flex-col gap-4 lg:col-span-4">
             <Eyebrow>Formation & expériences</Eyebrow>
@@ -117,14 +118,27 @@ export default function HomePage() {
 
       <Skills />
 
-      <Section tone="forest" aria-labelledby="contact-titre">
-        <Container className="reveal flex flex-col items-start gap-8">
-          <Heading id="contact-titre" size="display-l" className="max-w-[16ch]">
+      <Section tone="forest" aria-labelledby="contact-titre" className="relative overflow-clip">
+        {/* Forme organique qui tourne lentement au défilement */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 600 600"
+          className="scroll-spin pointer-events-none absolute -right-32 -bottom-40 w-[min(80vw,36rem)] text-olive/30"
+        >
+          <path
+            fill="currentColor"
+            d="M452 98c62 52 104 140 92 222-12 83-77 160-158 196-81 37-178 33-247-12C70 459 28 375 40 292 51 209 116 127 196 84c80-42 194-38 256 14Z"
+          />
+        </svg>
+        <Container className="relative flex flex-col items-start gap-8">
+          <Heading id="contact-titre" size="display-l" className="scroll-slide max-w-[16ch]">
             Un projet qui rassemble ? Parlons-en.
           </Heading>
-          <Button href="/contact" variant="light" arrow>
-            Contactez-moi
-          </Button>
+          <div className="reveal-pop">
+            <Button href="/contact" variant="light" arrow>
+              Contactez-moi
+            </Button>
+          </div>
         </Container>
       </Section>
     </>
