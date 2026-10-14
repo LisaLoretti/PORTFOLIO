@@ -76,7 +76,7 @@ export default function HomePage() {
       {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
       <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
         <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-10 self-start lg:sticky lg:top-[calc(var(--spacing-header)+3rem)] lg:col-span-4">
+          <div className="flex flex-col gap-8 self-start lg:col-span-4 lg:[@media(min-height:46rem)]:sticky lg:[@media(min-height:46rem)]:top-[calc(var(--spacing-header)+2rem)]">
             <div className="reveal flex flex-col gap-4">
               <Eyebrow>Formation & expériences</Eyebrow>
               <Heading id="parcours-titre" size="display-l">
