@@ -2,6 +2,7 @@ import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Eyebrow, Heading } from "@/components/ui/Typography";
 import { languages, softSkills, tools, trainings } from "@/data/profile";
+import { ToolBadge } from "./ToolBadge";
 
 /** Section « Compétences » : outils, savoir-être, langues et formations. */
 export function Skills() {
@@ -20,11 +21,20 @@ export function Skills() {
             <Heading as="h3" size="title">
               Outils
             </Heading>
-            <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
+            <dl className="grid gap-x-8 gap-y-8 sm:grid-cols-2">
               {tools.map((group) => (
-                <div key={group.category} className="reveal-left flex flex-col gap-2 border-t border-line pt-4">
-                  <dt className="text-caption font-medium uppercase text-ink-muted">{group.category}</dt>
-                  <dd className="text-body">{group.items.join(", ")}</dd>
+                <div
+                  key={group.category}
+                  className={`flex flex-col gap-4 border-t border-line pt-4 ${group.items.length > 4 ? "sm:col-span-2" : ""}`}
+                >
+                  <dt className="reveal-left text-caption font-medium uppercase text-ink-muted">{group.category}</dt>
+                  <dd>
+                    <ul className="reveal-pop-children flex flex-wrap gap-x-3 gap-y-4">
+                      {group.items.map((tool) => (
+                        <ToolBadge key={tool.name} tool={tool} />
+                      ))}
+                    </ul>
+                  </dd>
                 </div>
               ))}
             </dl>
