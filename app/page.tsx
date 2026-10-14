@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Skills } from "@/components/about/Skills";
+import { ParcoursSummary } from "@/components/about/ParcoursSummary";
 import { Timeline } from "@/components/about/Timeline";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -75,11 +76,14 @@ export default function HomePage() {
       {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
       <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
         <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="reveal flex flex-col gap-4 lg:col-span-4">
-            <Eyebrow>Formation & expériences</Eyebrow>
-            <Heading id="parcours-titre" size="display-l">
-              Mon parcours
-            </Heading>
+          <div className="flex flex-col gap-10 self-start lg:sticky lg:top-[calc(var(--spacing-header)+3rem)] lg:col-span-4">
+            <div className="reveal flex flex-col gap-4">
+              <Eyebrow>Formation & expériences</Eyebrow>
+              <Heading id="parcours-titre" size="display-l">
+                Mon parcours
+              </Heading>
+            </div>
+            <ParcoursSummary steps={parcours} />
           </div>
           <div className="lg:col-span-7 lg:col-start-6">
             <Timeline steps={parcours} />
