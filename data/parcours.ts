@@ -15,7 +15,7 @@ export type ParcoursStep = {
   /** Identifiant utilisé pour les ancres de la page Parcours (/parcours#slug). */
   slug: string;
   title: string;
-  kind: "Formation" | "Alternance" | "Stage" | "International" | "Freelance";
+  kind: "Formation" | "Alternance" | "Stage" | "Job étudiant" | "International" | "Freelance";
   /** Entreprise ou établissement. */
   organisation?: string;
   place?: string;
@@ -31,10 +31,52 @@ export type ParcoursStep = {
 /** Parcours, du plus ancien au plus récent. */
 export const parcours: ParcoursStep[] = [
   {
+    slug: "etam",
+    title: "Hôtesse de vente",
+    kind: "Job étudiant",
+    organisation: "Etam",
+    logos: [{ src: "/images/parcours/etam.webp", alt: "Logo Etam", width: 243, height: 102 }],
+    place: "Rambouillet et Maurepas",
+    period: "2019 – 2022",
+    detail: "Accueil et conseil client, encaissement, merchandising, gestion des stocks, ouverture et fermeture de la boutique.",
+    missions: [
+      {
+        items: [
+          "Ouverture et fermeture de la boutique.",
+          "Accueil et conseil client.",
+          "Encaissement.",
+          "Mise en place du merchandising.",
+          "Gestion des stocks et des marchandises.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "baccalaureat",
     title: "Baccalauréat ES — spécialité Mathématiques",
     kind: "Formation",
     period: "2020",
+  },
+  {
+    slug: "partenaires-fc",
+    title: "Assistante commerciale",
+    kind: "Job étudiant",
+    organisation: "Partenaires FC",
+    logos: [{ src: "/images/parcours/partenaires-fc.webp", alt: "Logo Partenaires FC", width: 255, height: 255 }],
+    place: "Saint-Arnoult-en-Yvelines",
+    period: "Juillet – août 2020",
+    detail: "Préparation des commandes et kits personnalisés, gestion des stocks, suivi des fournisseurs, accueil téléphonique et mise à jour du site internet.",
+    missions: [
+      {
+        items: [
+          "Préparation des commandes clients et création de kits personnalisés, incluant le flocage de vêtements.",
+          "Gestion des stocks et réalisation des inventaires.",
+          "Suivi des fournisseurs et relance des commandes en cours.",
+          "Accueil téléphonique, renseignement des clients et orientation vers les interlocuteurs adaptés.",
+          "Mise à jour du site internet : ajout et actualisation des produits et informations associées.",
+        ],
+      },
+    ],
   },
   {
     slug: "bachelor-idrac",
