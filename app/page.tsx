@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { ProjectCard } from "@/components/projects/ProjectCard";
@@ -10,43 +11,58 @@ export default function HomePage() {
   return (
     <>
       <Section spacing="none" className="relative overflow-hidden pt-section-compact pb-section">
-        {/* Forme organique décorative */}
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 600 600"
-          className="pointer-events-none absolute -right-40 -top-24 w-[min(70vw,40rem)] text-sage motion-safe:animate-fade-up md:-right-24"
-        >
-          <path
-            fill="currentColor"
-            d="M452 98c62 52 104 140 92 222-12 83-77 160-158 196-81 37-178 33-247-12C70 459 28 375 40 292 51 209 116 127 196 84c80-42 194-38 256 14Z"
-          />
-        </svg>
-
-        <Container className="relative flex flex-col gap-8">
-          <Eyebrow>{siteConfig.role}</Eyebrow>
-          <Heading as="h1" size="display-xl" className="max-w-[8ch] motion-safe:animate-fade-up">
-            {siteConfig.name}
-            <span className="text-olive">.</span>
-          </Heading>
-          <div className="flex max-w-2xl flex-col gap-1">
-            <Text variant="lead" className="font-display text-title font-bold text-heading">
-              Créer du lien, des rencontres et du partage.
-            </Text>
-            <Text variant="lead" className="text-ink-muted">
-              Valoriser les projets qui ont du sens.
-            </Text>
+        <Container className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
+          {/* Portrait découpé dans une forme organique, posé sur la bulle verte */}
+          <div className="relative w-56 justify-self-start motion-safe:animate-fade-up sm:w-72 lg:order-last lg:col-span-5 lg:w-full lg:max-w-md lg:justify-self-end">
+            <svg
+              aria-hidden="true"
+              viewBox="20 40 540 520"
+              preserveAspectRatio="none"
+              className="absolute -inset-[8%] size-[116%] rotate-[-8deg] text-sage"
+            >
+              <path
+                fill="currentColor"
+                d="M452 98c62 52 104 140 92 222-12 83-77 160-158 196-81 37-178 33-247-12C70 459 28 375 40 292 51 209 116 127 196 84c80-42 194-38 256 14Z"
+              />
+            </svg>
+            <div className="relative aspect-4/5 [mask-image:url(/images/forme-organique.svg)] [mask-repeat:no-repeat] [mask-size:100%_100%]">
+              <Image
+                src="/images/lisa-loretti.webp"
+                alt="Portrait de Lisa Loretti"
+                fill
+                priority
+                sizes="(min-width: 64rem) 28rem, 18rem"
+                className="object-cover"
+              />
+            </div>
           </div>
-          <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5 text-small">
-            <span aria-hidden="true" className="size-2 rounded-full bg-olive" />
-            {siteConfig.contact.availability} · {siteConfig.contact.location}
-          </p>
-          <div className="flex flex-wrap items-center gap-4">
-            <Button href="/a-propos#parcours" arrow>
-              Voir mon parcours
-            </Button>
-            <Button href="/contact" variant="secondary">
-              Contactez-moi
-            </Button>
+
+          <div className="relative flex flex-col gap-8 lg:col-span-7">
+            <Eyebrow>{siteConfig.role}</Eyebrow>
+            <Heading as="h1" size="display-xl" className="max-w-[8ch] motion-safe:animate-fade-up">
+              {siteConfig.name}
+              <span className="text-olive">.</span>
+            </Heading>
+            <div className="flex max-w-2xl flex-col gap-1">
+              <Text variant="lead" className="font-display text-title font-bold text-heading">
+                Créer du lien, des rencontres et du partage.
+              </Text>
+              <Text variant="lead" className="text-ink-muted">
+                Valoriser les projets qui ont du sens.
+              </Text>
+            </div>
+            <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5 text-small">
+              <span aria-hidden="true" className="size-2 rounded-full bg-olive" />
+              {siteConfig.contact.availability} · {siteConfig.contact.location}
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button href="/a-propos#parcours" arrow>
+                Voir mon parcours
+              </Button>
+              <Button href="/contact" variant="secondary">
+                Contactez-moi
+              </Button>
+            </div>
           </div>
         </Container>
       </Section>
