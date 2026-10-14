@@ -105,7 +105,7 @@ export default function HomePage() {
               </Heading>
             </div>
             <Button href="/realisations" variant="text">
-              Toutes les réalisations
+              En savoir plus
             </Button>
           </div>
           <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
