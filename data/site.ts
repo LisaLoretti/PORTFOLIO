@@ -34,7 +34,9 @@ export type SocialLink = {
 };
 
 /**
- * Réseaux sociaux — volontairement vide tant que les comptes réels
- * ne sont pas renseignés. Ajouter ici les entrées { label, href }.
+ * Réseaux sociaux, affichés dans le footer et sur la page Contact.
+ * Ajouter ici les entrées { label, href }.
  */
-export const socialLinks: SocialLink[] = [];
+export const socialLinks: SocialLink[] = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/lisa-loretti-8040b4223/" },
+];

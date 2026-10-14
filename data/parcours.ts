@@ -10,7 +10,7 @@ export type ParcoursStep = {
 
 /** Parcours, du plus ancien au plus récent. */
 export const parcours: ParcoursStep[] = [
-  { title: "Baccalauréat", kind: "Formation" },
+  { title: "Baccalauréat", kind: "Formation", period: "2020" },
   {
     title: "Bachelor Marketing & Business Performance Management",
     kind: "Formation",
@@ -34,7 +34,7 @@ export const parcours: ParcoursStep[] = [
     period: "2022 – 2023",
     detail: "Événements internes de 60 à 300 participants, animations mensuelles, plan de communication marque employeur et optimisation de l’intranet.",
   },
-  { title: "Un an en Australie", kind: "International" },
+  { title: "Un an en Australie", kind: "International", period: "2023 – 2024" },
   {
     title: "Master Management du Tourisme et de l’Événementiel",
     kind: "Formation",
