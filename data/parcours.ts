@@ -1,6 +1,6 @@
 export type ParcoursStep = {
   title: string;
-  kind: "Formation" | "Alternance" | "Stage" | "International";
+  kind: "Formation" | "Alternance" | "Stage" | "International" | "Freelance";
   /** Entreprise ou établissement. */
   organisation?: string;
   place?: string;
@@ -54,5 +54,10 @@ export const parcours: ParcoursStep[] = [
     place: "Paris",
     period: "2024 – 2026",
     detail: "Stratégie et plans de communication, contenus pour les réseaux sociaux, refonte du site web, et organisation d’événements de A à Z : assemblées générales, Village des séjours linguistiques, tournée « Meet Our Members », webinaires.",
+  },
+  {
+    title: "Gestion de projets événementiel & communication",
+    kind: "Freelance",
+    period: "Depuis septembre 2026",
   },
 ];
