@@ -9,7 +9,9 @@ export const siteConfig = {
     "Créer du lien, des rencontres et du partage. Valoriser les projets qui ont du sens. Portfolio de Lisa Loretti, gestion de projets en événementiel et communication.",
   locale: "fr_FR",
   contact: {
-    email: "lisaloretti@yahoo.com",
+    email: "lisa.lisaloretti@gmail.com",
+    /** Affichage lisible et format international pour le lien tel:. */
+    phone: { label: "+33 6 51 82 15 49", href: "tel:+33651821549" },
     location: "Paris & Île-de-France",
     availability: "Disponible à partir d’octobre 2026",
     linkedin: "https://www.linkedin.com/in/lisa-loretti-8040b4223/",
