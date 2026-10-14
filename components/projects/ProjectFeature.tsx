@@ -18,7 +18,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
   return (
     <article id={slug} aria-labelledby={`${slug}-titre`} className="flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-12">
       <header className={cn("reveal flex flex-col gap-4 md:flex-row md:items-end md:gap-10", reversed && "md:flex-row-reverse md:text-right")}>
-        <span aria-hidden="true" className="font-display text-display-xl leading-none font-extrabold text-sage">
+        <span aria-hidden="true" className="reveal-zoom font-display text-display-xl leading-none font-extrabold text-sage">
           {number}
         </span>
         <div className={cn("flex flex-col gap-3", reversed && "md:items-end")}>
@@ -30,8 +30,8 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
         </div>
       </header>
 
-      <div className="reveal grid gap-10 lg:grid-cols-12 lg:gap-12">
-        <figure className={cn("flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
+      <div className="grid gap-10 lg:grid-cols-12 lg:gap-12">
+        <figure className={cn("reveal-zoom flex flex-col gap-2 lg:col-span-7", reversed && "lg:order-2")}>
           <div className={cn("relative aspect-video overflow-hidden rounded-lg", video ? "bg-charcoal" : "bg-sage")}>
             {video ? (
               <VideoEmbed youtubeId={video.youtubeId} title={title} />
@@ -49,7 +49,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
           {video?.credit && <figcaption className="text-small text-ink-muted">{video.credit}</figcaption>}
         </figure>
 
-        <div className={cn("flex flex-col gap-5 lg:col-span-5", reversed && "lg:order-1")}>
+        <div className={cn("reveal flex flex-col gap-5 lg:col-span-5", reversed && "lg:order-1")}>
           {(context ?? [summary]).map((paragraph) => (
             <Text key={paragraph}>{paragraph}</Text>
           ))}
@@ -79,7 +79,7 @@ export function ProjectFeature({ project, index }: ProjectFeatureProps) {
             <Heading as="h3" size="title">
               Les résultats
             </Heading>
-            <dl className="flex flex-col gap-5">
+            <dl className="reveal-pop-children flex flex-col gap-5">
               {figures.map((figure) => (
                 <div key={figure.label} className="flex flex-col">
                   <dt className="order-2 text-small text-ink-muted">{figure.label}</dt>

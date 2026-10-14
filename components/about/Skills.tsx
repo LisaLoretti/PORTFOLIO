@@ -22,7 +22,7 @@ export function Skills() {
             </Heading>
             <dl className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
               {tools.map((group) => (
-                <div key={group.category} className="reveal flex flex-col gap-2 border-t border-line pt-4">
+                <div key={group.category} className="reveal-left flex flex-col gap-2 border-t border-line pt-4">
                   <dt className="text-caption font-medium uppercase text-ink-muted">{group.category}</dt>
                   <dd className="text-body">{group.items.join(", ")}</dd>
                 </div>
@@ -35,7 +35,7 @@ export function Skills() {
               <Heading as="h3" size="title">
                 Savoir-être
               </Heading>
-              <ul className="flex flex-wrap gap-2">
+              <ul className="reveal-pop-children flex flex-wrap gap-2">
                 {softSkills.map((skill) => (
                   <li key={skill} className="rounded-full bg-sage px-4 py-1.5 text-small text-forest">
                     {skill}

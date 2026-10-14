@@ -7,7 +7,7 @@ export function SiteFooter() {
     <footer className="tone-inverse bg-forest text-ink">
       <Container size="wide" className="grid gap-12 py-section-compact md:grid-cols-12">
         <div className="flex flex-col gap-4 md:col-span-6">
-          <p className="font-display text-display-m font-extrabold text-heading">
+          <p className="reveal-clip font-display text-display-m font-extrabold text-heading">
             {siteConfig.logo}
             <span aria-hidden="true" className="text-sage">.</span>
           </p>
