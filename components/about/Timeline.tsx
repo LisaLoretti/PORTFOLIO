@@ -19,7 +19,7 @@ export function Timeline({ steps }: TimelineProps) {
           >
             <ParcoursIcon
               kind={step.kind}
-              className="reveal-pop absolute top-0 -left-5 border-2 border-olive md:top-1"
+              className="reveal-pop absolute top-0 -left-5 ring-4 ring-sand md:top-1"
             />
             <span aria-hidden="true" className="reveal-left font-display text-display-m font-extrabold text-sage">
               {String(index + 1).padStart(2, "0")}

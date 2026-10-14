@@ -1,34 +1,97 @@
 import type { ParcoursStep } from "@/data/parcours";
-import { ParcoursIcon } from "./ParcoursIcon";
+import { cn } from "@/lib/cn";
+import { ParcoursGlyph, kindTheme, type ParcoursKind } from "./ParcoursIcon";
 
-const labels: Record<ParcoursStep["kind"], [singular: string, plural: string]> = {
-  Formation: ["formation", "formations"],
-  Alternance: ["alternance", "alternances"],
-  Stage: ["stage", "stages"],
-  Freelance: ["activité freelance", "activités freelance"],
-  International: ["expérience à l’étranger", "expériences à l’étranger"],
+type Tile = {
+  kind: ParcoursKind;
+  label: [singular: string, plural: string];
+  /** Emplacement dans la grille bento (2 colonnes). */
+  layout: string;
+  /** Illustration décorative des tuiles larges. */
+  art?: "sparkle" | "flight";
 };
 
-/** Résumé chiffré du parcours par type d'étape, calculé depuis les données. */
+// Ordre et disposition des tuiles du résumé
+const tiles: Tile[] = [
+  { kind: "Formation", label: ["formation", "formations"], layout: "" },
+  { kind: "Alternance", label: ["alternance", "alternances"], layout: "" },
+  { kind: "Stage", label: ["stage", "stages"], layout: "" },
+  { kind: "Freelance", label: ["activité freelance", "activités freelance"], layout: "", art: "sparkle" },
+  { kind: "International", label: ["an à l’étranger", "expériences à l’étranger"], layout: "col-span-2", art: "flight" },
+];
+
+/** Trajet d'avion en pointillés, décoratif. */
+function FlightArt() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 140 60" fill="none" className="h-14 w-32 text-olive">
+      <path
+        d="M4 52C30 50 38 20 66 22s30 26 54-6"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeDasharray="2 7"
+      />
+      <circle cx="4" cy="52" r="4" fill="currentColor" />
+      <g className="text-forest transition-transform duration-(--duration-slow) ease-smooth group-hover:translate-x-1 group-hover:-translate-y-1">
+        <path fill="currentColor" d="m136 6-22 9 8 2.7 2.8 8.3L136 6Z" />
+      </g>
+    </svg>
+  );
+}
+
+/** Grande étincelle en rotation lente, décorative. */
+function SparkleArt() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="absolute -top-3 -right-3 size-16 text-sage/80 motion-safe:animate-[spin_12s_linear_infinite]"
+    >
+      <path
+        fill="currentColor"
+        d="M12 1.5c.9 6 3.5 8.6 9.5 9.5-6 .9-8.6 3.5-9.5 9.5-.9-6-3.5-8.6-9.5-9.5 6-.9 8.6-3.5 9.5-9.5Z"
+      />
+    </svg>
+  );
+}
+
+/** Résumé du parcours en tuiles colorées, chiffres calculés depuis les données. */
 export function ParcoursSummary({ steps }: { steps: ParcoursStep[] }) {
-  const counts = steps.reduce<Partial<Record<ParcoursStep["kind"], number>>>((acc, step) => {
-    acc[step.kind] = (acc[step.kind] ?? 0) + 1;
-    return acc;
-  }, {});
+  const count = (kind: ParcoursKind) => steps.filter((step) => step.kind === kind).length;
 
   return (
-    <ul className="reveal-pop-children grid grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-1">
-      {(Object.keys(labels) as ParcoursStep["kind"][])
-        .filter((kind) => counts[kind])
-        .map((kind) => {
-          const count = counts[kind] ?? 0;
+    <ul className="reveal-pop-children grid grid-cols-2 gap-3">
+      {tiles
+        .filter((tile) => count(tile.kind) > 0)
+        .map((tile) => {
+          const value = count(tile.kind);
+          const wide = tile.art === "flight";
           return (
-            <li key={kind} className="flex items-center gap-4">
-              <ParcoursIcon kind={kind} className="size-12 border border-line-strong" />
-              <p className="flex flex-col">
-                <span className="font-display text-title font-extrabold text-heading">{count}</span>
-                <span className="text-small text-ink-muted">{labels[kind][count > 1 ? 1 : 0]}</span>
-              </p>
+            <li
+              key={tile.kind}
+              className={cn(
+                "group relative flex min-h-28 justify-between gap-3 overflow-clip rounded-lg p-4 shadow-soft transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-lift",
+                kindTheme[tile.kind],
+                wide ? "items-center" : "flex-col",
+                tile.layout,
+              )}
+            >
+              <div className={cn("relative flex flex-col", wide ? "gap-1" : "h-full justify-between gap-3")}>
+                <ParcoursGlyph
+                  kind={tile.kind}
+                  className="size-7 transition-transform duration-(--duration-base) ease-smooth group-hover:-rotate-8"
+                />
+                <p className="flex flex-col">
+                  <span className="font-display text-display-m font-extrabold leading-none text-heading">
+                    {value}
+                  </span>
+                  <span className="mt-1 text-small font-medium text-ink-muted">
+                    {tile.label[value > 1 ? 1 : 0]}
+                  </span>
+                </p>
+              </div>
+              {tile.art === "flight" && <FlightArt />}
+              {tile.art === "sparkle" && <SparkleArt />}
             </li>
           );
         })}
