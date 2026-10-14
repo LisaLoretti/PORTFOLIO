@@ -113,28 +113,4 @@ export const projects: Project[] = [
     },
     video: { youtubeId: "tgFNrcRRnoc", credit: "© PicNic Production" },
   },
-  {
-    slug: "evenements-internes-ebp",
-    title: "Événements internes",
-    subtitle: "EBP Informatique",
-    category: "Événementiel · Communication interne",
-    summary:
-      "Journées d’intégration, formations managers, séminaires et plénières, et animations mensuelles pour les équipes (Halloween, Noël, Octobre rose).",
-    roles: [
-      {
-        title: "Organisation",
-        text: "Événements internes de 60 à 300 participants : journées d’intégration, formations managers, séminaires et plénières.",
-      },
-      {
-        title: "Coordination",
-        text: "Coordination des prestataires : lieux, traiteur, animations et logistique.",
-      },
-      {
-        title: "Engagement",
-        text: "Conception et organisation d’animations mensuelles pour les collaborateurs : Halloween, Noël, Octobre rose.",
-      },
-    ],
-    figures: [{ value: "60 à 300", label: "participants par événement" }],
-    image: { src: "/images/projects/visuel-provisoire-3.svg", alt: "" },
-  },
 ];

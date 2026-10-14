@@ -8,7 +8,7 @@ import { projects } from "@/data/projects";
 export const metadata: Metadata = {
   title: "Réalisations",
   description:
-    "Assemblée Générale 2026 de L’Office, Village des séjours linguistiques et éducatifs, événements internes : quelques réalisations en événementiel et communication.",
+    "Assemblée Générale 2026 de L’Office et Village des séjours linguistiques et éducatifs : quelques réalisations en événementiel et communication.",
 };
 
 export default function ProjectsPage() {
