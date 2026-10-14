@@ -6,7 +6,7 @@ import { languages, softSkills, tools, trainings } from "@/data/profile";
 /** Section « Compétences » : outils, savoir-être, langues et formations. */
 export function Skills() {
   return (
-    <Section aria-labelledby="competences-titre">
+    <Section tone="sand" aria-labelledby="competences-titre">
       <Container className="flex flex-col gap-16">
         <div className="flex flex-col gap-4">
           <Eyebrow>Savoir-faire & savoir-être</Eyebrow>
