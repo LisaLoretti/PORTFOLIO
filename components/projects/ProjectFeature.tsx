@@ -27,14 +27,24 @@ function RichText({ text }: { text: string }) {
     );
 }
 
-/** Emplacement des photos dans la mosaïque, par position. */
-const galleryLayout = [
-  "col-span-2 row-span-2 lg:col-span-4",
-  "row-span-2 lg:col-span-2",
-  "lg:col-span-2",
-  "lg:col-span-2",
-  "col-span-2 row-span-2 lg:col-span-2 lg:row-span-1",
-];
+/** Emplacement des photos dans la mosaïque, selon leur nombre puis leur position. */
+const galleryLayouts: Record<number, string[]> = {
+  // Grande photo + portrait, puis une ligne de trois
+  5: [
+    "col-span-2 row-span-2 lg:col-span-4",
+    "row-span-2 lg:col-span-2",
+    "lg:col-span-2",
+    "lg:col-span-2",
+    "col-span-2 row-span-2 lg:col-span-2 lg:row-span-1",
+  ],
+  // Grande + étroite, puis étroite + grande (en quinconce)
+  4: [
+    "col-span-2 row-span-2 lg:col-span-4",
+    "lg:col-span-2 lg:row-span-2",
+    "lg:col-span-2 lg:row-span-2",
+    "col-span-2 row-span-2 lg:col-span-4",
+  ],
+};
 
 /** Intitulé de partie : petites capitales discrètes. */
 const labelClass =
@@ -277,14 +287,14 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
           <h3 id={`${slug}-images`} className={cn(labelClass, "reveal-left")}>
             En images
           </h3>
-          {/* Mosaïque : grande photo + portrait, puis une ligne de trois (sur mobile, deux colonnes) */}
+          {/* Mosaïque sur 6 colonnes (2 sur mobile) */}
           <ul className="reveal-pop-children grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] lg:grid-cols-6 lg:gap-4">
             {gallery.map((photo, photoIndex) => (
               <li
                 key={photo.src}
                 className={cn(
                   "group/photo relative overflow-clip rounded-lg bg-sage shadow-soft",
-                  galleryLayout[photoIndex] ?? "lg:col-span-2",
+                  galleryLayouts[gallery.length]?.[photoIndex] ?? "lg:col-span-2",
                 )}
               >
                 <figure className="size-full">
