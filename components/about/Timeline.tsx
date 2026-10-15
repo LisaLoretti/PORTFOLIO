@@ -40,7 +40,7 @@ export function Timeline({ steps }: TimelineProps) {
               {step.missions && (
                 <Link
                   href={`/parcours#${step.slug}`}
-                  className="group/link inline-flex w-fit items-center gap-1 rounded-sm text-small font-medium text-forest underline decoration-transparent underline-offset-4 transition-colors hover:decoration-olive"
+                  className="group/link -my-1 inline-flex w-fit items-center py-1 gap-1 rounded-sm text-small font-medium text-forest underline decoration-transparent underline-offset-4 transition-colors hover:decoration-olive"
                 >
                   Voir le détail
                   <span aria-hidden="true" className="transition-transform duration-(--duration-base) group-hover/link:translate-x-1">

@@ -51,7 +51,7 @@ export default function ContactPage() {
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Téléphone</dt>
               <dd>
-                <a href={phone.href} className="whitespace-nowrap rounded-sm text-lead hover:text-olive">
+                <a href={phone.href} className="-my-1 inline-block whitespace-nowrap rounded-sm py-1 text-lead hover:text-olive">
                   {phone.label}
                 </a>
               </dd>
@@ -69,7 +69,7 @@ export default function ContactPage() {
                 <dt className="text-caption font-medium uppercase text-ink-muted">Réseaux</dt>
                 {socialLinks.map((link) => (
                   <dd key={link.href}>
-                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="text-lead hover:text-olive">
+                    <a href={link.href} target="_blank" rel="noopener noreferrer" className="-my-1 inline-block py-1 text-lead hover:text-olive">
                       {link.label}
                       <span className="sr-only"> (nouvel onglet)</span>
                     </a>
