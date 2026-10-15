@@ -36,14 +36,14 @@ export function ParcoursEntry({ step, index, total, surface = "cream" }: Parcour
       id={slug}
       aria-labelledby={`${slug}-titre`}
       className={cn(
-        "reveal-card group grid scroll-mt-[calc(var(--spacing-header)+2rem)] overflow-clip rounded-xl shadow-soft ring-1 ring-line transition-shadow duration-(--duration-slow) ease-smooth hover:shadow-lift lg:grid-cols-12",
+        "reveal-card group grid grid-cols-1 scroll-mt-[calc(var(--spacing-header)+2rem)] overflow-clip rounded-xl shadow-soft ring-1 ring-line transition-shadow duration-(--duration-slow) ease-smooth hover:shadow-lift lg:grid-cols-12",
         surface === "cream" ? "bg-cream" : "bg-sand",
       )}
     >
       {/* Panneau de repères aux couleurs du type d'étape */}
       <div
         className={cn(
-          "relative flex flex-col gap-6 overflow-clip p-8 lg:col-span-4 lg:p-10",
+          "relative flex flex-col gap-6 overflow-clip p-6 sm:p-8 lg:col-span-4 lg:p-10",
           panelTheme[kind],
         )}
       >
@@ -104,8 +104,8 @@ export function ParcoursEntry({ step, index, total, surface = "cream" }: Parcour
       </div>
 
       {/* Contenu détaillé */}
-      <div className="flex flex-col gap-8 p-8 lg:col-span-8 lg:p-12">
-        <h3 id={`${slug}-titre`} className="reveal max-w-[22ch] font-display text-display-m font-bold text-heading">
+      <div className="flex flex-col gap-8 p-6 sm:p-8 lg:col-span-8 lg:p-12">
+        <h3 id={`${slug}-titre`} className="reveal max-w-[22ch] font-display hyphens-auto text-display-m font-bold text-heading">
           {title}
         </h3>
 

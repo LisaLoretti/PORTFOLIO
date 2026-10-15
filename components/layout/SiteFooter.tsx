@@ -3,7 +3,8 @@ import Link from "next/link";
 import { mainNav, siteConfig, socialLinks } from "@/data/site";
 import { Container } from "./Container";
 
-const linkClass = "rounded-sm transition-colors duration-(--duration-base) hover:text-sage focus-visible:outline-cream";
+// -my-1 py-1 : zone de tap d'au moins 24 px sans décaler la mise en page
+const linkClass = "-my-1 inline-block rounded-sm py-1 transition-colors duration-(--duration-base) hover:text-sage focus-visible:outline-cream";
 
 export function SiteFooter() {
   return (
