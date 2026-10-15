@@ -288,12 +288,12 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
             En images
           </h3>
           {/* Mosaïque sur 6 colonnes (2 sur mobile) */}
-          <ul className="reveal-pop-children grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] lg:grid-cols-6 lg:gap-4">
+          <ul className="reveal-mosaic grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] lg:grid-cols-6 lg:gap-4">
             {gallery.map((photo, photoIndex) => (
               <li
                 key={photo.src}
                 className={cn(
-                  "group/photo relative overflow-clip rounded-lg bg-sage shadow-soft",
+                  "group/photo relative overflow-clip rounded-lg bg-sage shadow-soft transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-lift",
                   galleryLayouts[gallery.length]?.[photoIndex] ?? "lg:col-span-2",
                 )}
               >
@@ -304,10 +304,15 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
                     fill
                     sizes={photoIndex === 0 ? "(min-width: 64rem) 50vw, 100vw" : "(min-width: 64rem) 25vw, 50vw"}
                     style={{ objectPosition: photo.position }}
-                    className="object-cover transition-transform duration-(--duration-slow) ease-smooth group-hover/photo:scale-[1.04]"
+                    className="scroll-parallax object-cover transition-[filter] duration-(--duration-slow) ease-smooth group-hover/photo:brightness-110 group-hover/photo:saturate-125"
                   />
-                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-charcoal/80 to-transparent px-4 pt-10 pb-3 text-small font-medium text-cream">
+                  <figcaption className="absolute inset-x-0 bottom-0 flex flex-col gap-1.5 bg-linear-to-t from-charcoal/80 to-transparent px-4 pt-10 pb-3 text-small font-medium text-cream">
                     {photo.caption}
+                    {/* Trait qui s'allonge au survol */}
+                    <span
+                      aria-hidden="true"
+                      className="h-0.5 w-6 rounded-full bg-sage transition-[width] duration-(--duration-slow) ease-smooth group-hover/photo:w-16"
+                    />
                   </figcaption>
                 </figure>
               </li>

@@ -49,7 +49,7 @@ export default function HomePage() {
               {siteConfig.name}
               <span className="text-olive">.</span>
             </Heading>
-            <p className="max-w-prose text-lead text-ink-muted">{siteConfig.intro}</p>
+            <p className="max-w-prose text-body text-ink-muted sm:text-[1.0625rem]">{siteConfig.intro}</p>
             <div className="flex flex-wrap items-center gap-3 text-small">
               <p className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-1.5 font-medium text-cream">
                 Recherche {siteConfig.contact.lookingFor.join(" · ")}
