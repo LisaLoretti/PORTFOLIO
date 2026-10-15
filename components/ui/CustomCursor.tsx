@@ -7,9 +7,10 @@ const INTERACTIVE = "a, button, [role='button'], summary, label";
 /**
  * Curseur personnalisé : un point qui suit la souris et un cercle qui le suit
  * avec un léger retard, agrandi au survol des liens et boutons.
- * Actif dès qu'une souris est présente (y compris sur un ordinateur à écran
- * tactile). Avec « réduire les animations », le cercle suit la souris sans
- * retard ; sur un appareil purement tactile, le curseur du système est conservé.
+ * Activé au premier mouvement d'une vraie souris (ou d'un pavé tactile), sans
+ * dépendre des réglages détectés par le navigateur. Avec « réduire les
+ * animations », le cercle suit la souris sans retard ; au doigt ou au stylet,
+ * le curseur du système est conservé.
  */
 export function CustomCursor() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -17,16 +18,13 @@ export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // « any- » : une souris branchée suffit, même si l'écran est aussi tactile
-    const mouse = window.matchMedia("(any-hover: hover) and (any-pointer: fine)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const cursor = rootRef.current;
     const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!mouse.matches || !cursor || !dot || !ring) return;
+    if (!cursor || !dot || !ring) return;
 
     const html = document.documentElement;
-    html.classList.add("has-custom-cursor");
 
     const target = { x: 0, y: 0 };
     const ringPos = { x: 0, y: 0 };
@@ -43,7 +41,8 @@ export function CustomCursor() {
 
     const onMove = (event: PointerEvent) => {
       // Au doigt ou au stylet, on rend la main au curseur du système
-      if (event.pointerType !== "mouse") {
+      // (type vide ou inconnu : traité comme une souris)
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
         cursor.dataset.visible = "false";
         html.classList.remove("has-custom-cursor");
         return;
@@ -61,7 +60,14 @@ export function CustomCursor() {
     // Au défilement, l'élément sous la souris change sans mouvement de souris
     const onScroll = () => started && update(document.elementFromPoint(target.x, target.y));
     const onLeave = () => (cursor.dataset.visible = "false");
-    const onDown = () => (cursor.dataset.pressed = "true");
+    const onDown = (event: PointerEvent) => {
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
+        cursor.dataset.visible = "false";
+        html.classList.remove("has-custom-cursor");
+        return;
+      }
+      cursor.dataset.pressed = "true";
+    };
     const onUp = () => (cursor.dataset.pressed = "false");
 
     const tick = () => {
