@@ -45,7 +45,6 @@ export default function ProjectsPage() {
 
       <ContactBand
         title="Et si nous travaillions ensemble ?"
-        text="Je recherche un CDI en gestion de projets, événementiel, communication ou marketing. Si mon profil correspond à vos besoins, je serais ravie d’échanger avec vous."
         actions={
           <>
             <Button href="/contact" variant="light" arrow>
