@@ -23,7 +23,7 @@ export type Project = {
   summary: string;
   /** Projet mené en équipe, ou imaginé à mon initiative. */
   initiative: "collective" | "personal";
-  /** Contexte et objectifs, en paragraphes. */
+  /** Présentation du projet, en paragraphes. */
   context?: string[];
   /** Mon rôle, découpé par grandes missions. */
   roles?: ProjectRole[];
@@ -48,50 +48,30 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "assemblee-generale-2026",
-    title: "Assemblée Générale 2026",
-    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
-    category: "Événementiel · Gestion de projets · Communication · Expérience participant",
+    title: "Assemblée Générale 2026 en Corse",
+    category: "Événementiel · Gestion de projets · Communication",
     initiative: "collective",
     summary:
-      "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
+      "Organisation d’une Assemblée Générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
     context: [
-      "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
-      "Au-delà des temps institutionnels, notre ambition était de proposer une expérience fédératrice, mêlant échanges professionnels, découverte du territoire et moments de convivialité.",
-      "J’ai participé à la conception et à l’organisation de cet événement, en travaillant notamment sur l’animation du programme, l’expérience des participants et la création des supports de communication.",
+      "Organisation d’une Assemblée Générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
     ],
     roles: [
       {
-        title: "Organisation d’une soirée des Oscars",
-        text: [
-          "Conception et organisation d’une soirée de remise de prix sur le thème des Oscars, destinée à mettre à l’honneur les organismes labellisés de L’Office.",
-          "L’objectif : valoriser les membres, célébrer leurs engagements et créer un moment de partage convivial dans une ambiance festive.",
-        ],
+        title: "Conception événementielle",
+        text: "Participation à la création du programme et organisation d’une soirée des Oscars pour valoriser les organismes labellisés.",
       },
       {
-        title: "Création d’un challenge collectif sur trois jours",
-        text: [
-          "Imagination d’un fil rouge ludique pour encourager les échanges et renforcer la cohésion entre les participants, répartis en équipes.",
-          "Le challenge comprenait deux temps forts :",
-        ],
-        items: [
-          "Un quiz d’introduction à la Corse dès l’arrivée, pour découvrir le territoire de manière interactive.",
-          "Un challenge photo en équipe tout au long du séjour, pour favoriser les échanges, la créativité et les souvenirs partagés.",
-        ],
+        title: "Animation & cohésion",
+        text: "Création d’un challenge en équipes sur trois jours, mêlant quiz sur la Corse et défi photo tout au long du séjour.",
       },
       {
-        title: "Création des supports de communication",
-        text: "Conception de supports print et digitaux pour accompagner les participants et assurer une communication cohérente tout au long de l’événement :",
-        items: [
-          "Cartes de bienvenue personnalisées.",
-          "Supports de présentation pour les différents temps forts.",
-          "Vidéo récapitulative des moments marquants de l’année 2025.",
-          "Étiquettes de bagages pour les participants.",
-          "Trombinoscope digital pour faciliter l’identification des participants et les échanges.",
-        ],
+        title: "Communication & création de contenus",
+        text: "Réalisation des cartes de bienvenue, supports de présentation, vidéo récapitulative de l’année 2025, étiquettes de bagages et trombinoscope digital.",
       },
       {
-        title: "Coordination & organisation opérationnelle",
-        text: "Participation à la préparation et au bon déroulement de l’événement : gestion des participants, coordination des différents temps du programme, suivi des besoins logistiques et accompagnement sur place.",
+        title: "Organisation & coordination",
+        text: "Gestion des inscriptions, suivi logistique et coordination des différents temps forts de l’événement.",
       },
     ],
     figures: [
@@ -99,77 +79,51 @@ export const projects: Project[] = [
       { value: "50", label: "participants" },
       { value: "20", label: "partenaires" },
     ],
+    skills: ["Gestion de projets", "Événementiel", "Animation", "Communication", "Création de contenus"],
     image: {
       src: "/images/projects/assemblee-generale-2026.webp",
       alt: "Participants de l’Assemblée Générale 2026 applaudissant lors d’un dîner",
     },
-    // À vérifier : attribution des deux liens YouTube fournis.
     video: { youtubeId: "Fz8vciLSsBo" },
   },
   {
     slug: "village-sejours-linguistiques",
     title: "Village des séjours linguistiques et éducatifs",
-    subtitle: "Salon Post Bac du Figaro Étudiant — Paris, octobre 2025",
-    category: "Événementiel · Salon",
+    category: "Événementiel · Scénographie · Communication",
     initiative: "collective",
     summary:
-      "Un espace de 110 m² réunissant 14 organismes labellisés au Salon Post Bac du Figaro Étudiant, avec une identité visuelle dédiée et un programme d’animations participatives.",
+      "Création d’un Village dédié aux séjours linguistiques et éducatifs au sein du Salon Post Bac du Figaro Étudiant. Un nouveau format imaginé pour renforcer la visibilité de L’Office et de ses organismes labellisés auprès d’un public plus large.",
     context: [
-      "Historiquement, L’Office organisait son propre salon pour faire découvrir au grand public les séjours linguistiques et éducatifs proposés par ses organismes labellisés.",
-      "Afin de gagner en visibilité et de toucher un public plus large, nous avons repensé ce format en nous associant au Salon Post Bac du Figaro Étudiant.",
-      "C’est ainsi qu’est né le **Village des séjours linguistiques et éducatifs** : un espace de 110 m² réunissant 14 organismes labellisés, avec une identité visuelle dédiée et un programme d’animations participatives.",
-      "L’objectif : créer un lieu attractif, identifiable et interactif, favorisant les rencontres entre les visiteurs et les professionnels de la mobilité internationale.",
+      "Création d’un Village dédié aux séjours linguistiques et éducatifs au sein du Salon Post Bac du Figaro Étudiant. Un nouveau format imaginé pour renforcer la visibilité de L’Office et de ses organismes labellisés auprès d’un public plus large.",
     ],
     roles: [
       {
-        title: "Réflexion stratégique & conception du projet",
-        text: "Participation aux décisions stratégiques autour du nouveau format, du positionnement du Village et de l’expérience proposée aux visiteurs, en collaboration avec les équipes de L’Office et du Figaro Étudiant.",
+        title: "Conception & scénographie",
+        text: "Participation aux choix stratégiques et à la mise en scène d’un espace événementiel de 110 m².",
       },
       {
-        title: "Scénographie d’un espace de 110 m²",
-        text: [
-          "Participation à la conception et à la mise en scène du Village, en réfléchissant à l’aménagement des espaces, à leur identité visuelle et à leur cohérence globale.",
-          "L’enjeu : créer un environnement accueillant, identifiable et fonctionnel, mettant en valeur les 14 organismes présents et favorisant la circulation et les échanges avec les visiteurs.",
-        ],
+        title: "Programmation",
+        text: "Élaboration et organisation d’ateliers participatifs et d’animations sur les deux jours du salon.",
       },
       {
-        title: "Élaboration & programmation des animations",
-        text: [
-          "Conception et programmation d’ateliers participatifs et d’animations pour rythmer les deux journées de l’événement.",
-          "Au cœur du Village, l’**Espace Déclics** proposait des activités interactives, des témoignages et des temps d’échange pour permettre aux visiteurs de découvrir les différentes possibilités de séjours à l’étranger.",
-        ],
+        title: "Identité visuelle",
+        text: "Prise en charge de l’univers graphique et des supports de communication du Village.",
       },
       {
-        title: "Identité visuelle & communication",
-        text: "Prise en charge de l’identité visuelle du Village et de la création des supports de communication associés, afin d’assurer une cohérence graphique et une bonne identification de l’espace.",
+        title: "Coordination & inscriptions",
+        text: "Interlocutrice entre Le Figaro Étudiant et les organismes membres, gestion des inscriptions et suivi des besoins.",
       },
       {
-        title: "Coordination des partenaires & des inscriptions",
-        text: [
-          "Interlocutrice entre les équipes du Figaro Étudiant et les organismes membres de L’Office.",
-          "Gestion des inscriptions, centralisation des informations, suivi des besoins et coordination des échanges pour préparer leur participation dans les meilleures conditions.",
-        ],
-      },
-      {
-        title: "Coordination du prestataire photo",
-        text: "Gestion de la prestation photographique, de la préparation du brief à la coordination du photographe pendant l’événement, afin d’assurer la couverture des temps forts du Village.",
+        title: "Gestion de prestataire",
+        text: "Préparation du brief et coordination du photographe en amont et sur place.",
       },
     ],
     figures: [
       { value: "110 m²", label: "d’espace événementiel" },
-      { value: "14", label: "organismes labellisés réunis" },
-      { value: "2 jours", label: "d’événement et d’animations" },
+      { value: "14", label: "organismes labellisés" },
       { value: "+1 000", label: "visiteurs" },
     ],
-    skills: [
-      "Gestion de projets",
-      "Scénographie événementielle",
-      "Programmation d’animations",
-      "Communication visuelle",
-      "Coordination de partenaires",
-      "Gestion de prestataires",
-      "Expérience visiteur",
-    ],
+    skills: ["Scénographie", "Gestion de projets", "Communication visuelle", "Programmation", "Coordination"],
     image: {
       src: "/images/projects/village-sejours-linguistiques.webp",
       alt: "Entrée de l’Espace Champerret, lieu du salon",
@@ -178,104 +132,73 @@ export const projects: Project[] = [
   },
   {
     slug: "tournee-membres",
-    title: "Meet Our Members — À la rencontre de nos membres",
-    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
-    category: "Événementiel · Contenus vidéo",
+    title: "Meet Our Members",
+    category: "Gestion de projets · Communication digitale · Audiovisuel",
     initiative: "personal",
     summary:
-      "Partir à la rencontre des organismes labellisés, directement dans leurs locaux, pour valoriser leur travail à travers une tournée d’interviews vidéo déployée dans plusieurs villes.",
+      "Création d’un concept de rencontres et d’interviews vidéo pour mettre en lumière les organismes membres de L’Office. L’objectif : valoriser leurs activités, renforcer les liens et humaniser la communication sur les réseaux sociaux.",
     context: [
-      "Afin de renforcer les liens avec les organismes labellisés et de valoriser leur travail, j’ai imaginé un nouveau format de communication : partir à leur rencontre, directement dans leurs locaux, pour découvrir leurs équipes, leurs activités et leur quotidien.",
-      "L’idée était de donner davantage de visibilité aux membres tout en proposant des contenus plus humains, authentiques et incarnés sur les réseaux sociaux de L’Office.",
-      "Ce concept a donné naissance à une tournée de rencontres et d’interviews vidéo déployée dans plusieurs villes.",
+      "Création d’un concept de rencontres et d’interviews vidéo pour mettre en lumière les organismes membres de L’Office. L’objectif : valoriser leurs activités, renforcer les liens et humaniser la communication sur les réseaux sociaux.",
     ],
     roles: [
       {
-        title: "Idéation & conception du concept",
-        text: "Imagination du projet, définition des objectifs, réflexion sur le format des rencontres et sur leur valorisation à travers une série de vidéos.",
+        title: "Conception",
+        text: "Imagination du concept, définition du format et des objectifs de communication.",
       },
       {
-        title: "Organisation & planification",
-        text: "Identification et prise de contact avec les organismes membres, planification des déplacements et coordination des rendez-vous.",
+        title: "Organisation",
+        text: "Prise de contact avec les organismes, planification des déplacements et coordination des rencontres.",
       },
       {
-        title: "Préparation éditoriale",
-        text: "Construction des interviews et préparation des questions afin de mettre en lumière les spécificités, les équipes et les activités de chaque organisme.",
+        title: "Production audiovisuelle",
+        text: "Préparation des interviews, tournage et réalisation des vidéos.",
       },
       {
-        title: "Tournage & création de contenus",
-        text: "Réalisation des interviews sur place et captation de contenus vidéo destinés à présenter les membres de manière accessible et dynamique.",
-      },
-      {
-        title: "Montage & diffusion",
-        text: "Montage des vidéos, adaptation aux différents formats des réseaux sociaux et organisation de leur diffusion sur LinkedIn, Instagram et TikTok.",
+        title: "Communication digitale",
+        text: "Montage, adaptation des formats et diffusion sur les réseaux sociaux.",
       },
     ],
     figures: [
       { value: "27", label: "organismes rencontrés" },
       { value: "21", label: "vidéos réalisées" },
-      { value: "+30 000", label: "vues sur LinkedIn, Instagram et TikTok" },
+      { value: "+30 000", label: "vues" },
     ],
-    skills: [
-      "Conception de projets",
-      "Organisation",
-      "Relations partenaires",
-      "Interview",
-      "Tournage vidéo",
-      "Montage",
-      "Stratégie de contenus",
-      "Réseaux sociaux",
-    ],
+    skills: ["Gestion de projets", "Relations partenaires", "Interview", "Création vidéo", "Réseaux sociaux"],
     shorts: [{ youtubeId: "Bbk5Sh3JHY4" }, { youtubeId: "bh07cWYqAVM" }],
   },
   {
     slug: "conseils-de-l-office",
-    title: "Conseils de L’Office — Campagne de communication digitale",
-    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
-    category: "Communication digitale · Vidéo",
+    title: "Conseils de L’Office",
+    category: "Communication externe · Marketing digital · Création de contenus",
     initiative: "personal",
     summary:
-      "Une série de vidéos courtes proposant des conseils pratiques, pour renforcer la visibilité de L’Office sur les réseaux sociaux et sensibiliser les jeunes aux enjeux des séjours à l’étranger.",
+      "Création d’une série de vidéos courtes pour sensibiliser les jeunes aux séjours à l’étranger et valoriser l’expertise de L’Office à travers des conseils pratiques, accessibles et adaptés aux réseaux sociaux.",
     context: [
-      "Pour renforcer la visibilité de L’Office sur les réseaux sociaux et sensibiliser les jeunes aux enjeux des séjours à l’étranger, j’ai imaginé une série de vidéos courtes proposant des conseils pratiques.",
-      "L’objectif était de rendre les contenus de L’Office plus accessibles, dynamiques et engageants, tout en valorisant ses missions et son expertise.",
-      "Cette série s’inscrit dans une stratégie de communication plus large, associant contenus informatifs, actualités et promotion du Guide des voyages scolaires.",
+      "Création d’une série de vidéos courtes pour sensibiliser les jeunes aux séjours à l’étranger et valoriser l’expertise de L’Office à travers des conseils pratiques, accessibles et adaptés aux réseaux sociaux.",
     ],
     roles: [
       {
-        title: "Stratégie éditoriale & conception",
-        text: "Imagination du concept, identification des thématiques pertinentes et réflexion sur des formats courts adaptés aux différents publics et réseaux sociaux.",
+        title: "Stratégie éditoriale",
+        text: "Conception du format, choix des thématiques et préparation des contenus.",
       },
       {
-        title: "Création des contenus",
-        text: "Préparation et tournage des vidéos, en veillant à proposer des messages clairs, accessibles et adaptés aux objectifs de communication.",
+        title: "Production vidéo",
+        text: "Tournage, montage sur CapCut et adaptation aux différentes plateformes.",
       },
       {
-        title: "Montage & adaptation des formats",
-        text: "Montage des contenus sur CapCut et déclinaison des vidéos selon les spécificités des différentes plateformes.",
+        title: "Community management",
+        text: "Programmation des publications via Metricool et diffusion sur les réseaux sociaux.",
       },
       {
-        title: "Programmation & diffusion",
-        text: "Planification des publications via Metricool et diffusion sur Instagram, Facebook, LinkedIn, TikTok et YouTube.",
-      },
-      {
-        title: "Intégration à la stratégie de communication",
-        text: "Articulation de la série avec les autres temps forts de communication, notamment la rentrée scolaire et le lancement du Guide des voyages scolaires.",
+        title: "Communication 360°",
+        text: "Intégration des vidéos aux campagnes de communication et aux temps forts de L’Office.",
       },
     ],
     figures: [
       { value: "14", label: "vidéos réalisées" },
       { value: "5", label: "plateformes de diffusion" },
     ],
-    skills: [
-      "Stratégie de communication",
-      "Marketing digital",
-      "Création de contenus",
-      "Tournage",
-      "Montage vidéo",
-      "Community management",
-      "Planification éditoriale",
-    ],
+    skills: ["Communication digitale", "Stratégie éditoriale", "Montage vidéo", "Réseaux sociaux", "Marketing"],
     shorts: [{ youtubeId: "d1-C1g3Ek0U" }, { youtubeId: "jtmo_AyEM0c" }],
   },
 ];

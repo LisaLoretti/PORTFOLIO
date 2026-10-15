@@ -25,19 +25,19 @@ export default function ProjectsPage() {
       />
 
       <PageHeader
-        eyebrow="Portfolio"
-        title="Mes réalisations"
-        titleSize="display-l"
-        intro="De l’idée à la concrétisation."
+        eyebrow="Mes réalisations"
+        title="De l’idée à la concrétisation"
+        titleSize="display-m"
+        intro="Événementiel, communication, marketing et création de contenus : découvrez quatre projets auxquels j’ai contribué, de la réflexion stratégique à leur mise en œuvre opérationnelle."
         aside={<ProjectIndex projects={projects} />}
       />
 
       {projects.map((project, index) => {
         const tone = index % 2 === 0 ? "sand" : "cream";
         return (
-          <Section key={project.slug} tone={tone} className="overflow-x-clip">
+          <Section key={project.slug} tone={tone} spacing="compact" className="overflow-x-clip">
             <Container>
-              <ProjectFeature project={project} index={index} total={projects.length} tone={tone} />
+              <ProjectFeature project={project} index={index} total={projects.length} />
             </Container>
           </Section>
         );

@@ -8,8 +8,6 @@ type ProjectFeatureProps = {
   project: Project;
   index: number;
   total: number;
-  /** Fond de la bande qui accueille le projet (les cartes prennent l'autre teinte). */
-  tone?: "cream" | "sand";
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");
@@ -28,6 +26,10 @@ function RichText({ text }: { text: string }) {
       ),
     );
 }
+
+/** Intitulé de partie : petites capitales discrètes. */
+const labelClass =
+  "flex items-center gap-2 text-caption font-medium uppercase text-forest before:h-px before:w-6 before:bg-olive";
 
 const toParagraphs = (text?: Paragraphs) => (text === undefined ? [] : typeof text === "string" ? [text] : text);
 
@@ -48,29 +50,27 @@ const initiativeBadge = {
 } as const;
 
 /**
- * Présentation détaillée d'un projet, en structure identique pour tous :
- * numéro et catégorie, titre, vidéo, contexte et objectifs, rôle, résultats
- * chiffrés et compétences mobilisées.
+ * Présentation d'un projet, en structure identique pour tous : numéro,
+ * catégories et type de projet, titre, vidéo, présentation, chiffres clés,
+ * rôle en blocs numérotés et compétences mobilisées.
  */
-export function ProjectFeature({ project, index, total, tone = "cream" }: ProjectFeatureProps) {
-  const { slug, title, subtitle, category, initiative, summary, context, roles, figures, skills, image, video, shorts } =
-    project;
+export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
+  const { slug, title, category, initiative, summary, context, roles, figures, skills, image, video, shorts } = project;
   const reversed = index % 2 === 1;
   const vertical = Boolean(shorts?.length);
-  const cardSurface = tone === "cream" ? "bg-sand" : "bg-cream";
   const badge = initiativeBadge[initiative];
 
   return (
     <article
       id={slug}
       aria-labelledby={`${slug}-titre`}
-      className="relative flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-12 lg:gap-16"
+      className="relative flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-10 lg:gap-14"
     >
       {/* Grand numéro en contour, glissant au défilement */}
       <span
         aria-hidden="true"
         className={cn(
-          "text-outline scroll-slide pointer-events-none absolute -top-16 font-display text-[clamp(8rem,22vw,18rem)] leading-none font-extrabold select-none",
+          "text-outline scroll-slide pointer-events-none absolute -top-12 font-display text-[clamp(7rem,18vw,15rem)] leading-none font-extrabold select-none",
           reversed ? "left-0" : "right-0",
         )}
       >
@@ -78,36 +78,35 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
       </span>
 
       <header className="reveal relative flex flex-col gap-4">
-        <p className="flex flex-wrap items-center gap-3">
+        <p className="flex flex-wrap items-center gap-x-3 gap-y-2">
           <span className="rounded-full bg-forest px-3 py-1 text-caption font-medium text-cream">
             {pad(index + 1)} / {pad(total)}
           </span>
-          <span className="text-caption font-medium uppercase text-ink-muted">{category}</span>
+          <span
+            className={cn(
+              "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-caption font-medium",
+              badge.className,
+            )}
+          >
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="size-3.5"
+            >
+              <path d={badge.icon} />
+            </svg>
+            {badge.label}
+          </span>
         </p>
         <Heading id={`${slug}-titre`} size="display-l" underline className="max-w-[20ch]">
           {title}
         </Heading>
-        {subtitle && <p className="text-lead font-medium text-forest">{subtitle}</p>}
-        <p
-          className={cn(
-            "inline-flex w-fit items-center gap-2 rounded-full px-3 py-1 text-small font-medium",
-            badge.className,
-          )}
-        >
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="size-4"
-          >
-            <path d={badge.icon} />
-          </svg>
-          {badge.label}
-        </p>
+        <p className="text-caption font-medium uppercase text-ink-muted">{category}</p>
       </header>
 
       <div className="relative grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
@@ -156,43 +155,92 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
           </figure>
         )}
 
-        <section
-          aria-labelledby={`${slug}-contexte`}
+        <div
           className={cn(
-            "reveal-right-children flex flex-col gap-4 border-l-2 border-olive pl-5",
+            "flex flex-col gap-8",
             vertical ? "lg:col-span-7" : "lg:col-span-5",
             reversed && "lg:order-1",
           )}
         >
-          <h3 id={`${slug}-contexte`} className="font-display text-title font-bold text-heading">
-            Contexte & objectifs
-          </h3>
-          {(context ?? [summary]).map((paragraph) => (
-            <Text key={paragraph}>
-              <RichText text={paragraph} />
-            </Text>
-          ))}
-        </section>
+          <section aria-labelledby={`${slug}-projet`} className="reveal-right-children flex flex-col gap-3">
+            <h3 id={`${slug}-projet`} className={labelClass}>
+              Le projet
+            </h3>
+            {(context ?? [summary]).map((paragraph) => (
+              <Text key={paragraph} variant="lead" className="text-ink">
+                <RichText text={paragraph} />
+              </Text>
+            ))}
+          </section>
+
+          {figures && figures.length > 0 && (
+            <section
+              aria-labelledby={`${slug}-chiffres`}
+              className="reveal-zoom tone-inverse @container relative flex flex-col gap-5 overflow-clip rounded-xl bg-forest p-6 text-ink shadow-lift sm:p-8"
+            >
+              {/* Forme organique qui tourne au défilement */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 600 600"
+                className="scroll-spin pointer-events-none absolute -right-20 -bottom-24 w-56 text-olive/35"
+              >
+                <path
+                  fill="currentColor"
+                  d="M452 98c62 52 104 140 92 222-12 83-77 160-158 196-81 37-178 33-247-12C70 459 28 375 40 292 51 209 116 127 196 84c80-42 194-38 256 14Z"
+                />
+              </svg>
+              <h3 id={`${slug}-chiffres`} className="relative flex items-center gap-2 text-caption font-medium uppercase text-sage">
+                {/* Trophée */}
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="size-5"
+                >
+                  <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" className="fill-current/25" />
+                  <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4M12 14v3M8.5 20h7M10 17h4l.5 3h-5l.5-3Z" />
+                </svg>
+                Chiffres clés
+              </h3>
+              {/* Autant de chiffres par ligne que la largeur le permet, sans chevauchement */}
+              <dl className="reveal-bounce-children relative grid grid-cols-[repeat(auto-fit,minmax(8rem,1fr))] gap-x-6 gap-y-5">
+                {figures.map((figure) => (
+                  <div key={figure.label} className="flex flex-col gap-1">
+                    <dt className="order-2 text-small text-ink-muted">{figure.label}</dt>
+                    <dd className="order-1 font-display text-[clamp(1.5rem,6.5cqi,2.5rem)] leading-none font-extrabold whitespace-nowrap text-heading">
+                      {figure.value}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          )}
+        </div>
       </div>
 
       {roles && roles.length > 0 && (
-        <section aria-labelledby={`${slug}-role`} className="flex flex-col gap-6">
-          <Heading as="h3" id={`${slug}-role`} size="title" className="reveal-left">
+        <section aria-labelledby={`${slug}-role`} className="flex flex-col gap-5">
+          <h3 id={`${slug}-role`} className={cn(labelClass, "reveal-left")}>
             Mon rôle
-          </Heading>
-          <ol className="reveal-bounce-children grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          </h3>
+          {/* Une ligne de blocs numérotés sur ordinateur : lecture rapide des missions */}
+          <ol className="reveal-bounce-children grid gap-x-6 gap-y-6 sm:grid-cols-2 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none">
             {roles.map((role, roleIndex) => (
               <li
                 key={role.title}
-                className={cn(
-                  "flex flex-col gap-2 rounded-lg p-5 shadow-soft ring-1 ring-line transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-lift",
-                  cardSurface,
-                )}
+                className="group/role flex flex-col gap-2 border-t-2 border-line-strong pt-4 transition-colors duration-(--duration-base) ease-smooth hover:border-olive"
               >
-                <span className="flex size-8 items-center justify-center rounded-full bg-sage text-small font-extrabold text-forest">
-                  {pad(roleIndex + 1)}
-                </span>
-                <p className="font-display text-body font-bold text-heading">{role.title}</p>
+                {/* Numéro et intitulé côte à côte sur mobile, empilés sur ordinateur */}
+                <div className="flex items-baseline gap-3 lg:flex-col lg:gap-2">
+                  <span className="font-display text-title leading-none font-extrabold text-sage transition-colors duration-(--duration-base) ease-smooth group-hover/role:text-olive lg:text-display-m">
+                    {pad(roleIndex + 1)}
+                  </span>
+                  <p className="font-display text-body font-bold text-heading">{role.title}</p>
+                </div>
                 {toParagraphs(role.text).map((paragraph) => (
                   <p key={paragraph} className="text-small text-ink-muted">
                     <RichText text={paragraph} />
@@ -214,68 +262,19 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
         </section>
       )}
 
-      {figures && figures.length > 0 && (
-        <section
-          aria-labelledby={`${slug}-resultats`}
-          className="reveal-zoom tone-inverse relative flex flex-col gap-6 overflow-clip rounded-xl bg-forest p-8 text-ink shadow-lift lg:p-10"
-        >
-          {/* Forme organique qui tourne au défilement */}
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 600 600"
-            className="scroll-spin pointer-events-none absolute -right-24 -bottom-32 w-72 text-olive/35"
-          >
-            <path
-              fill="currentColor"
-              d="M452 98c62 52 104 140 92 222-12 83-77 160-158 196-81 37-178 33-247-12C70 459 28 375 40 292 51 209 116 127 196 84c80-42 194-38 256 14Z"
-            />
-          </svg>
-          <div className="relative flex items-center gap-3">
-            {/* Trophée */}
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="size-7 text-sage"
-            >
-              <path d="M7 4h10v5a5 5 0 0 1-10 0V4Z" className="fill-current/25" />
-              <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4M12 14v3M8.5 20h7M10 17h4l.5 3h-5l.5-3Z" />
-            </svg>
-            <Heading as="h3" id={`${slug}-resultats`} size="title">
-              Résultats
-            </Heading>
-          </div>
-          {/* En ligne sur ordinateur, sur deux colonnes sur mobile (le dernier chiffre impair prend toute la largeur) */}
-          <dl className="reveal-bounce-children relative grid grid-cols-2 gap-x-6 gap-y-6 lg:auto-cols-fr lg:grid-flow-col lg:grid-cols-none [&>:last-child:nth-child(odd)]:col-span-2 lg:[&>:last-child:nth-child(odd)]:col-span-1">
-            {figures.map((figure) => (
-              <div key={figure.label} className="flex flex-col gap-1 border-t border-line pt-4">
-                <dt className="order-2 text-small text-ink-muted">{figure.label}</dt>
-                <dd className="order-1 font-display text-display-m leading-none font-extrabold text-heading">
-                  {figure.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
-        </section>
-      )}
-
       {skills && skills.length > 0 && (
-        <section aria-labelledby={`${slug}-competences`} className="flex flex-col gap-3">
-          <h3
-            id={`${slug}-competences`}
-            className="font-sans text-caption font-medium uppercase text-ink-muted"
-          >
+        <section
+          aria-labelledby={`${slug}-competences`}
+          className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4"
+        >
+          <h3 id={`${slug}-competences`} className={labelClass}>
             Compétences mobilisées
           </h3>
           <ul className="reveal-bounce-children flex flex-wrap gap-2">
             {skills.map((skill) => (
               <li
                 key={skill}
-                className="rounded-full border border-line-strong px-3 py-1 text-caption font-medium text-forest"
+                className="rounded-full border border-line-strong px-3 py-1 text-caption font-medium text-forest transition-colors duration-(--duration-base) ease-smooth hover:border-forest hover:bg-forest hover:text-cream"
               >
                 {skill}
               </li>
