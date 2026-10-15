@@ -27,6 +27,15 @@ function RichText({ text }: { text: string }) {
     );
 }
 
+/** Emplacement des photos dans la mosaïque, par position. */
+const galleryLayout = [
+  "col-span-2 row-span-2 lg:col-span-4",
+  "row-span-2 lg:col-span-2",
+  "lg:col-span-2",
+  "lg:col-span-2",
+  "col-span-2 row-span-2 lg:col-span-2 lg:row-span-1",
+];
+
 /** Intitulé de partie : petites capitales discrètes. */
 const labelClass =
   "flex items-center gap-2 text-caption font-medium uppercase text-forest before:h-px before:w-6 before:bg-olive";
@@ -55,7 +64,8 @@ const initiativeBadge = {
  * rôle en blocs numérotés et compétences mobilisées.
  */
 export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
-  const { slug, title, category, initiative, summary, context, roles, figures, skills, image, video, shorts } = project;
+  const { slug, title, category, initiative, summary, context, roles, figures, skills, gallery, image, video, shorts } =
+    project;
   const reversed = index % 2 === 1;
   const vertical = Boolean(shorts?.length);
   const badge = initiativeBadge[initiative];
@@ -259,6 +269,40 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
               </li>
             ))}
           </ol>
+        </section>
+      )}
+
+      {gallery && gallery.length > 0 && (
+        <section aria-labelledby={`${slug}-images`} className="flex flex-col gap-5">
+          <h3 id={`${slug}-images`} className={cn(labelClass, "reveal-left")}>
+            En images
+          </h3>
+          {/* Mosaïque : grande photo + portrait, puis une ligne de trois (sur mobile, deux colonnes) */}
+          <ul className="reveal-pop-children grid auto-rows-[9rem] grid-cols-2 gap-3 sm:auto-rows-[12rem] lg:grid-cols-6 lg:gap-4">
+            {gallery.map((photo, photoIndex) => (
+              <li
+                key={photo.src}
+                className={cn(
+                  "group/photo relative overflow-clip rounded-lg bg-sage shadow-soft",
+                  galleryLayout[photoIndex] ?? "lg:col-span-2",
+                )}
+              >
+                <figure className="size-full">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes={photoIndex === 0 ? "(min-width: 64rem) 50vw, 100vw" : "(min-width: 64rem) 25vw, 50vw"}
+                    style={{ objectPosition: photo.position }}
+                    className="object-cover transition-transform duration-(--duration-slow) ease-smooth group-hover/photo:scale-[1.04]"
+                  />
+                  <figcaption className="absolute inset-x-0 bottom-0 bg-linear-to-t from-charcoal/80 to-transparent px-4 pt-10 pb-3 text-small font-medium text-cream">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
