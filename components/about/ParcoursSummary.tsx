@@ -9,6 +9,8 @@ type Tile = {
   layout: string;
   /** Illustration décorative des tuiles larges. */
   art?: "sparkle" | "flight";
+  /** Valeur affichée à la place du nombre d'étapes de ce type. */
+  value?: number;
 };
 
 // Ordre et disposition des tuiles du résumé
@@ -18,7 +20,8 @@ const tiles: Tile[] = [
   { kind: "Stage", label: ["stage", "stages"], layout: "" },
   { kind: "Job étudiant", label: ["job étudiant", "jobs étudiants"], layout: "" },
   { kind: "Freelance", label: ["activité freelance", "activités freelance"], layout: "", art: "sparkle" },
-  { kind: "International", label: ["an à l’étranger", "expériences à l’étranger"], layout: "col-span-2", art: "flight" },
+  // Un an en Australie + un an d'études en Irlande et en Espagne (Bachelor)
+  { kind: "International", label: ["an à l’étranger", "ans à l’étranger"], layout: "col-span-2", art: "flight", value: 2 },
 ];
 
 /** Trajet d'avion en pointillés, décoratif. */
@@ -65,7 +68,7 @@ export function ParcoursSummary({ steps }: { steps: ParcoursStep[] }) {
   return (
     <ul className="reveal-pop-children grid grid-cols-2 gap-3">
       {visible.map((tile) => {
-        const value = count(tile.kind);
+        const value = tile.value ?? count(tile.kind);
         const wide = tile.art === "flight";
         // Nombre impair de petites tuiles : la dernière prend toute la largeur
         const fill = !wide && smallTiles.length % 2 === 1 && tile === smallTiles.at(-1);

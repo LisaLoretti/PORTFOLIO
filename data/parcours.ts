@@ -19,6 +19,8 @@ export type ParcoursStep = {
   /** Entreprise ou établissement. */
   organisation?: string;
   place?: string;
+  /** Précision affichée sous le lieu, sur la page Parcours. */
+  note?: string;
   period?: string;
   /** Résumé court, affiché sur la frise de l'accueil. */
   detail?: string;
@@ -37,6 +39,7 @@ export const parcours: ParcoursStep[] = [
     organisation: "Etam",
     logos: [{ src: "/images/parcours/etam.webp", alt: "Logo Etam", width: 243, height: 102 }],
     place: "Rambouillet et Maurepas",
+    note: "En parallèle des études, hors année à l’étranger",
     period: "2019 – 2022",
     detail: "Accueil et conseil client, encaissement, merchandising, gestion des stocks, ouverture et fermeture de la boutique.",
     missions: [
@@ -55,6 +58,8 @@ export const parcours: ParcoursStep[] = [
     slug: "baccalaureat",
     title: "Baccalauréat ES — spécialité mathématiques",
     kind: "Formation",
+    organisation: "Lycée Sainte-Thérèse",
+    place: "Rambouillet",
     period: "2020",
   },
   {
@@ -83,6 +88,7 @@ export const parcours: ParcoursStep[] = [
     title: "Bachelor Marketing & Business Performance Management",
     kind: "Formation",
     organisation: "IDRAC Business School & SKALE",
+    place: "Paris",
     logos: [
       { src: "/images/parcours/idrac.webp", alt: "Logo IDRAC Business School", width: 360, height: 213 },
       { src: "/images/parcours/skale.webp", alt: "Logo SKALE Collaborative Business School", width: 360, height: 122 },
@@ -161,12 +167,17 @@ export const parcours: ParcoursStep[] = [
     slug: "australie",
     title: "Un an en Australie",
     kind: "International",
+    place: "Australie",
     logos: [{ src: "/images/parcours/australie.webp", alt: "Drapeau de l’Australie", width: 320, height: 160 }],
     period: "2023 – 2024",
-    detail: "Fille au pair, serveuse et femme de chambre, et voyage pour découvrir le pays.",
+    detail: "Garde d’enfants en tant que fille au pair, service en restauration et entretien hôtelier, et voyage à travers le pays.",
     missions: [
       {
-        items: ["Fille au pair.", "Serveuse et femme de chambre.", "Voyage pour découvrir le pays."],
+        items: [
+          "Garde d’enfants en tant que fille au pair : organisation du quotidien, activités et suivi.",
+          "Service en restauration et entretien hôtelier dans un environnement anglophone.",
+          "Voyage à travers le pays : adaptabilité, autonomie et pratique quotidienne de l’anglais.",
+        ],
       },
     ],
   },
@@ -174,7 +185,8 @@ export const parcours: ParcoursStep[] = [
     slug: "master-excelia",
     title: "Master Management du Tourisme et de l’Événementiel",
     kind: "Formation",
-    organisation: "Excelia — Paris",
+    organisation: "Excelia",
+    place: "Paris",
     logos: [{ src: "/images/parcours/excelia.webp", alt: "Logo Excelia", width: 360, height: 77 }],
     period: "2024 – 2026",
     detail: "Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
@@ -192,10 +204,10 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "office-sejours-linguistiques",
-    title: "Chargée d’événementiel & de communication",
+    title: "Chargée d’événementiel et de communication",
     kind: "Alternance",
     organisation: "L’Office national de garantie des séjours linguistiques et éducatifs",
-    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office, la garantie des séjours linguistiques et éducatifs", width: 420, height: 117 }],
+    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office national de garantie des séjours linguistiques et éducatifs", width: 420, height: 117 }],
     place: "Paris",
     period: "2024 – 2026",
     detail: "Stratégie et plans de communication, contenus pour les réseaux sociaux, refonte du site web, et organisation d’événements de A à Z : assemblées générales, Village des séjours linguistiques, tournée « Meet Our Members », webinaires.",
@@ -209,7 +221,7 @@ export const parcours: ParcoursStep[] = [
           "Création et gestion de contenus pour LinkedIn, Instagram, Facebook, TikTok et YouTube.",
           "Représentation de L’Office sur des salons, forums et rencontres institutionnelles, dont des rendez-vous avec des ambassades.",
           "Accompagnement des membres et contribution à la communication interne.",
-          "Pilotage de projets variés : refonte et lancement du nouveau site web (prévu en octobre 2026), campagne de rentrée et planning éditorial des réseaux sociaux jusqu’en décembre 2026.",
+          "Pilotage de projets variés : refonte et lancement du nouveau site web (prévu en novembre 2026), campagne de rentrée et planning éditorial des réseaux sociaux construit jusqu’à décembre 2026.",
         ],
       },
       {
@@ -217,7 +229,7 @@ export const parcours: ParcoursStep[] = [
         items: [
           "Gestion d’événements de A à Z, de la conception et du budget à la logistique et à la coordination sur place.",
           "Organisation d’événements variés : assemblées générales, Village des séjours linguistiques en partenariat avec le salon du Figaro Étudiant, tournée nationale « Meet Our Members », webinaires et formations.",
-          "Coordination de multiples parties prenantes avant et pendant les événements, anticipation des besoins et gestion des imprévus sur place.",
+          "Coordination de multiples parties prenantes, anticipation des besoins et gestion des imprévus sur place.",
           "Conception de l’expérience des participants avant, pendant et après les événements.",
           "Bilans qualitatifs et quantitatifs, analyse des retours des participants et identification de pistes d’amélioration.",
         ],
