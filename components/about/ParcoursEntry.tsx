@@ -29,7 +29,7 @@ const panelTheme: Record<ParcoursStep["kind"], string> = {
  * du type d'étape (repères, logos) et contenu (missions par thème).
  */
 export function ParcoursEntry({ step, index, total, surface = "cream" }: ParcoursEntryProps) {
-  const { slug, title, kind, organisation, place, period, detail, missions, logos } = step;
+  const { slug, title, kind, organisation, place, note, period, detail, missions, logos } = step;
 
   return (
     <article
@@ -78,6 +78,7 @@ export function ParcoursEntry({ step, index, total, surface = "cream" }: Parcour
             <p className="text-body font-medium text-heading">
               {organisation}
               {place && <span className="block text-small font-normal text-ink-muted">{place}</span>}
+              {note && <span className="block text-small font-normal text-ink-muted">{note}</span>}
             </p>
           )}
 

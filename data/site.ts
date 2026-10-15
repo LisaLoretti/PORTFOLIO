@@ -4,7 +4,7 @@ export const siteConfig = {
   /** Logo typographique. */
   logo: "Lisa Loretti",
   role: "Gestion de projets — événementiel, communication & marketing",
-  title: "Lisa Loretti — Gestion de projets événementiel, communication & marketing",
+  title: "Lisa Loretti — Gestion de projets en événementiel, communication & marketing",
   /** Présentation affichée sous le nom, sur l'accueil. */
   intro:
     "Diplômée d’un Master en Management de l’Événementiel, je conçois, coordonne et pilote des projets en événementiel, communication et marketing, aussi bien en interne qu’en externe. De la réflexion stratégique à la mise en œuvre opérationnelle, j’allie créativité, organisation et sens du relationnel pour donner vie à des projets porteurs de sens et d’impact.",
