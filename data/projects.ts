@@ -196,35 +196,57 @@ export const projects: Project[] = [
   },
   {
     slug: "tournee-membres",
-    title: "Tournée à la rencontre de nos membres",
-    subtitle: "Un concept événementiel déployé dans plusieurs villes",
+    title: "Meet Our Members — À la rencontre de nos membres",
+    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
     category: "Événementiel · Contenus vidéo",
     summary:
-      "Aller à la rencontre des organismes labellisés par L’Office et leur donner la parole à travers une série de vidéos tournées sur le terrain.",
+      "Partir à la rencontre des organismes labellisés, directement dans leurs locaux, pour valoriser leur travail à travers une tournée d’interviews vidéo déployée dans plusieurs villes.",
     context: [
       {
-        title: "Mon idée",
-        text: "Aller à la rencontre des organismes labellisés par L’Office pour découvrir leurs équipes, leurs activités et leur quotidien.",
+        title: "Le contexte",
+        text: [
+          "Afin de renforcer les liens avec les organismes labellisés et de valoriser leur travail, j’ai imaginé un nouveau format de communication : partir à leur rencontre, directement dans leurs locaux, pour découvrir leurs équipes, leurs activités et leur quotidien.",
+          "L’idée était de donner davantage de visibilité aux membres tout en proposant des contenus plus humains, authentiques et incarnés sur les réseaux sociaux de L’Office.",
+          "Ce concept a donné naissance à une tournée de rencontres et d’interviews vidéo déployée dans plusieurs villes.",
+        ],
       },
-      {
-        title: "Les objectifs",
-        text: "Présenter les missions de L’Office, renforcer les liens avec les membres et leur donner la parole à travers des interviews réalisées directement sur le terrain.",
-      },
-      "Une série de vidéos authentiques, humaines et incarnées, pour mettre en lumière celles et ceux qui font vivre le réseau.",
     ],
     roles: [
-      { title: "Planification" },
-      { title: "Prise de contact" },
-      { title: "Coordination" },
-      { title: "Préparation des interviews" },
-      { title: "Tournage" },
-      { title: "Montage" },
-      { title: "Diffusion" },
+      {
+        title: "Idéation & conception du concept",
+        text: "Imagination du projet, définition des objectifs, réflexion sur le format des rencontres et sur leur valorisation à travers une série de vidéos.",
+      },
+      {
+        title: "Organisation & planification",
+        text: "Identification et prise de contact avec les organismes membres, planification des déplacements et coordination des rendez-vous.",
+      },
+      {
+        title: "Préparation éditoriale",
+        text: "Construction des interviews et préparation des questions afin de mettre en lumière les spécificités, les équipes et les activités de chaque organisme.",
+      },
+      {
+        title: "Tournage & création de contenus",
+        text: "Réalisation des interviews sur place et captation de contenus vidéo destinés à présenter les membres de manière accessible et dynamique.",
+      },
+      {
+        title: "Montage & diffusion",
+        text: "Montage des vidéos, adaptation aux différents formats des réseaux sociaux et organisation de leur diffusion sur LinkedIn, Instagram et TikTok.",
+      },
     ],
     figures: [
       { value: "27", label: "organismes rencontrés" },
       { value: "21", label: "vidéos réalisées" },
-      { value: "+30 000", label: "vues sur LinkedIn, Instagram & TikTok" },
+      { value: "+30 000", label: "vues sur LinkedIn, Instagram et TikTok" },
+    ],
+    skills: [
+      "Conception de projets",
+      "Organisation",
+      "Relations partenaires",
+      "Interview",
+      "Tournage vidéo",
+      "Montage",
+      "Stratégie de contenus",
+      "Réseaux sociaux",
     ],
     shorts: [{ youtubeId: "Bbk5Sh3JHY4" }, { youtubeId: "bh07cWYqAVM" }],
   },
