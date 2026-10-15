@@ -13,6 +13,14 @@ export type ProjectRole = {
   items?: string[];
 };
 
+export type ProjectPhoto = {
+  src: string;
+  alt: string;
+  caption: string;
+  /** Cadrage de la photo dans sa case (object-position CSS). */
+  position?: string;
+};
+
 export type Project = {
   slug: string;
   title: string;
@@ -31,6 +39,8 @@ export type Project = {
   figures?: ProjectFigure[];
   /** Compétences mobilisées, affichées en étiquettes. */
   skills?: string[];
+  /** Photos du projet, dans l'ordre de la mosaïque (la 2e est au format portrait). */
+  gallery?: ProjectPhoto[];
   image?: {
     src: string;
     /** Laisser vide pour un visuel purement décoratif. */
@@ -80,6 +90,37 @@ export const projects: Project[] = [
       { value: "20", label: "partenaires" },
     ],
     skills: ["Gestion de projets", "Événementiel", "Animation", "Communication", "Création de contenus"],
+    gallery: [
+      {
+        src: "/images/projects/assemblee-generale-2026/oscars-remise-prix.webp",
+        alt: "Un participant, micro et statuette dorée en main, rit sur scène devant un écran au thème du cinéma",
+        caption: "Soirée des Oscars",
+        position: "50% 40%",
+      },
+      {
+        src: "/images/projects/assemblee-generale-2026/carte-bienvenue.webp",
+        alt: "Carte « Bienvenue à bord » présentant le programme et le quiz de l’Assemblée Générale",
+        caption: "Carte de bienvenue personnalisée",
+        position: "50% 65%",
+      },
+      {
+        src: "/images/projects/assemblee-generale-2026/oscars-laureate.webp",
+        alt: "Une lauréate souriante tient sa statuette dorée devant l’écran de la soirée",
+        caption: "Remise des prix aux organismes",
+        position: "50% 30%",
+      },
+      {
+        src: "/images/projects/assemblee-generale-2026/convivialite.webp",
+        alt: "Des participants rient et applaudissent autour d’une table de dîner",
+        caption: "Moments de convivialité",
+      },
+      {
+        src: "/images/projects/assemblee-generale-2026/animation-musicale.webp",
+        alt: "Animation au piano devant le kakémono « Welcome on board – Assemblée Générale 2026 »",
+        caption: "Animation musicale",
+        position: "50% 35%",
+      },
+    ],
     image: {
       src: "/images/projects/assemblee-generale-2026.webp",
       alt: "Participants de l’Assemblée Générale 2026 applaudissant lors d’un dîner",
