@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { Project } from "@/data/projects";
+import type { Paragraphs, Project } from "@/data/projects";
 import { cn } from "@/lib/cn";
 import { Heading, Text } from "@/components/ui/Typography";
 import { VideoEmbed } from "./VideoEmbed";
@@ -13,10 +13,12 @@ type ProjectFeatureProps = {
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");
+const toParagraphs = (text?: Paragraphs) => (text === undefined ? [] : typeof text === "string" ? [text] : text);
 
 /** Présentation détaillée d'un projet : contexte, média, rôle et résultats. */
 export function ProjectFeature({ project, index, total, tone = "cream" }: ProjectFeatureProps) {
-  const { slug, title, subtitle, category, summary, context, roles, figures, image, video, shorts } = project;
+  const { slug, title, subtitle, category, summary, context, roles, rolesTitle, figures, figuresTitle, image, video, shorts } =
+    project;
   const reversed = index % 2 === 1;
   const vertical = Boolean(shorts?.length);
   // Rôles sans description : affichés en étiquettes plutôt qu'en cartes détaillées
@@ -114,7 +116,9 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
             ) : (
               <div key={item.title} className="flex flex-col gap-2 border-l-2 border-olive pl-5">
                 <h3 className="font-display text-title font-bold text-heading">{item.title}</h3>
-                <Text>{item.text}</Text>
+                {toParagraphs(item.text).map((paragraph) => (
+                  <Text key={paragraph}>{paragraph}</Text>
+                ))}
               </div>
             ),
           )}
@@ -123,9 +127,9 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
 
       <div className="relative grid gap-10 lg:grid-cols-12 lg:gap-12">
         {roles && roles.length > 0 && (
-          <section aria-label="Mon rôle" className="flex flex-col gap-6 lg:col-span-8">
+          <section aria-label={rolesTitle ?? "Mon rôle"} className="flex flex-col gap-6 lg:col-span-8">
             <Heading as="h3" size="title" className="reveal-left">
-              Mon rôle
+              {rolesTitle ?? "Mon rôle"}
             </Heading>
             {roleTags ? (
               <ul className="reveal-bounce-children flex flex-wrap gap-2">
@@ -157,7 +161,21 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
                       {pad(roleIndex + 1)}
                     </span>
                     <p className="font-display text-body font-bold text-heading">{role.title}</p>
-                    {role.text && <p className="text-small text-ink-muted">{role.text}</p>}
+                    {toParagraphs(role.text).map((paragraph) => (
+                      <p key={paragraph} className="text-small text-ink-muted">
+                        {paragraph}
+                      </p>
+                    ))}
+                    {role.items && (
+                      <ul className="flex flex-col gap-1.5 text-small text-ink-muted">
+                        {role.items.map((item) => (
+                          <li key={item} className="flex gap-2">
+                            <span aria-hidden="true" className="mt-2 size-1.5 shrink-0 rounded-full bg-olive" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ol>
@@ -167,7 +185,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
 
         {figures && figures.length > 0 && (
           <section
-            aria-label="Les résultats"
+            aria-label={figuresTitle ?? "Les résultats"}
             className={cn(
               "reveal-zoom tone-inverse relative flex flex-col gap-6 self-start overflow-clip rounded-xl bg-forest p-8 text-ink shadow-lift lg:col-span-4",
               !roles?.length && "lg:col-start-9",
@@ -200,7 +218,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
                 <path d="M7 6H4.5a2.5 2.5 0 0 0 2.5 4M17 6h2.5a2.5 2.5 0 0 1-2.5 4M12 14v3M8.5 20h7M10 17h4l.5 3h-5l.5-3Z" />
               </svg>
               <Heading as="h3" size="title">
-                Les résultats
+                {figuresTitle ?? "Les résultats"}
               </Heading>
             </div>
             <dl className="reveal-bounce-children relative flex flex-col gap-5">

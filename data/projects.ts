@@ -3,14 +3,19 @@ export type ProjectFigure = {
   label: string;
 };
 
+/** Un paragraphe, ou plusieurs. */
+export type Paragraphs = string | string[];
+
 export type ProjectRole = {
   title: string;
   /** Sans texte, les rôles s'affichent en étiquettes. */
-  text?: string;
+  text?: Paragraphs;
+  /** Liste à puces affichée après le texte. */
+  items?: string[];
 };
 
-/** Paragraphe simple, ou paragraphe précédé d'un intertitre. */
-export type ProjectContext = string | { title: string; text: string };
+/** Paragraphe simple, ou paragraphe(s) précédé(s) d'un intertitre. */
+export type ProjectContext = string | { title: string; text: Paragraphs };
 
 export type Project = {
   slug: string;
@@ -24,8 +29,12 @@ export type Project = {
   context?: ProjectContext[];
   /** Mon rôle, découpé par grandes missions. */
   roles?: ProjectRole[];
+  /** Titre de la partie rôle (par défaut « Mon rôle »). */
+  rolesTitle?: string;
   /** Chiffres clés. */
   figures?: ProjectFigure[];
+  /** Titre du panneau de chiffres (par défaut « Les résultats »). */
+  figuresTitle?: string;
   image?: {
     src: string;
     /** Laisser vide pour un visuel purement décoratif. */
@@ -44,27 +53,54 @@ export const projects: Project[] = [
   {
     slug: "assemblee-generale-2026",
     title: "Assemblée Générale 2026",
-    subtitle: "Chez L’Office",
-    category: "Événementiel · Institutionnel",
+    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
+    category: "Événementiel · Gestion de projets · Communication · Expérience participant",
     summary:
-      "Trois jours en Corse pour les organismes membres de L’Office et leurs partenaires : temps institutionnels, rencontres professionnelles, découverte du territoire et convivialité.",
+      "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
     context: [
-      "Chaque année, L’Office réunit ses 27 organismes membres et partenaires à l’occasion de son Assemblée Générale.",
-      "Pour cette édition, avec l’équipe, nous avons souhaité redynamiser le format en allant au-delà des temps institutionnels. Nous avons choisi la Corse afin de faire découvrir aux organismes un territoire intéressant pour leurs activités et de favoriser les rencontres avec des partenaires issus de différents secteurs.",
-      "Nous avons ainsi imaginé trois jours mêlant temps institutionnels, rencontres professionnelles, découverte du territoire et moments de convivialité.",
+      {
+        title: "Le projet",
+        text: [
+          "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
+          "Au-delà des temps institutionnels, notre ambition était de proposer une expérience fédératrice, mêlant échanges professionnels, découverte du territoire et moments de convivialité.",
+          "J’ai participé à la conception et à l’organisation de cet événement, en travaillant notamment sur l’animation du programme, l’expérience des participants et la création des supports de communication.",
+        ],
+      },
     ],
+    rolesTitle: "Mes actions concrètes",
     roles: [
       {
-        title: "Conception",
-        text: "Réflexion sur l’ambiance, l’expérience souhaitée et les différents temps forts du séjour.",
+        title: "Organisation d’une soirée des Oscars",
+        text: [
+          "Conception et organisation d’une soirée de remise de prix sur le thème des Oscars, destinée à mettre à l’honneur les organismes labellisés de L’Office.",
+          "L’objectif : valoriser les membres, célébrer leurs engagements et créer un moment de partage convivial dans une ambiance festive.",
+        ],
       },
       {
-        title: "Coordination",
-        text: "Invitations, inscriptions, suivi des participants, budget, rétroplanning et création des supports de communication.",
+        title: "Création d’un challenge collectif sur trois jours",
+        text: [
+          "Imagination d’un fil rouge ludique pour encourager les échanges et renforcer la cohésion entre les participants, répartis en équipes.",
+          "Le challenge comprenait deux temps forts :",
+        ],
+        items: [
+          "Un quiz d’introduction à la Corse dès l’arrivée, pour découvrir le territoire de manière interactive.",
+          "Un challenge photo en équipe tout au long du séjour, pour favoriser les échanges, la créativité et les souvenirs partagés.",
+        ],
       },
       {
-        title: "Logistique & terrain",
-        text: "Sélection et coordination des prestataires, briefs, suivi des besoins et gestion des différents temps du séjour.",
+        title: "Création des supports de communication",
+        text: "Conception de supports print et digitaux pour accompagner les participants et assurer une communication cohérente tout au long de l’événement :",
+        items: [
+          "Cartes de bienvenue personnalisées.",
+          "Supports de présentation pour les différents temps forts.",
+          "Vidéo récapitulative des moments marquants de l’année 2025.",
+          "Étiquettes de bagages pour les participants.",
+          "Trombinoscope digital pour faciliter l’identification des participants et les échanges.",
+        ],
+      },
+      {
+        title: "Coordination & organisation opérationnelle",
+        text: "Participation à la préparation et au bon déroulement de l’événement : gestion des participants, coordination des différents temps du programme, suivi des besoins logistiques et accompagnement sur place.",
       },
     ],
     figures: [
@@ -72,6 +108,7 @@ export const projects: Project[] = [
       { value: "50", label: "participants" },
       { value: "20", label: "partenaires" },
     ],
+    figuresTitle: "Les chiffres clés",
     image: {
       src: "/images/projects/assemblee-generale-2026.webp",
       alt: "Participants de l’Assemblée Générale 2026 applaudissant lors d’un dîner",
