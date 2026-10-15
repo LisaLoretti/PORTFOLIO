@@ -40,7 +40,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fr" className={`${sora.variable} ${inter.variable} antialiased`}>
+    <html lang="fr" data-scroll-behavior="smooth" className={`${sora.variable} ${inter.variable} antialiased`}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#contenu"
