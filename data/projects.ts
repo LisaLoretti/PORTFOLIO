@@ -3,7 +3,7 @@ export type ProjectFigure = {
   label: string;
 };
 
-/** Un paragraphe, ou plusieurs. */
+/** Un paragraphe, ou plusieurs. Le texte entre **doubles astérisques** s'affiche en gras. */
 export type Paragraphs = string | string[];
 
 export type ProjectRole = {
@@ -35,6 +35,8 @@ export type Project = {
   figures?: ProjectFigure[];
   /** Titre du panneau de chiffres (par défaut « Les résultats »). */
   figuresTitle?: string;
+  /** Compétences mobilisées, affichées en étiquettes. */
+  skills?: string[];
   image?: {
     src: string;
     /** Laisser vide pour un visuel purement décoratif. */
@@ -119,37 +121,72 @@ export const projects: Project[] = [
   {
     slug: "village-sejours-linguistiques",
     title: "Village des séjours linguistiques et éducatifs",
-    subtitle: "Salon Post Bac du Figaro Étudiant",
+    subtitle: "Salon Post Bac du Figaro Étudiant — Paris, octobre 2025",
     category: "Événementiel · Salon",
     summary:
-      "Un salon entièrement repensé avec un partenaire : un espace dédié à L’Office et à ses organismes labellisés au cœur du Salon Post Bac du Figaro Étudiant.",
+      "Un espace de 110 m² réunissant 14 organismes labellisés au Salon Post Bac du Figaro Étudiant, avec une identité visuelle dédiée et un programme d’animations participatives.",
     context: [
-      "Chaque année, L’Office organisait son propre salon dans un lycée pour faire découvrir les séjours de qualité des organismes labellisés.",
-      "Face à une baisse de visibilité de l’événement, nous avons souhaité, avec l’équipe, repenser entièrement son format et nous associer à un partenaire.",
-      "C’est ainsi qu’est né le Village des Séjours Linguistiques et Éducatifs, intégré au Salon Post Bac du Figaro Étudiant, avec un espace dédié à L’Office et à ses organismes labellisés.",
+      {
+        title: "Le projet",
+        text: [
+          "Historiquement, L’Office organisait son propre salon pour faire découvrir au grand public les séjours linguistiques et éducatifs proposés par ses organismes labellisés.",
+          "Afin de gagner en visibilité et de toucher un public plus large, nous avons repensé ce format en nous associant au Salon Post Bac du Figaro Étudiant.",
+          "C’est ainsi qu’est né le **Village des séjours linguistiques et éducatifs** : un espace de 110 m² réunissant 14 organismes labellisés, avec une identité visuelle dédiée et un programme d’animations participatives.",
+          "L’objectif : créer un lieu attractif, identifiable et interactif, favorisant les rencontres entre les visiteurs et les professionnels de la mobilité internationale.",
+        ],
+      },
     ],
+    rolesTitle: "Mes actions concrètes",
     roles: [
       {
-        title: "Conception",
-        text: "Réflexion sur l’ambiance, l’identité visuelle et l’expérience souhaitée.",
+        title: "Réflexion stratégique & conception du projet",
+        text: "Participation aux décisions stratégiques autour du nouveau format, du positionnement du Village et de l’expérience proposée aux visiteurs, en collaboration avec les équipes de L’Office et du Figaro Étudiant.",
       },
       {
-        title: "Coordination",
-        text: "Gestion des inscriptions, suivi des participants et coordination avec les équipes du Figaro Étudiant.",
+        title: "Scénographie d’un espace de 110 m²",
+        text: [
+          "Participation à la conception et à la mise en scène du Village, en réfléchissant à l’aménagement des espaces, à leur identité visuelle et à leur cohérence globale.",
+          "L’enjeu : créer un environnement accueillant, identifiable et fonctionnel, mettant en valeur les 14 organismes présents et favorisant la circulation et les échanges avec les visiteurs.",
+        ],
       },
       {
-        title: "Communication",
-        text: "Création de supports print et digitaux : contenus pour les réseaux sociaux, newsletter, kit de communication, supports de présentation et site web.",
+        title: "Élaboration & programmation des animations",
+        text: [
+          "Conception et programmation d’ateliers participatifs et d’animations pour rythmer les deux journées de l’événement.",
+          "Au cœur du Village, l’**Espace Déclics** proposait des activités interactives, des témoignages et des temps d’échange pour permettre aux visiteurs de découvrir les différentes possibilités de séjours à l’étranger.",
+        ],
       },
       {
-        title: "Suivi & bilan",
-        text: "Analyse de la fréquentation et réalisation d’un bilan qualitatif et quantitatif.",
+        title: "Identité visuelle & communication",
+        text: "Prise en charge de l’identité visuelle du Village et de la création des supports de communication associés, afin d’assurer une cohérence graphique et une bonne identification de l’espace.",
+      },
+      {
+        title: "Coordination des partenaires & des inscriptions",
+        text: [
+          "Interlocutrice entre les équipes du Figaro Étudiant et les organismes membres de L’Office.",
+          "Gestion des inscriptions, centralisation des informations, suivi des besoins et coordination des échanges pour préparer leur participation dans les meilleures conditions.",
+        ],
+      },
+      {
+        title: "Coordination du prestataire photo",
+        text: "Gestion de la prestation photographique, de la préparation du brief à la coordination du photographe pendant l’événement, afin d’assurer la couverture des temps forts du Village.",
       },
     ],
     figures: [
-      { value: "14", label: "organismes labellisés" },
+      { value: "110 m²", label: "d’espace événementiel" },
+      { value: "14", label: "organismes labellisés réunis" },
+      { value: "2 jours", label: "d’événement et d’animations" },
       { value: "+1 000", label: "visiteurs" },
-      { value: "1", label: "espace dédié" },
+    ],
+    figuresTitle: "Les chiffres clés",
+    skills: [
+      "Gestion de projets",
+      "Scénographie événementielle",
+      "Programmation d’animations",
+      "Communication visuelle",
+      "Coordination de partenaires",
+      "Gestion de prestataires",
+      "Expérience visiteur",
     ],
     image: {
       src: "/images/projects/village-sejours-linguistiques.webp",
