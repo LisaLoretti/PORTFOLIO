@@ -2,70 +2,81 @@ import type { ToolIconKey } from "@/components/about/toolIcons";
 
 /** Compétences, langues et formations complémentaires. */
 
-export type Tool =
+export type Tool = {
+  name: string;
+  /** Site de l'outil, ouvert dans un nouvel onglet. */
+  url: string;
+} & (
   /** Logo issu de components/about/toolIcons.ts */
-  | { name: string; icon: ToolIconKey; background?: string }
+  | { icon: ToolIconKey; background?: string }
   /** Logo fourni en image (public/images/tools) : « cover » remplit la tuile, « contain » laisse une marge */
-  | { name: string; image: { src: string; fit: "cover" | "contain" }; background?: string }
+  | { image: { src: string; fit: "cover" | "contain" }; background?: string }
   /** Monogramme dans la couleur de la marque (logo indisponible) */
-  | { name: string; monogram: string; background: string };
+  | { monogram: string; background: string }
+);
 
 export const tools: { category: string; items: Tool[] }[] = [
   {
     category: "Bureautique",
     items: [
-      { name: "Microsoft Office", image: { src: "/images/tools/microsoft-office.webp", fit: "contain" }, background: "#FFFFFF" },
-      { name: "Google Workspace", image: { src: "/images/tools/google.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Microsoft Office", url: "https://www.microsoft.com/fr-fr/microsoft-365", image: { src: "/images/tools/microsoft-office.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Google Workspace", url: "https://workspace.google.com/intl/fr/", image: { src: "/images/tools/google.webp", fit: "contain" }, background: "#FFFFFF" },
     ],
   },
   {
     category: "Gestion de projet",
     items: [
-      { name: "Trello", image: { src: "/images/tools/trello.webp", fit: "cover" } },
-      { name: "Monday", image: { src: "/images/tools/monday.webp", fit: "contain" }, background: "#FFFFFF" },
-      { name: "Notion", icon: "notion" },
+      { name: "Trello", url: "https://trello.com/", image: { src: "/images/tools/trello.webp", fit: "cover" } },
+      { name: "Monday", url: "https://monday.com/", image: { src: "/images/tools/monday.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Notion", url: "https://www.notion.com/", icon: "notion" },
+      {
+        name: "HtoH",
+        url: "https://apps.apple.com/fr/app/htoh-travel-superapp/id1584656427",
+        image: { src: "/images/tools/htoh.webp", fit: "cover" },
+        background: "#FFFFFF",
+      },
     ],
   },
   {
     category: "Création multimédia",
     items: [
-      { name: "Adobe Creative Cloud", image: { src: "/images/tools/adobe-creative-cloud.webp", fit: "cover" } },
-      { name: "Canva", image: { src: "/images/tools/canva.webp", fit: "cover" } },
-      { name: "CapCut", image: { src: "/images/tools/capcut.webp", fit: "contain" }, background: "#000000" },
+      { name: "Adobe Creative Cloud", url: "https://www.adobe.com/fr/creativecloud.html", image: { src: "/images/tools/adobe-creative-cloud.webp", fit: "cover" } },
+      { name: "Canva", url: "https://www.canva.com/", image: { src: "/images/tools/canva.webp", fit: "cover" } },
+      { name: "CapCut", url: "https://www.capcut.com/", image: { src: "/images/tools/capcut.webp", fit: "contain" }, background: "#000000" },
     ],
   },
   {
     category: "Sites web",
     items: [
-      { name: "WordPress", icon: "wordpress" },
-      { name: "Squarespace", icon: "squarespace" },
-      { name: "OVHcloud", icon: "ovh" },
+      { name: "WordPress", url: "https://wordpress.org/", icon: "wordpress" },
+      { name: "Squarespace", url: "https://www.squarespace.com/", icon: "squarespace" },
+      { name: "OVHcloud", url: "https://www.ovhcloud.com/fr/", icon: "ovh" },
     ],
   },
   {
     category: "E-mailing & CRM",
     items: [
-      { name: "Mailchimp", icon: "mailchimp" },
-      { name: "Brevo", image: { src: "/images/tools/brevo.webp", fit: "cover" } },
+      { name: "Mailchimp", url: "https://mailchimp.com/", icon: "mailchimp" },
+      { name: "Brevo", url: "https://www.brevo.com/fr/", image: { src: "/images/tools/brevo.webp", fit: "cover" } },
     ],
   },
   {
     category: "Réseaux sociaux",
     items: [
-      { name: "Instagram", icon: "instagram", background: "linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF)" },
-      { name: "LinkedIn", monogram: "in", background: "#0A66C2" },
-      { name: "Facebook", icon: "facebook" },
-      { name: "TikTok", icon: "tiktok" },
-      { name: "YouTube", icon: "youtube" },
-      { name: "Meta", icon: "meta" },
-      { name: "Metricool", image: { src: "/images/tools/metricool.webp", fit: "cover" } },
+      { name: "Instagram", url: "https://www.instagram.com/", icon: "instagram", background: "linear-gradient(45deg, #F58529, #DD2A7B 50%, #8134AF)" },
+      { name: "LinkedIn", url: "https://www.linkedin.com/", monogram: "in", background: "#0A66C2" },
+      { name: "Facebook", url: "https://www.facebook.com/", icon: "facebook" },
+      { name: "TikTok", url: "https://www.tiktok.com/", icon: "tiktok" },
+      { name: "YouTube", url: "https://www.youtube.com/", icon: "youtube" },
+      { name: "Meta", url: "https://www.meta.com/", icon: "meta" },
+      { name: "Metricool", url: "https://metricool.com/fr/", image: { src: "/images/tools/metricool.webp", fit: "cover" } },
     ],
   },
   {
     category: "Intelligence artificielle",
     items: [
-      { name: "Claude", icon: "claude" },
-      { name: "ChatGPT", image: { src: "/images/tools/chatgpt.webp", fit: "contain" }, background: "#000000" },
+      { name: "Claude", url: "https://claude.ai/", icon: "claude" },
+      { name: "ChatGPT", url: "https://chatgpt.com/", image: { src: "/images/tools/chatgpt.webp", fit: "contain" }, background: "#000000" },
     ],
   },
 ];
