@@ -11,7 +11,7 @@ type PageHeaderProps = {
   /** Contenu affiché à droite du titre en grand écran (en dessous sur mobile). */
   aside?: ReactNode;
   /** Taille du titre : à réduire quand un mot long côtoie l'aside. */
-  titleSize?: "display-xl" | "display-l";
+  titleSize?: "display-xl" | "display-l" | "display-m";
 };
 
 /** En-tête commun des pages : surtitre, titre XXL et introduction. */
