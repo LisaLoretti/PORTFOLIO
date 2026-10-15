@@ -53,7 +53,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "baccalaureat",
-    title: "Baccalauréat ES — spécialité Mathématiques",
+    title: "Baccalauréat ES — spécialité mathématiques",
     kind: "Formation",
     period: "2020",
   },
@@ -88,7 +88,7 @@ export const parcours: ParcoursStep[] = [
       { src: "/images/parcours/skale.webp", alt: "Logo SKALE Collaborative Business School", width: 360, height: 122 },
     ],
     period: "2020 – 2023",
-    detail: "Communication, gestion d’entreprise, gestion budgétaire, analyse de la performance et prise de décision stratégique. Dont un an d’études en Irlande et en Espagne.",
+    detail: "Communication, gestion d’entreprise, gestion budgétaire, analyse de la performance et prise de décision stratégique. Cette formation comprend également une année d’études en Irlande et en Espagne.",
     missions: [
       {
         title: "Programme",
@@ -105,7 +105,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "impact-sales-marketing",
-    title: "Assistante gestion de projets",
+    title: "Assistante en gestion de projets",
     kind: "Stage",
     organisation: "Impact Sales & Marketing",
     logos: [{ src: "/images/parcours/impact-sales-marketing.webp", alt: "Logo Impact Sales & Marketing", width: 240, height: 239 }],
@@ -131,7 +131,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "ebp-informatique",
-    title: "Assistante événementiel & communication interne",
+    title: "Assistante en événementiel et communication interne",
     kind: "Alternance",
     organisation: "EBP Informatique",
     logos: [{ src: "/images/parcours/ebp.webp", alt: "Logo EBP", width: 360, height: 148 }],
@@ -143,7 +143,7 @@ export const parcours: ParcoursStep[] = [
         title: "Événementiel & engagement des collaborateurs",
         items: [
           "Organisation d’événements internes de 60 à 300 participants : journées d’intégration, formations managers, séminaires et plénières.",
-          "Coordination des prestataires : lieux, traiteur, animations et logistique.",
+          "Coordination des prestataires : lieux, traiteurs, animations et logistique.",
           "Conception et organisation d’animations mensuelles pour les collaborateurs : Halloween, Noël, Octobre rose.",
         ],
       },
@@ -226,7 +226,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "freelance",
-    title: "Gestion de projets événementiel & communication",
+    title: "Gestion de projets · Événementiel & Communication",
     kind: "Freelance",
     period: "Depuis septembre 2026",
   },

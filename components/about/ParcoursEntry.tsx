@@ -136,7 +136,7 @@ export function ParcoursEntry({ step, index, total, surface = "cream" }: Parcour
             ))}
           </div>
         ) : (
-          <p className="reveal max-w-prose text-lead text-ink-muted">{detail ?? "Détails à venir."}</p>
+          detail && <p className="reveal max-w-prose text-lead text-ink-muted">{detail}</p>
         )}
       </div>
     </article>
