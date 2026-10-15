@@ -39,7 +39,7 @@ export type Project = {
   figures?: ProjectFigure[];
   /** Compétences mobilisées, affichées en étiquettes. */
   skills?: string[];
-  /** Photos du projet, dans l'ordre de la mosaïque (la 2e est au format portrait). */
+  /** Photos du projet, dans l'ordre de la mosaïque (mise en page selon leur nombre). */
   gallery?: ProjectPhoto[];
   image?: {
     src: string;
@@ -165,6 +165,31 @@ export const projects: Project[] = [
       { value: "+1 000", label: "visiteurs" },
     ],
     skills: ["Scénographie", "Gestion de projets", "Communication visuelle", "Programmation", "Coordination"],
+    gallery: [
+      {
+        src: "/images/projects/village-sejours-linguistiques/espace-declics-atelier.webp",
+        alt: "Intervention devant un public assis sur des cubes en bois, sous le panneau « Espace Déclics – S’ouvrir au monde »",
+        caption: "Atelier à l’Espace Déclics",
+      },
+      {
+        src: "/images/projects/village-sejours-linguistiques/echanges-visiteurs.webp",
+        alt: "Une exposante présente une tablette à des visiteuses sur le Village",
+        caption: "Échanges avec les visiteurs",
+        position: "40% 50%",
+      },
+      {
+        src: "/images/projects/village-sejours-linguistiques/programme-espace-declics.webp",
+        alt: "Deux visiteurs consultent le programme des animations de l’Espace Déclics des 11 et 12 octobre",
+        caption: "Programme des animations",
+        position: "60% 30%",
+      },
+      {
+        src: "/images/projects/village-sejours-linguistiques/convivialite.webp",
+        alt: "Des participants lèvent leur verre autour d’une table sur le stand de L’Office",
+        caption: "Moment de convivialité",
+        position: "50% 35%",
+      },
+    ],
     image: {
       src: "/images/projects/village-sejours-linguistiques.webp",
       alt: "Entrée de l’Espace Champerret, lieu du salon",
