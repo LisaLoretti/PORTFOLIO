@@ -199,6 +199,28 @@
   }
 }
 
+@keyframes mosaic-in {
+  from {
+    opacity: 0;
+    scale: 0.94;
+    clip-path: inset(14% 10% 14% 10% round var(--radius-lg));
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+    clip-path: inset(0 0 0 0 round var(--radius-lg));
+  }
+}
+
+@keyframes parallax-y {
+  from {
+    translate: 0 -6%;
+  }
+  to {
+    translate: 0 6%;
+  }
+}
+
 @keyframes clip-up {
   from {
     clip-path: inset(100% 0 0 0 round var(--radius-lg));
@@ -430,6 +452,43 @@
 }
 
 /* Les enfants directs surgissent l'un après l'autre au défilement */
+/* Mosaïque photo : chaque case s'ouvre depuis son centre, l'une après l'autre */
+@utility reveal-mosaic {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      & > * {
+        animation: mosaic-in linear both;
+        animation-timeline: view();
+        animation-range: entry 0% entry 75%;
+      }
+      & > :nth-child(2) {
+        animation-range: entry 8% entry 83%;
+      }
+      & > :nth-child(3) {
+        animation-range: entry 16% entry 91%;
+      }
+      & > :nth-child(4) {
+        animation-range: entry 24% entry 99%;
+      }
+      & > :nth-child(n + 5) {
+        animation-range: entry 30% cover 40%;
+      }
+    }
+  }
+}
+
+/* Image qui glisse doucement dans son cadre au défilement (effet de profondeur) */
+@utility scroll-parallax {
+  @media (prefers-reduced-motion: no-preference) {
+    @supports (animation-timeline: view()) {
+      scale: 1.14;
+      animation: parallax-y linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+
 @utility reveal-pop-children {
   @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
