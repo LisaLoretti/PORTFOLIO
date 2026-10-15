@@ -7,8 +7,9 @@ const INTERACTIVE = "a, button, [role='button'], summary, label";
 /**
  * Curseur personnalisé : un point qui suit la souris et un cercle qui le suit
  * avec un léger retard, agrandi au survol des liens et boutons.
- * Actif uniquement avec une souris et sans « réduire les animations » ;
- * sinon le curseur du système est conservé.
+ * Actif dès qu'une souris est présente (y compris sur un ordinateur à écran
+ * tactile). Avec « réduire les animations », le cercle suit la souris sans
+ * retard ; sur un appareil purement tactile, le curseur du système est conservé.
  */
 export function CustomCursor() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -16,12 +17,13 @@ export function CustomCursor() {
   const ringRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mouse = window.matchMedia("(hover: hover) and (pointer: fine)");
+    // « any- » : une souris branchée suffit, même si l'écran est aussi tactile
+    const mouse = window.matchMedia("(any-hover: hover) and (any-pointer: fine)");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const cursor = rootRef.current;
     const dot = dotRef.current;
     const ring = ringRef.current;
-    if (!mouse.matches || reduced.matches || !cursor || !dot || !ring) return;
+    if (!mouse.matches || !cursor || !dot || !ring) return;
 
     const html = document.documentElement;
     html.classList.add("has-custom-cursor");
@@ -40,7 +42,13 @@ export function CustomCursor() {
     };
 
     const onMove = (event: PointerEvent) => {
-      if (event.pointerType !== "mouse") return;
+      // Au doigt ou au stylet, on rend la main au curseur du système
+      if (event.pointerType !== "mouse") {
+        cursor.dataset.visible = "false";
+        html.classList.remove("has-custom-cursor");
+        return;
+      }
+      html.classList.add("has-custom-cursor");
       target.x = event.clientX;
       target.y = event.clientY;
       if (!started) {
@@ -57,8 +65,10 @@ export function CustomCursor() {
     const onUp = () => (cursor.dataset.pressed = "false");
 
     const tick = () => {
-      ringPos.x += (target.x - ringPos.x) * 0.18;
-      ringPos.y += (target.y - ringPos.y) * 0.18;
+      // Retard du cercle supprimé si l'utilisateur réduit les animations
+      const ease = reduced.matches ? 1 : 0.18;
+      ringPos.x += (target.x - ringPos.x) * ease;
+      ringPos.y += (target.y - ringPos.y) * ease;
       dot.style.translate = `${target.x}px ${target.y}px`;
       ring.style.translate = `${ringPos.x}px ${ringPos.y}px`;
       frame = requestAnimationFrame(tick);
