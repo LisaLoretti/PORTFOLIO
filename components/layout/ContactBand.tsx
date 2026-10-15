@@ -1,10 +1,18 @@
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/Button";
-import { Heading } from "@/components/ui/Typography";
+import { Heading, Text } from "@/components/ui/Typography";
 import { Container } from "./Container";
 import { Section } from "./Section";
 
+type ContactBandProps = {
+  title?: string;
+  text?: string;
+  /** Boutons d'action (par défaut : « Contactez-moi »). */
+  actions?: ReactNode;
+};
+
 /** Bandeau d'appel à contact vert forêt, en fin de page. */
-export function ContactBand() {
+export function ContactBand({ title = "Un projet qui rassemble ? Parlons-en.", text, actions }: ContactBandProps) {
   return (
     <Section tone="forest" aria-labelledby="contact-titre" className="relative overflow-clip">
       {/* Forme organique qui tourne lentement au défilement */}
@@ -26,12 +34,19 @@ export function ContactBand() {
           underlineClassName="text-sage"
           className="scroll-slide max-w-[16ch]"
         >
-          Un projet qui rassemble ? Parlons-en.
+          {title}
         </Heading>
-        <div className="reveal-pop">
-          <Button href="/contact" variant="light" arrow>
-            Contactez-moi
-          </Button>
+        {text && (
+          <Text variant="lead" className="reveal max-w-prose text-ink-muted">
+            {text}
+          </Text>
+        )}
+        <div className="reveal-pop flex flex-wrap items-center gap-4">
+          {actions ?? (
+            <Button href="/contact" variant="light" arrow>
+              Contactez-moi
+            </Button>
+          )}
         </div>
       </Container>
     </Section>
