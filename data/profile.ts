@@ -31,7 +31,7 @@ export const tools: { category: string; items: Tool[] }[] = [
       { name: "Notion", url: "https://www.notion.com/", icon: "notion" },
       {
         name: "HtoH",
-        url: "https://apps.apple.com/fr/app/htoh-travel-superapp/id1584656427",
+        url: "https://htoh.io/",
         image: { src: "/images/tools/htoh.webp", fit: "cover" },
         background: "#FFFFFF",
       },
