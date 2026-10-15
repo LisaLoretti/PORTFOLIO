@@ -20,6 +20,8 @@ export const siteConfig = {
     /** Types de contrat recherchés. */
     lookingFor: ["CDI", "CDD", "Freelance"],
     linkedin: "https://www.linkedin.com/in/lisa-loretti-8040b4223/",
+    /** CV en PDF, à déposer dans public/ : le bouton « Télécharger mon CV » n'apparaît qu'une fois renseigné. */
+    cv: null as string | null,
   },
 } as const;
 

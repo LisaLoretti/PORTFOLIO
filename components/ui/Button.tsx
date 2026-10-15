@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "primary" | "secondary" | "light" | "text";
+type Variant = "primary" | "secondary" | "light" | "lightOutline" | "text";
 
 const base =
   "group inline-flex items-center justify-center gap-2 font-sans font-medium whitespace-nowrap " +
@@ -21,6 +21,10 @@ const variants: Record<Variant, string> = {
   light:
     "h-12 rounded-full bg-cream px-7 text-body text-forest " +
     "hover:bg-sage focus-visible:outline-cream active:translate-y-px",
+  /** Bouton secondaire pour les fonds vert forêt. */
+  lightOutline:
+    "h-12 rounded-full border border-cream/50 px-7 text-body text-cream " +
+    "hover:border-cream hover:bg-cream/10 focus-visible:outline-cream active:translate-y-px",
   text:
     "rounded-sm px-0.5 text-body text-forest underline decoration-transparent decoration-1 underline-offset-[6px] " +
     "hover:decoration-forest focus-visible:outline-forest",
@@ -63,8 +67,8 @@ export function Button({ variant = "primary", arrow, className, children, ...pro
   );
 
   if (props.href !== undefined) {
-    // Liens e-mail, téléphone ou externes : simple <a>, sans routage Next.js.
-    if (/^(mailto:|tel:|https?:)/.test(props.href)) {
+    // Liens e-mail, téléphone, externes ou fichiers PDF : simple <a>, sans routage Next.js.
+    if (/^(mailto:|tel:|https?:)|\.pdf$/.test(props.href)) {
       const { href, ...anchorProps } = props as ButtonAsLink;
       return (
         <a href={href} className={classes} {...(anchorProps as ComponentPropsWithoutRef<"a">)}>

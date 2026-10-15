@@ -5,7 +5,9 @@ import { PageHeader } from "@/components/layout/PageHeader";
 import { Section } from "@/components/layout/Section";
 import { ProjectFeature } from "@/components/projects/ProjectFeature";
 import { ProjectIndex } from "@/components/projects/ProjectIndex";
+import { Button } from "@/components/ui/Button";
 import { projects } from "@/data/projects";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Réalisations",
@@ -23,10 +25,10 @@ export default function ProjectsPage() {
       />
 
       <PageHeader
-        eyebrow="Réalisations"
-        title="Quelques réalisations"
+        eyebrow="Portfolio"
+        title="Mes réalisations"
         titleSize="display-l"
-        intro="Des événements et des projets collectifs, de l’idée à leur réalisation."
+        intro="De l’idée à la concrétisation."
         aside={<ProjectIndex projects={projects} />}
       />
 
@@ -41,7 +43,22 @@ export default function ProjectsPage() {
         );
       })}
 
-      <ContactBand />
+      <ContactBand
+        title="Et si nous travaillions ensemble ?"
+        text="Je recherche un CDI en gestion de projets, événementiel, communication ou marketing. Si mon profil correspond à vos besoins, je serais ravie d’échanger avec vous."
+        actions={
+          <>
+            <Button href="/contact" variant="light" arrow>
+              Me contacter
+            </Button>
+            {siteConfig.contact.cv && (
+              <Button href={siteConfig.contact.cv} variant="lightOutline" download>
+                Télécharger mon CV
+              </Button>
+            )}
+          </>
+        }
+      />
     </>
   );
 }

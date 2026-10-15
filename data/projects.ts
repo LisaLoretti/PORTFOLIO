@@ -8,14 +8,10 @@ export type Paragraphs = string | string[];
 
 export type ProjectRole = {
   title: string;
-  /** Sans texte, les rôles s'affichent en étiquettes. */
   text?: Paragraphs;
   /** Liste à puces affichée après le texte. */
   items?: string[];
 };
-
-/** Paragraphe simple, ou paragraphe(s) précédé(s) d'un intertitre. */
-export type ProjectContext = string | { title: string; text: Paragraphs };
 
 export type Project = {
   slug: string;
@@ -25,16 +21,14 @@ export type Project = {
   category: string;
   /** Résumé court, affiché sur les cartes. */
   summary: string;
-  /** Paragraphes de présentation du projet. */
-  context?: ProjectContext[];
+  /** Projet mené en équipe, ou imaginé à mon initiative. */
+  initiative: "collective" | "personal";
+  /** Contexte et objectifs, en paragraphes. */
+  context?: string[];
   /** Mon rôle, découpé par grandes missions. */
   roles?: ProjectRole[];
-  /** Titre de la partie rôle (par défaut « Mon rôle »). */
-  rolesTitle?: string;
-  /** Chiffres clés. */
+  /** Résultats chiffrés. */
   figures?: ProjectFigure[];
-  /** Titre du panneau de chiffres (par défaut « Les résultats »). */
-  figuresTitle?: string;
   /** Compétences mobilisées, affichées en étiquettes. */
   skills?: string[];
   image?: {
@@ -57,19 +51,14 @@ export const projects: Project[] = [
     title: "Assemblée Générale 2026",
     subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
     category: "Événementiel · Gestion de projets · Communication · Expérience participant",
+    initiative: "collective",
     summary:
       "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
     context: [
-      {
-        title: "Le projet",
-        text: [
-          "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
-          "Au-delà des temps institutionnels, notre ambition était de proposer une expérience fédératrice, mêlant échanges professionnels, découverte du territoire et moments de convivialité.",
-          "J’ai participé à la conception et à l’organisation de cet événement, en travaillant notamment sur l’animation du programme, l’expérience des participants et la création des supports de communication.",
-        ],
-      },
+      "Pour l’édition 2026 de son Assemblée Générale, L’Office a réuni ses membres et partenaires pendant trois jours en Corse.",
+      "Au-delà des temps institutionnels, notre ambition était de proposer une expérience fédératrice, mêlant échanges professionnels, découverte du territoire et moments de convivialité.",
+      "J’ai participé à la conception et à l’organisation de cet événement, en travaillant notamment sur l’animation du programme, l’expérience des participants et la création des supports de communication.",
     ],
-    rolesTitle: "Mes actions concrètes",
     roles: [
       {
         title: "Organisation d’une soirée des Oscars",
@@ -110,7 +99,6 @@ export const projects: Project[] = [
       { value: "50", label: "participants" },
       { value: "20", label: "partenaires" },
     ],
-    figuresTitle: "Les chiffres clés",
     image: {
       src: "/images/projects/assemblee-generale-2026.webp",
       alt: "Participants de l’Assemblée Générale 2026 applaudissant lors d’un dîner",
@@ -123,20 +111,15 @@ export const projects: Project[] = [
     title: "Village des séjours linguistiques et éducatifs",
     subtitle: "Salon Post Bac du Figaro Étudiant — Paris, octobre 2025",
     category: "Événementiel · Salon",
+    initiative: "collective",
     summary:
       "Un espace de 110 m² réunissant 14 organismes labellisés au Salon Post Bac du Figaro Étudiant, avec une identité visuelle dédiée et un programme d’animations participatives.",
     context: [
-      {
-        title: "Le projet",
-        text: [
-          "Historiquement, L’Office organisait son propre salon pour faire découvrir au grand public les séjours linguistiques et éducatifs proposés par ses organismes labellisés.",
-          "Afin de gagner en visibilité et de toucher un public plus large, nous avons repensé ce format en nous associant au Salon Post Bac du Figaro Étudiant.",
-          "C’est ainsi qu’est né le **Village des séjours linguistiques et éducatifs** : un espace de 110 m² réunissant 14 organismes labellisés, avec une identité visuelle dédiée et un programme d’animations participatives.",
-          "L’objectif : créer un lieu attractif, identifiable et interactif, favorisant les rencontres entre les visiteurs et les professionnels de la mobilité internationale.",
-        ],
-      },
+      "Historiquement, L’Office organisait son propre salon pour faire découvrir au grand public les séjours linguistiques et éducatifs proposés par ses organismes labellisés.",
+      "Afin de gagner en visibilité et de toucher un public plus large, nous avons repensé ce format en nous associant au Salon Post Bac du Figaro Étudiant.",
+      "C’est ainsi qu’est né le **Village des séjours linguistiques et éducatifs** : un espace de 110 m² réunissant 14 organismes labellisés, avec une identité visuelle dédiée et un programme d’animations participatives.",
+      "L’objectif : créer un lieu attractif, identifiable et interactif, favorisant les rencontres entre les visiteurs et les professionnels de la mobilité internationale.",
     ],
-    rolesTitle: "Mes actions concrètes",
     roles: [
       {
         title: "Réflexion stratégique & conception du projet",
@@ -178,7 +161,6 @@ export const projects: Project[] = [
       { value: "2 jours", label: "d’événement et d’animations" },
       { value: "+1 000", label: "visiteurs" },
     ],
-    figuresTitle: "Les chiffres clés",
     skills: [
       "Gestion de projets",
       "Scénographie événementielle",
@@ -199,17 +181,13 @@ export const projects: Project[] = [
     title: "Meet Our Members — À la rencontre de nos membres",
     subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
     category: "Événementiel · Contenus vidéo",
+    initiative: "personal",
     summary:
       "Partir à la rencontre des organismes labellisés, directement dans leurs locaux, pour valoriser leur travail à travers une tournée d’interviews vidéo déployée dans plusieurs villes.",
     context: [
-      {
-        title: "Le contexte",
-        text: [
-          "Afin de renforcer les liens avec les organismes labellisés et de valoriser leur travail, j’ai imaginé un nouveau format de communication : partir à leur rencontre, directement dans leurs locaux, pour découvrir leurs équipes, leurs activités et leur quotidien.",
-          "L’idée était de donner davantage de visibilité aux membres tout en proposant des contenus plus humains, authentiques et incarnés sur les réseaux sociaux de L’Office.",
-          "Ce concept a donné naissance à une tournée de rencontres et d’interviews vidéo déployée dans plusieurs villes.",
-        ],
-      },
+      "Afin de renforcer les liens avec les organismes labellisés et de valoriser leur travail, j’ai imaginé un nouveau format de communication : partir à leur rencontre, directement dans leurs locaux, pour découvrir leurs équipes, leurs activités et leur quotidien.",
+      "L’idée était de donner davantage de visibilité aux membres tout en proposant des contenus plus humains, authentiques et incarnés sur les réseaux sociaux de L’Office.",
+      "Ce concept a donné naissance à une tournée de rencontres et d’interviews vidéo déployée dans plusieurs villes.",
     ],
     roles: [
       {
@@ -252,26 +230,52 @@ export const projects: Project[] = [
   },
   {
     slug: "conseils-de-l-office",
-    title: "Série de vidéos\u00a0: Conseils de L’Office",
+    title: "Conseils de L’Office — Campagne de communication digitale",
+    subtitle: "L’Office national de garantie des séjours linguistiques et éducatifs",
     category: "Communication digitale · Vidéo",
+    initiative: "personal",
     summary:
-      "Une série de courtes vidéos de conseils pour sensibiliser les jeunes aux bénéfices d’un séjour à l’étranger de qualité.",
+      "Une série de vidéos courtes proposant des conseils pratiques, pour renforcer la visibilité de L’Office sur les réseaux sociaux et sensibiliser les jeunes aux enjeux des séjours à l’étranger.",
     context: [
-      "Pour mettre en avant L’Office et sa mission, j’ai imaginé une série de courtes vidéos de conseils, diffusées sur plusieurs semaines.",
+      "Pour renforcer la visibilité de L’Office sur les réseaux sociaux et sensibiliser les jeunes aux enjeux des séjours à l’étranger, j’ai imaginé une série de vidéos courtes proposant des conseils pratiques.",
+      "L’objectif était de rendre les contenus de L’Office plus accessibles, dynamiques et engageants, tout en valorisant ses missions et son expertise.",
+      "Cette série s’inscrit dans une stratégie de communication plus large, associant contenus informatifs, actualités et promotion du Guide des voyages scolaires.",
+    ],
+    roles: [
       {
-        title: "Objectif",
-        text: "Dynamiser les réseaux sociaux tout en sensibilisant les jeunes aux bénéfices d’un séjour à l’étranger de qualité et à l’importance de bien préparer leur expérience.",
+        title: "Stratégie éditoriale & conception",
+        text: "Imagination du concept, identification des thématiques pertinentes et réflexion sur des formats courts adaptés aux différents publics et réseaux sociaux.",
       },
       {
-        title: "Réalisation",
-        text: "J’ai tourné les vidéos, avant de les monter sur CapCut. Les contenus ont ensuite été programmés via Metricool et adaptés aux différents réseaux sociaux : Instagram, Facebook, LinkedIn, TikTok & YouTube.",
+        title: "Création des contenus",
+        text: "Préparation et tournage des vidéos, en veillant à proposer des messages clairs, accessibles et adaptés aux objectifs de communication.",
       },
       {
-        title: "Déploiement",
-        text: "La campagne a été lancée dès le mois de septembre, à l’occasion de la rentrée scolaire, et intégrée à une stratégie de communication plus large comprenant une campagne de lancement d’un Guide des voyages scolaires, ainsi que des publications d’information et d’actualité. Le dispositif est prévu jusqu’au mois de novembre.",
+        title: "Montage & adaptation des formats",
+        text: "Montage des contenus sur CapCut et déclinaison des vidéos selon les spécificités des différentes plateformes.",
+      },
+      {
+        title: "Programmation & diffusion",
+        text: "Planification des publications via Metricool et diffusion sur Instagram, Facebook, LinkedIn, TikTok et YouTube.",
+      },
+      {
+        title: "Intégration à la stratégie de communication",
+        text: "Articulation de la série avec les autres temps forts de communication, notamment la rentrée scolaire et le lancement du Guide des voyages scolaires.",
       },
     ],
-    figures: [{ value: "14", label: "vidéos réalisées" }],
+    figures: [
+      { value: "14", label: "vidéos réalisées" },
+      { value: "5", label: "plateformes de diffusion" },
+    ],
+    skills: [
+      "Stratégie de communication",
+      "Marketing digital",
+      "Création de contenus",
+      "Tournage",
+      "Montage vidéo",
+      "Community management",
+      "Planification éditoriale",
+    ],
     shorts: [{ youtubeId: "d1-C1g3Ek0U" }, { youtubeId: "jtmo_AyEM0c" }],
   },
 ];
