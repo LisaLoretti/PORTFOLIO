@@ -13,12 +13,41 @@ type ProjectFeatureProps = {
 };
 
 const pad = (value: number) => String(value).padStart(2, "0");
+/** Met en gras le texte entouré de **doubles astérisques**. */
+function RichText({ text }: { text: string }) {
+  return text
+    .split(/\*\*(.+?)\*\*/)
+    .map((part, index) =>
+      index % 2 === 1 ? (
+        <strong key={index} className="font-semibold text-heading">
+          {part}
+        </strong>
+      ) : (
+        part
+      ),
+    );
+}
+
 const toParagraphs = (text?: Paragraphs) => (text === undefined ? [] : typeof text === "string" ? [text] : text);
 
 /** Présentation détaillée d'un projet : contexte, média, rôle et résultats. */
 export function ProjectFeature({ project, index, total, tone = "cream" }: ProjectFeatureProps) {
-  const { slug, title, subtitle, category, summary, context, roles, rolesTitle, figures, figuresTitle, image, video, shorts } =
-    project;
+  const {
+    slug,
+    title,
+    subtitle,
+    category,
+    summary,
+    context,
+    roles,
+    rolesTitle,
+    figures,
+    figuresTitle,
+    skills,
+    image,
+    video,
+    shorts,
+  } = project;
   const reversed = index % 2 === 1;
   const vertical = Boolean(shorts?.length);
   // Rôles sans description : affichés en étiquettes plutôt qu'en cartes détaillées
@@ -117,7 +146,9 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
               <div key={item.title} className="flex flex-col gap-2 border-l-2 border-olive pl-5">
                 <h3 className="font-display text-title font-bold text-heading">{item.title}</h3>
                 {toParagraphs(item.text).map((paragraph) => (
-                  <Text key={paragraph}>{paragraph}</Text>
+                  <Text key={paragraph}>
+                    <RichText text={paragraph} />
+                  </Text>
                 ))}
               </div>
             ),
@@ -146,7 +177,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
               <ol
                 className={cn(
                   "reveal-bounce-children grid gap-4 sm:grid-cols-2",
-                  roles.length % 3 === 0 && "lg:grid-cols-3",
+                  roles.length === 3 && "lg:grid-cols-3",
                 )}
               >
                 {roles.map((role, roleIndex) => (
@@ -163,7 +194,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
                     <p className="font-display text-body font-bold text-heading">{role.title}</p>
                     {toParagraphs(role.text).map((paragraph) => (
                       <p key={paragraph} className="text-small text-ink-muted">
-                        {paragraph}
+                        <RichText text={paragraph} />
                       </p>
                     ))}
                     {role.items && (
@@ -187,7 +218,7 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
           <section
             aria-label={figuresTitle ?? "Les résultats"}
             className={cn(
-              "reveal-zoom tone-inverse relative flex flex-col gap-6 self-start overflow-clip rounded-xl bg-forest p-8 text-ink shadow-lift lg:col-span-4",
+              "reveal-zoom tone-inverse relative flex flex-col gap-6 self-start overflow-clip rounded-xl bg-forest p-8 text-ink shadow-lift lg:sticky lg:top-[calc(var(--spacing-header)+2rem)] lg:col-span-4",
               !roles?.length && "lg:col-start-9",
             )}
           >
@@ -229,6 +260,24 @@ export function ProjectFeature({ project, index, total, tone = "cream" }: Projec
                 </div>
               ))}
             </dl>
+          </section>
+        )}
+
+        {skills && skills.length > 0 && (
+          <section aria-label="Compétences mobilisées" className="flex flex-col gap-4 lg:col-span-12">
+            <Heading as="h3" size="title" className="reveal-left">
+              Compétences mobilisées
+            </Heading>
+            <ul className="reveal-bounce-children flex flex-wrap gap-2">
+              {skills.map((skill) => (
+                <li
+                  key={skill}
+                  className="rounded-full border border-line-strong px-4 py-2 text-small font-medium text-forest transition-[background-color,color,border-color,translate] duration-(--duration-base) ease-smooth hover:-translate-y-0.5 hover:border-forest hover:bg-forest hover:text-cream"
+                >
+                  {skill}
+                </li>
+              ))}
+            </ul>
           </section>
         )}
       </div>
