@@ -104,14 +104,6 @@ export const skillAxes: SkillAxis[] = [
   },
 ];
 
-/** Chiffres mis en avant : repris des chiffres clés des projets (data/projects.ts), jamais réécrits. */
-const statSources = [
-  { project: "tournee-membres", label: "vues" },
-  { project: "tournee-membres", label: "organismes rencontrés" },
-  { project: "village-sejours-linguistiques", label: "visiteurs" },
-  { project: "village-sejours-linguistiques", label: "d’espace événementiel" },
-];
-
 function findProject(slug: string) {
   const project = projects.find((item) => item.slug === slug);
   if (!project) throw new Error(`Compétences : projet « ${slug} » introuvable dans data/projects.ts`);
@@ -123,13 +115,6 @@ function findStep(slug: string) {
   if (!step) throw new Error(`Compétences : étape « ${slug} » introuvable dans data/parcours.ts`);
   return step;
 }
-
-export const skillStats = statSources.map(({ project: slug, label }) => {
-  const project = findProject(slug);
-  const figure = project.figures?.find((item) => item.label === label);
-  if (!figure) throw new Error(`Compétences : chiffre « ${label} » introuvable pour « ${slug} »`);
-  return { ...figure, project: { slug, title: project.title } };
-});
 
 /** Preuve prête à afficher : nom, lien et type de page. */
 export function resolveProof(proof: SkillProof) {
