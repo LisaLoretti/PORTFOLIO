@@ -44,9 +44,11 @@ export function ToolBadge({ tool }: { tool: Tool }) {
               <path d={icon.path} />
             </svg>
           ) : (
-            <span className="font-display text-title font-extrabold tracking-tight">
-              {"monogram" in tool && tool.monogram}
-            </span>
+            // Monogramme affiché en CSS : il ne s'ajoute pas au texte du lien (« LinkedIn »)
+            <span
+              data-monogram={"monogram" in tool ? tool.monogram : undefined}
+              className="font-display text-title font-extrabold tracking-tight before:content-[attr(data-monogram)]"
+            />
           )}
         </span>
         <span className="text-caption leading-tight tracking-normal text-ink underline decoration-transparent underline-offset-2 transition-colors duration-(--duration-base) group-hover:decoration-olive">
