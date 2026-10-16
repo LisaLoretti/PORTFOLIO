@@ -21,7 +21,7 @@ export default function ContactPage() {
         intro={
           <>
             Imaginer, créer et coordonner des projets qui mettent en valeur le travail de chacun, rassemblent les
-            personnes et créent des moments de partage.
+            personnes et créent des moments de partage.{" "}
             <span className="mt-3 block font-medium text-forest">C’est ce que j’aime dans mon métier.</span>
           </>
         }
