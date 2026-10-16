@@ -84,22 +84,29 @@ export const skillAxes: SkillAxis[] = [
   {
     id: "axe-partenaires",
     number: "04",
-    title: "Fédérer partenaires et membres",
+    title: "Fédérer un réseau et représenter une organisation",
     skills: [
-      "Relation avec les organismes membres",
-      "Interface avec les partenaires",
-      "Représentation sur salons et forums",
+      "Relation client et conseil",
+      "Relations partenaires et prestataires",
+      "Animation et engagement de communautés",
+      "Représentation sur salons, forums et autres événements professionnels",
+      "Présentation d’une organisation à ses publics",
       "Mise en relation",
     ],
     proofs: [
+      { type: "parcours", slug: "etam", detail: "accueil et conseil client" },
+      {
+        type: "parcours",
+        slug: "impact-sales-marketing",
+        detail: "partenariats écoles, salons étudiants, entretiens avec des candidats",
+      },
+      { type: "parcours", slug: "ebp-informatique", detail: "animations mensuelles pour les collaborateurs" },
       {
         type: "realisation",
         slug: "village-sejours-linguistiques",
-        detail: "interlocutrice entre Le Figaro Étudiant et les organismes membres",
+        detail: "interlocutrice entre Le Figaro Étudiant et les organismes",
       },
-      { type: "realisation", slug: "tournee-membres" },
-      { type: "parcours", slug: "office-sejours-linguistiques", label: "L’Office", detail: "représentation, ambassades" },
-      { type: "parcours", slug: "impact-sales-marketing", detail: "partenariats écoles" },
+      { type: "realisation", slug: "tournee-membres", detail: "27 organismes rencontrés" },
     ],
   },
 ];
