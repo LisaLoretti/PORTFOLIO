@@ -30,177 +30,13 @@ export type ParcoursStep = {
   logos?: ParcoursLogo[];
 };
 
-/** Parcours, du plus ancien au plus récent. */
+/** Parcours, du plus récent au plus ancien (ordre d'affichage sur l'accueil et la page Parcours). */
 export const parcours: ParcoursStep[] = [
   {
-    slug: "etam",
-    title: "Hôtesse de vente",
-    kind: "Job étudiant",
-    organisation: "Etam",
-    logos: [{ src: "/images/parcours/etam.webp", alt: "Logo Etam", width: 243, height: 102 }],
-    place: "Rambouillet et Maurepas",
-    note: "En parallèle des études, hors année à l’étranger",
-    period: "2019 – 2022",
-    detail: "Accueil et conseil client, encaissement, merchandising, gestion des stocks, ouverture et fermeture de la boutique.",
-    missions: [
-      {
-        items: [
-          "Ouverture et fermeture de la boutique.",
-          "Accueil et conseil client.",
-          "Encaissement.",
-          "Mise en place du merchandising.",
-          "Gestion des stocks et des marchandises.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "baccalaureat",
-    title: "Baccalauréat ES — spécialité mathématiques",
-    kind: "Formation",
-    organisation: "Lycée Sainte-Thérèse",
-    place: "Rambouillet",
-    period: "2020",
-  },
-  {
-    slug: "partenaires-fc",
-    title: "Assistante commerciale",
-    kind: "Job étudiant",
-    organisation: "Partenaires FC",
-    logos: [{ src: "/images/parcours/partenaires-fc.webp", alt: "Logo Partenaires FC", width: 255, height: 255 }],
-    place: "Saint-Arnoult-en-Yvelines",
-    period: "Juillet – août 2020",
-    detail: "Préparation des commandes et kits personnalisés, gestion des stocks, suivi des fournisseurs, accueil téléphonique et mise à jour du site internet.",
-    missions: [
-      {
-        items: [
-          "Préparation des commandes clients et création de kits personnalisés, incluant le flocage de vêtements.",
-          "Gestion des stocks et réalisation des inventaires.",
-          "Suivi des fournisseurs et relance des commandes en cours.",
-          "Accueil téléphonique, renseignement des clients et orientation vers les interlocuteurs adaptés.",
-          "Mise à jour du site internet : ajout et actualisation des produits et informations associées.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "bachelor-idrac",
-    title: "Bachelor Marketing & Business Performance Management",
-    kind: "Formation",
-    organisation: "IDRAC Business School & SKALE",
-    place: "Paris",
-    logos: [
-      { src: "/images/parcours/idrac.webp", alt: "Logo IDRAC Business School", width: 360, height: 213 },
-      { src: "/images/parcours/skale.webp", alt: "Logo SKALE Collaborative Business School", width: 360, height: 122 },
-    ],
-    period: "2020 – 2023",
-    detail: "Communication, gestion d’entreprise, gestion budgétaire, analyse de la performance et prise de décision stratégique. Cette formation comprend également une année d’études en Irlande et en Espagne.",
-    missions: [
-      {
-        title: "Programme",
-        items: [
-          "Communication et gestion d’entreprise.",
-          "Gestion budgétaire, analyse de la performance et prise de décision stratégique.",
-        ],
-      },
-      {
-        title: "Expérience internationale",
-        items: ["Un an d’études en Irlande et en Espagne."],
-      },
-    ],
-  },
-  {
-    slug: "impact-sales-marketing",
-    title: "Assistante en gestion de projets",
-    kind: "Stage",
-    organisation: "Impact Sales & Marketing",
-    logos: [{ src: "/images/parcours/impact-sales-marketing.webp", alt: "Logo Impact Sales & Marketing", width: 240, height: 239 }],
-    place: "Levallois-Perret",
-    period: "Avril – août 2022",
-    detail: "Gestion des comptes Instagram et LinkedIn à destination des jeunes publics, partenariats avec des écoles et entretiens avec des candidats.",
-    missions: [
-      {
-        title: "Gestion de projet & communication digitale",
-        items: [
-          "Gestion des comptes Instagram et LinkedIn à destination des jeunes publics : création de contenus et production de formats vidéo (interviews, Reels, contenus internes).",
-          "Contribution à des projets internes, dont le développement d’une application de mise en relation entre candidats et opportunités professionnelles.",
-        ],
-      },
-      {
-        title: "Relations écoles & accompagnement des candidats",
-        items: [
-          "Développement de partenariats avec des universités et des écoles de commerce, et participation à des salons étudiants pour présenter l’entreprise et ses opportunités.",
-          "Entretiens avec des candidats pour identifier leurs attentes et les orienter vers des missions, alternances et opportunités adaptées.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "ebp-informatique",
-    title: "Assistante en événementiel et communication interne",
-    kind: "Alternance",
-    organisation: "EBP Informatique",
-    logos: [{ src: "/images/parcours/ebp.webp", alt: "Logo EBP", width: 360, height: 148 }],
-    place: "Rambouillet",
-    period: "2022 – 2023",
-    detail: "Événements internes de 60 à 300 participants, animations mensuelles, plan de communication marque employeur et optimisation de l’intranet.",
-    missions: [
-      {
-        title: "Événementiel & engagement des collaborateurs",
-        items: [
-          "Organisation d’événements internes de 60 à 300 participants : journées d’intégration, formations managers, séminaires et plénières.",
-          "Coordination des prestataires : lieux, traiteurs, animations et logistique.",
-          "Conception et organisation d’animations mensuelles pour les collaborateurs : Halloween, Noël, Octobre rose.",
-        ],
-      },
-      {
-        title: "Communication interne & expérience collaborateur",
-        items: [
-          "Élaboration et mise en œuvre du plan de communication marque employeur : planning éditorial, reconnaissance des collaborateurs et initiatives RH.",
-          "Création de supports pour améliorer l’expérience des collaborateurs et des managers : guide du manager, livret d’accueil, charte de télétravail, newsletters et procédures RH simplifiées (notes de frais…).",
-          "Analyse et optimisation de l’intranet : mise à jour des contenus, architecture de l’information et design.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "australie",
-    title: "Un an en Australie",
-    kind: "International",
-    place: "Australie",
-    logos: [{ src: "/images/parcours/australie.webp", alt: "Drapeau de l’Australie", width: 320, height: 160 }],
-    period: "2023 – 2024",
-    detail: "Garde d’enfants en tant que fille au pair, service en restauration et entretien hôtelier, et voyage à travers le pays.",
-    missions: [
-      {
-        items: [
-          "Garde d’enfants en tant que fille au pair : organisation du quotidien, activités et suivi.",
-          "Service en restauration et entretien hôtelier dans un environnement anglophone.",
-          "Voyage à travers le pays : adaptabilité, autonomie et pratique quotidienne de l’anglais.",
-        ],
-      },
-    ],
-  },
-  {
-    slug: "master-excelia",
-    title: "Master Management du Tourisme et de l’Événementiel",
-    kind: "Formation",
-    organisation: "Excelia",
-    place: "Paris",
-    logos: [{ src: "/images/parcours/excelia.webp", alt: "Logo Excelia", width: 360, height: 77 }],
-    period: "2024 – 2026",
-    detail: "Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
-    missions: [
-      {
-        title: "Projets académiques",
-        items: [
-          "Conception de projets événementiels et benchmark.",
-          "Programmation et communication 360°.",
-          "Budget prévisionnel, recherche de financements et sponsoring.",
-          "Suivi des KPI et démarche RSE.",
-        ],
-      },
-    ],
+    slug: "freelance",
+    title: "Gestion de projets · Événementiel & Communication",
+    kind: "Freelance",
+    period: "Depuis septembre 2026",
   },
   {
     slug: "office-sejours-linguistiques",
@@ -237,10 +73,174 @@ export const parcours: ParcoursStep[] = [
     ],
   },
   {
-    slug: "freelance",
-    title: "Gestion de projets · Événementiel & Communication",
-    kind: "Freelance",
-    period: "Depuis septembre 2026",
+    slug: "master-excelia",
+    title: "Master Management du Tourisme et de l’Événementiel",
+    kind: "Formation",
+    organisation: "Excelia",
+    place: "Paris",
+    logos: [{ src: "/images/parcours/excelia.webp", alt: "Logo Excelia", width: 360, height: 77 }],
+    period: "2024 – 2026",
+    detail: "Projets de conception d’événements : benchmark, programmation, communication 360°, budget et recherche de financements, sponsoring, suivi des KPI et RSE.",
+    missions: [
+      {
+        title: "Projets académiques",
+        items: [
+          "Conception de projets événementiels et benchmark.",
+          "Programmation et communication 360°.",
+          "Budget prévisionnel, recherche de financements et sponsoring.",
+          "Suivi des KPI et démarche RSE.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "australie",
+    title: "Un an en Australie",
+    kind: "International",
+    place: "Australie",
+    logos: [{ src: "/images/parcours/australie.webp", alt: "Drapeau de l’Australie", width: 320, height: 160 }],
+    period: "2023 – 2024",
+    detail: "Garde d’enfants en tant que fille au pair, service en restauration et entretien hôtelier, et voyage à travers le pays.",
+    missions: [
+      {
+        items: [
+          "Garde d’enfants en tant que fille au pair : organisation du quotidien, activités et suivi.",
+          "Service en restauration et entretien hôtelier dans un environnement anglophone.",
+          "Voyage à travers le pays : adaptabilité, autonomie et pratique quotidienne de l’anglais.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "ebp-informatique",
+    title: "Assistante en événementiel et communication interne",
+    kind: "Alternance",
+    organisation: "EBP Informatique",
+    logos: [{ src: "/images/parcours/ebp.webp", alt: "Logo EBP", width: 360, height: 148 }],
+    place: "Rambouillet",
+    period: "2022 – 2023",
+    detail: "Événements internes de 60 à 300 participants, animations mensuelles, plan de communication marque employeur et optimisation de l’intranet.",
+    missions: [
+      {
+        title: "Événementiel & engagement des collaborateurs",
+        items: [
+          "Organisation d’événements internes de 60 à 300 participants : journées d’intégration, formations managers, séminaires et plénières.",
+          "Coordination des prestataires : lieux, traiteurs, animations et logistique.",
+          "Conception et organisation d’animations mensuelles pour les collaborateurs : Halloween, Noël, Octobre rose.",
+        ],
+      },
+      {
+        title: "Communication interne & expérience collaborateur",
+        items: [
+          "Élaboration et mise en œuvre du plan de communication marque employeur : planning éditorial, reconnaissance des collaborateurs et initiatives RH.",
+          "Création de supports pour améliorer l’expérience des collaborateurs et des managers : guide du manager, livret d’accueil, charte de télétravail, newsletters et procédures RH simplifiées (notes de frais…).",
+          "Analyse et optimisation de l’intranet : mise à jour des contenus, architecture de l’information et design.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "impact-sales-marketing",
+    title: "Assistante en gestion de projets",
+    kind: "Stage",
+    organisation: "Impact Sales & Marketing",
+    logos: [{ src: "/images/parcours/impact-sales-marketing.webp", alt: "Logo Impact Sales & Marketing", width: 240, height: 239 }],
+    place: "Levallois-Perret",
+    period: "Avril – août 2022",
+    detail: "Gestion des comptes Instagram et LinkedIn à destination des jeunes publics, partenariats avec des écoles et entretiens avec des candidats.",
+    missions: [
+      {
+        title: "Gestion de projet & communication digitale",
+        items: [
+          "Gestion des comptes Instagram et LinkedIn à destination des jeunes publics : création de contenus et production de formats vidéo (interviews, Reels, contenus internes).",
+          "Contribution à des projets internes, dont le développement d’une application de mise en relation entre candidats et opportunités professionnelles.",
+        ],
+      },
+      {
+        title: "Relations écoles & accompagnement des candidats",
+        items: [
+          "Développement de partenariats avec des universités et des écoles de commerce, et participation à des salons étudiants pour présenter l’entreprise et ses opportunités.",
+          "Entretiens avec des candidats pour identifier leurs attentes et les orienter vers des missions, alternances et opportunités adaptées.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "bachelor-idrac",
+    title: "Bachelor Marketing & Business Performance Management",
+    kind: "Formation",
+    organisation: "IDRAC Business School & SKALE",
+    place: "Paris",
+    logos: [
+      { src: "/images/parcours/idrac.webp", alt: "Logo IDRAC Business School", width: 360, height: 213 },
+      { src: "/images/parcours/skale.webp", alt: "Logo SKALE Collaborative Business School", width: 360, height: 122 },
+    ],
+    period: "2020 – 2023",
+    detail: "Communication, gestion d’entreprise, gestion budgétaire, analyse de la performance et prise de décision stratégique. Cette formation comprend également une année d’études en Irlande et en Espagne.",
+    missions: [
+      {
+        title: "Programme",
+        items: [
+          "Communication et gestion d’entreprise.",
+          "Gestion budgétaire, analyse de la performance et prise de décision stratégique.",
+        ],
+      },
+      {
+        title: "Expérience internationale",
+        items: ["Un an d’études en Irlande et en Espagne."],
+      },
+    ],
+  },
+  {
+    slug: "partenaires-fc",
+    title: "Assistante commerciale",
+    kind: "Job étudiant",
+    organisation: "Partenaires FC",
+    logos: [{ src: "/images/parcours/partenaires-fc.webp", alt: "Logo Partenaires FC", width: 255, height: 255 }],
+    place: "Saint-Arnoult-en-Yvelines",
+    period: "Juillet – août 2020",
+    detail: "Préparation des commandes et kits personnalisés, gestion des stocks, suivi des fournisseurs, accueil téléphonique et mise à jour du site internet.",
+    missions: [
+      {
+        items: [
+          "Préparation des commandes clients et création de kits personnalisés, incluant le flocage de vêtements.",
+          "Gestion des stocks et réalisation des inventaires.",
+          "Suivi des fournisseurs et relance des commandes en cours.",
+          "Accueil téléphonique, renseignement des clients et orientation vers les interlocuteurs adaptés.",
+          "Mise à jour du site internet : ajout et actualisation des produits et informations associées.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "baccalaureat",
+    title: "Baccalauréat ES — spécialité mathématiques",
+    kind: "Formation",
+    organisation: "Lycée Sainte-Thérèse",
+    place: "Rambouillet",
+    period: "2020",
+  },
+  {
+    slug: "etam",
+    title: "Hôtesse de vente",
+    kind: "Job étudiant",
+    organisation: "Etam",
+    logos: [{ src: "/images/parcours/etam.webp", alt: "Logo Etam", width: 243, height: 102 }],
+    place: "Rambouillet et Maurepas",
+    note: "En parallèle des études, hors année à l’étranger",
+    period: "2019 – 2022",
+    detail: "Accueil et conseil client, encaissement, merchandising, gestion des stocks, ouverture et fermeture de la boutique.",
+    missions: [
+      {
+        items: [
+          "Ouverture et fermeture de la boutique.",
+          "Accueil et conseil client.",
+          "Encaissement.",
+          "Mise en place du merchandising.",
+          "Gestion des stocks et des marchandises.",
+        ],
+      },
+    ],
   },
 ];
 

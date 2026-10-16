@@ -6,7 +6,7 @@ type TimelineProps = {
   steps: ParcoursStep[];
 };
 
-/** Frise chronologique verticale, numérotée, du plus ancien au plus récent. */
+/** Frise chronologique verticale, numérotée, du plus récent au plus ancien. */
 export function Timeline({ steps }: TimelineProps) {
   return (
     <div className="relative md:ml-6">
