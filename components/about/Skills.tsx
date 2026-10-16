@@ -50,25 +50,34 @@ export function Skills() {
                 ))}
               </ul>
               <div className="mt-auto flex flex-col gap-3 border-t border-line pt-4">
-                <p className="text-caption font-medium uppercase text-ink-muted">Où je l’ai mis en pratique</p>
+                <p className="text-caption font-medium uppercase text-ink-muted">Quelques réalisations</p>
                 <ul className="flex flex-col gap-2">
                   {axis.proofs.map((raw) => {
                     const proof = resolveProof(raw);
+                    const content = (
+                      <>
+                        <span aria-hidden="true" className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1">
+                          →
+                        </span>
+                        <span>
+                          <span className="font-medium text-forest">{proof.label}</span>
+                          {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
+                          {proof.page && <span className="text-ink-muted"> · {proof.page}</span>}
+                        </span>
+                      </>
+                    );
                     return (
-                      <li key={`${proof.type}-${proof.slug}`}>
-                        <Link
-                          href={proof.href}
-                          className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
-                        >
-                          <span aria-hidden="true" className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1">
-                            →
-                          </span>
-                          <span>
-                            <span className="font-medium text-forest">{proof.label}</span>
-                            {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
-                            <span className="text-ink-muted"> · {proof.page}</span>
-                          </span>
-                        </Link>
+                      <li key={proof.key}>
+                        {proof.href ? (
+                          <Link
+                            href={proof.href}
+                            className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
+                          >
+                            {content}
+                          </Link>
+                        ) : (
+                          <p className="-mx-2 flex items-baseline gap-2 px-2 py-1 text-small">{content}</p>
+                        )}
                       </li>
                     );
                   })}
