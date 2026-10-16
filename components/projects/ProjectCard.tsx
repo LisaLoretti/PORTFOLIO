@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Project } from "@/data/projects";
 import { cn } from "@/lib/cn";
+import { PhonesCover } from "./PhonesCover";
 import { YouTubeThumbnail } from "./YouTubeThumbnail";
 
 type ProjectCardProps = {
@@ -16,14 +17,16 @@ type ProjectCardProps = {
  * Toute la carte est cliquable via un lien étendu sur le titre (un seul lien par carte).
  */
 export function ProjectCard({ project, priority = false, className }: ProjectCardProps) {
-  const { slug, title, subtitle, category, summary, figures, image, video, shorts } = project;
+  const { slug, title, subtitle, category, summary, figures, image, video, shorts, cardCover } = project;
   // Vidéo dont la miniature illustre la carte : paysage, sinon premier exemple vertical
   const thumbnailId = video?.youtubeId ?? shorts?.[0]?.youtubeId;
 
   return (
     <article className={cn("group relative flex flex-col gap-5", className)}>
       <div className="reveal-clip relative aspect-video overflow-hidden rounded-lg bg-sage">
-        {thumbnailId ? (
+        {cardCover === "phones" ? (
+          <PhonesCover />
+        ) : thumbnailId ? (
           <YouTubeThumbnail
             youtubeId={thumbnailId}
             alt={`Miniature de la vidéo : ${title}`}
