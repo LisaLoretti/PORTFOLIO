@@ -48,7 +48,7 @@ export default function ProjectsPage() {
         actions={
           <>
             <Button href="/contact" variant="light" arrow>
-              Me contacter
+              Contactez-moi
             </Button>
             {siteConfig.contact.cv && (
               <Button href={siteConfig.contact.cv} variant="lightOutline" download>

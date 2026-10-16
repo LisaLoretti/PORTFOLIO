@@ -74,7 +74,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "master-excelia",
-    title: "Master Management du Tourisme et de l’Événementiel",
+    title: "Master en Management de l’Événementiel",
     kind: "Formation",
     organisation: "Excelia",
     place: "Paris",
