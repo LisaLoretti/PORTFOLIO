@@ -213,14 +213,6 @@ export const parcours: ParcoursStep[] = [
     ],
   },
   {
-    slug: "baccalaureat",
-    title: "Baccalauréat ES — spécialité mathématiques",
-    kind: "Formation",
-    organisation: "Lycée Sainte-Thérèse",
-    place: "Rambouillet",
-    period: "2020",
-  },
-  {
     slug: "etam",
     title: "Hôtesse de vente",
     kind: "Job étudiant",
