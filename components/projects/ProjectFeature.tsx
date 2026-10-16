@@ -2,6 +2,8 @@ import Image from "next/image";
 import type { Paragraphs, Project } from "@/data/projects";
 import { cn } from "@/lib/cn";
 import { Heading, Text } from "@/components/ui/Typography";
+import { SkillAxisTags } from "@/components/about/SkillAxisTags";
+import { axesFor } from "@/data/skills";
 import { VideoEmbed } from "./VideoEmbed";
 
 type ProjectFeatureProps = {
@@ -74,11 +76,13 @@ const initiativeBadge = {
  * rôle en blocs numérotés et compétences mobilisées.
  */
 export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
-  const { slug, title, category, initiative, summary, context, roles, figures, skills, gallery, image, video, shorts } =
+  const { slug, title, category, initiative, summary, context, roles, figures, gallery, image, video, shorts } =
     project;
   const reversed = index % 2 === 1;
   const vertical = Boolean(shorts?.length);
   const badge = initiativeBadge[initiative];
+  // Axes de compétences illustrés par ce projet (data/skills.ts)
+  const projectAxes = axesFor("realisation", slug);
 
   return (
     <article
@@ -321,7 +325,7 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
         </section>
       )}
 
-      {skills && skills.length > 0 && (
+      {projectAxes.length > 0 && (
         <section
           aria-labelledby={`${slug}-competences`}
           className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-4"
@@ -329,16 +333,7 @@ export function ProjectFeature({ project, index, total }: ProjectFeatureProps) {
           <h3 id={`${slug}-competences`} className={labelClass}>
             Compétences mobilisées
           </h3>
-          <ul className="reveal-bounce-children flex flex-wrap gap-2">
-            {skills.map((skill) => (
-              <li
-                key={skill}
-                className="rounded-full border border-line-strong px-3 py-1 text-caption font-medium text-forest transition-colors duration-(--duration-base) ease-smooth hover:border-forest hover:bg-forest hover:text-cream"
-              >
-                {skill}
-              </li>
-            ))}
-          </ul>
+          <SkillAxisTags axes={projectAxes} />
         </section>
       )}
     </article>

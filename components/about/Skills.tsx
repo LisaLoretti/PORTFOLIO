@@ -2,12 +2,18 @@ import type { CSSProperties } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Eyebrow, Heading } from "@/components/ui/Typography";
+import Link from "next/link";
 import { languages, softSkills, tools, trainings } from "@/data/profile";
+import { resolveProof, skillAxes, skillStats } from "@/data/skills";
 import { ToolBadge } from "./ToolBadge";
 
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
-/** Section « Compétences » : outils, savoir-être, langues et formations. */
+/**
+ * Section « Mes compétences en action » : chiffres clés, 4 axes de compétences
+ * reliés aux expériences et réalisations (data/skills.ts), puis outils,
+ * savoir-être, langues et formations.
+ */
 export function Skills() {
   return (
     <Section tone="sand" aria-labelledby="competences-titre" className="overflow-x-clip">
@@ -15,11 +21,85 @@ export function Skills() {
         <div className="reveal flex flex-col gap-4">
           <Eyebrow>Savoir-faire & savoir-être</Eyebrow>
           <Heading id="competences-titre" size="display-l" underline>
-            Compétences
+            Mes compétences en action
           </Heading>
         </div>
 
-        <div className="grid gap-16 lg:grid-cols-12">
+        {/* Chiffres clés, repris des réalisations */}
+        <dl className="reveal-zoom tone-inverse relative grid grid-cols-2 gap-x-6 gap-y-8 overflow-clip rounded-xl bg-forest p-6 text-ink shadow-lift sm:p-8 lg:grid-cols-4">
+          {skillStats.map((stat) => (
+            <div key={`${stat.project.slug}-${stat.label}`} className="flex flex-col gap-1">
+              <dt className="order-2 text-small text-ink-muted">
+                {stat.label}
+                <Link
+                  href={`/realisations#${stat.project.slug}`}
+                  className="mt-1 block text-caption font-medium tracking-normal text-sage underline decoration-sage/40 underline-offset-2 hover:decoration-sage"
+                >
+                  {stat.project.title}
+                  <span className="sr-only"> : voir la réalisation</span>
+                </Link>
+              </dt>
+              <dd className="order-1 font-display text-[clamp(1.9rem,1.4rem+1.6vw,2.75rem)] leading-none font-extrabold whitespace-nowrap text-heading">
+                {stat.value}
+              </dd>
+            </div>
+          ))}
+        </dl>
+
+        {/* Les 4 axes : compétences et preuves concrètes */}
+        <ol className="grid gap-6 lg:grid-cols-2">
+          {skillAxes.map((axis) => (
+            <li
+              key={axis.id}
+              id={axis.id}
+              aria-labelledby={`${axis.id}-titre`}
+              className="reveal-card flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-5 rounded-xl bg-cream p-6 shadow-soft ring-1 ring-line sm:p-8"
+            >
+              <div className="flex items-baseline gap-4">
+                <span aria-hidden="true" className="font-display text-display-m leading-none font-extrabold text-sage">
+                  {axis.number}
+                </span>
+                <h3 id={`${axis.id}-titre`} className="font-display text-title font-bold text-heading">
+                  {axis.title}
+                </h3>
+              </div>
+              <ul aria-label={`Compétences : ${axis.title}`} className="flex flex-wrap gap-2">
+                {axis.skills.map((skill) => (
+                  <li key={skill} className="rounded-full bg-sage px-3 py-1 text-small text-forest">
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-auto flex flex-col gap-3 border-t border-line pt-4">
+                <p className="text-caption font-medium uppercase text-ink-muted">Où je l’ai mis en pratique</p>
+                <ul className="flex flex-col gap-2">
+                  {axis.proofs.map((raw) => {
+                    const proof = resolveProof(raw);
+                    return (
+                      <li key={`${proof.type}-${proof.slug}`}>
+                        <Link
+                          href={proof.href}
+                          className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
+                        >
+                          <span aria-hidden="true" className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1">
+                            →
+                          </span>
+                          <span>
+                            <span className="font-medium text-forest">{proof.label}</span>
+                            {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
+                            <span className="text-ink-muted"> · {proof.page}</span>
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div className="grid gap-12 border-t border-line-strong pt-12 lg:grid-cols-12">
           <div className="flex flex-col gap-6 lg:col-span-7">
             <Heading as="h3" size="title">
               Outils
