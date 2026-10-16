@@ -35,7 +35,7 @@ export const skillAxes: SkillAxis[] = [
     title: "Organiser des événements internes et externes",
     skills: [
       "Organisation d’événements de 60 à 300 personnes",
-      "Séminaires et plénières",
+      "Séminaires, plénières, webinaires, formations, assemblées générales et salons",
       "Recherche et coordination des lieux, traiteurs et prestataires",
       "Animations et temps forts (Halloween, Noël, Octobre rose)",
       "Logistique et gestion des imprévus le jour J",
