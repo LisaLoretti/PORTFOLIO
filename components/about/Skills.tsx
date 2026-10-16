@@ -4,13 +4,13 @@ import { Section } from "@/components/layout/Section";
 import { Eyebrow, Heading } from "@/components/ui/Typography";
 import Link from "next/link";
 import { languages, softSkills, tools, trainings } from "@/data/profile";
-import { resolveProof, skillAxes, skillStats } from "@/data/skills";
+import { resolveProof, skillAxes } from "@/data/skills";
 import { ToolBadge } from "./ToolBadge";
 
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 /**
- * Section « Mes compétences en action » : chiffres clés, 4 axes de compétences
+ * Section « Mes compétences en action » : 4 axes de compétences
  * reliés aux expériences et réalisations (data/skills.ts), puis outils,
  * savoir-être, langues et formations.
  */
@@ -24,27 +24,6 @@ export function Skills() {
             Mes compétences en action
           </Heading>
         </div>
-
-        {/* Chiffres clés, repris des réalisations */}
-        <dl className="reveal-zoom tone-inverse relative grid grid-cols-2 gap-x-6 gap-y-8 overflow-clip rounded-xl bg-forest p-6 text-ink shadow-lift sm:p-8 lg:grid-cols-4">
-          {skillStats.map((stat) => (
-            <div key={`${stat.project.slug}-${stat.label}`} className="flex flex-col gap-1">
-              <dt className="order-2 text-small text-ink-muted">
-                {stat.label}
-                <Link
-                  href={`/realisations#${stat.project.slug}`}
-                  className="mt-1 block text-caption font-medium tracking-normal text-sage underline decoration-sage/40 underline-offset-2 hover:decoration-sage"
-                >
-                  {stat.project.title}
-                  <span className="sr-only"> : voir la réalisation</span>
-                </Link>
-              </dt>
-              <dd className="order-1 font-display text-[clamp(1.9rem,1.4rem+1.6vw,2.75rem)] leading-none font-extrabold whitespace-nowrap text-heading">
-                {stat.value}
-              </dd>
-            </div>
-          ))}
-        </dl>
 
         {/* Les 4 axes : compétences et preuves concrètes */}
         <ol className="grid gap-6 lg:grid-cols-2">

@@ -85,28 +85,7 @@ export default function HomePage() {
         items={["Événementiel", "Communication", "Gestion de projets", "Coordination", "Créer du lien", "Rassembler"]}
       />
 
-      {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
-      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-8 self-start lg:col-span-4 lg:[@media(min-height:46rem)]:sticky lg:[@media(min-height:46rem)]:top-[calc(var(--spacing-header)+2rem)]">
-            <div className="reveal flex flex-col gap-4">
-              <Eyebrow>Formation & expériences</Eyebrow>
-              <Heading id="parcours-titre" size="display-l" underline>
-                Mon parcours
-              </Heading>
-            </div>
-            <ParcoursSummary steps={parcours} />
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <Timeline steps={parcours} />
-            <div className="reveal mt-12 md:ml-6">
-              <Button href="/parcours" arrow>
-                Voir mon parcours détaillé
-              </Button>
-            </div>
-          </div>
-        </Container>
-      </Section>
+      <Skills />
 
       <Section aria-labelledby="realisations-titre">
         <Container className="flex flex-col gap-12">
@@ -129,7 +108,28 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Skills />
+      {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
+      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
+        <Container className="grid gap-12 lg:grid-cols-12">
+          <div className="flex flex-col gap-8 self-start lg:col-span-4 lg:[@media(min-height:46rem)]:sticky lg:[@media(min-height:46rem)]:top-[calc(var(--spacing-header)+2rem)]">
+            <div className="reveal flex flex-col gap-4">
+              <Eyebrow>Formation & expériences</Eyebrow>
+              <Heading id="parcours-titre" size="display-l" underline>
+                Mon parcours
+              </Heading>
+            </div>
+            <ParcoursSummary steps={parcours} />
+          </div>
+          <div className="lg:col-span-7 lg:col-start-6">
+            <Timeline steps={parcours} />
+            <div className="reveal mt-12 md:ml-6">
+              <Button href="/parcours" arrow>
+                Voir mon parcours détaillé
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
 
       <ContactBand />
     </>
