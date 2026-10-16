@@ -78,7 +78,7 @@ export const skillAxes: SkillAxis[] = [
         detail: "plan de communication marque employeur, newsletters, optimisation de l’intranet",
       },
       { type: "realisation", slug: "tournee-membres", detail: "21 vidéos, +30\u00a0000 vues" },
-      { type: "realisation", slug: "conseils-de-l-office" },
+      { type: "realisation", slug: "conseils-de-l-office", detail: "14 vidéos sur les bénéfices et bienfaits des séjours" },
       { type: "autre", label: "Ce portfolio", detail: "conçu et développé avec Claude Code" },
     ],
   },
