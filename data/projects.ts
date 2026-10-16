@@ -51,6 +51,8 @@ export type Project = {
     youtubeId: string;
     credit?: string;
   };
+  /** Couverture illustrée de la carte (accueil), à la place de la miniature YouTube. */
+  cardCover?: "phones";
   /** Exemples de vidéos verticales (Shorts), affichés dans des téléphones. */
   shorts?: { youtubeId: string }[];
 };
@@ -265,6 +267,7 @@ export const projects: Project[] = [
       { value: "5", label: "plateformes de diffusion" },
     ],
     skills: ["Communication digitale", "Stratégie éditoriale", "Montage vidéo", "Réseaux sociaux", "Marketing"],
+    cardCover: "phones",
     shorts: [{ youtubeId: "d1-C1g3Ek0U" }, { youtubeId: "jtmo_AyEM0c" }],
   },
 ];
