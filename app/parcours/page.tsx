@@ -14,11 +14,10 @@ export const metadata: Metadata = {
 
 // Étapes présentées sur cette page (le freelance n'y est pas détaillé)
 const pageSteps = parcours.filter((step) => step.kind !== "Freelance");
-// Du plus récent au plus ancien
-const recentFirst = [...pageSteps].reverse();
+// Étapes déjà classées du plus récent au plus ancien dans les données
 const groups = [
-  { id: "experiences", title: "Expériences", steps: recentFirst.filter((step) => step.kind !== "Formation") },
-  { id: "formations", title: "Formations", steps: recentFirst.filter((step) => step.kind === "Formation") },
+  { id: "experiences", title: "Expériences", steps: pageSteps.filter((step) => step.kind !== "Formation") },
+  { id: "formations", title: "Formations", steps: pageSteps.filter((step) => step.kind === "Formation") },
 ];
 
 export default function ParcoursPage() {
