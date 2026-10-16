@@ -107,7 +107,7 @@ export default function HomePage() {
         <Container className="flex flex-col gap-12">
           <div className="reveal flex flex-wrap items-end justify-between gap-6">
             <div className="flex flex-col gap-4">
-              <Eyebrow>Réalisations</Eyebrow>
+              <Eyebrow>Réalisations en événementiel et en communication</Eyebrow>
               <Heading id="realisations-titre" size="display-l" underline>
                 Quelques réalisations
               </Heading>
