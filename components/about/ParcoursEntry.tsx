@@ -1,7 +1,9 @@
 import Image from "next/image";
 import type { ParcoursStep } from "@/data/parcours";
 import { cn } from "@/lib/cn";
+import { axesFor } from "@/data/skills";
 import { ParcoursGlyph, kindTheme } from "./ParcoursIcon";
+import { SkillAxisTags } from "./SkillAxisTags";
 
 type ParcoursEntryProps = {
   step: ParcoursStep;
@@ -109,6 +111,7 @@ export function ParcoursEntry({ step, index, total, surface = "cream" }: Parcour
         <h3 id={`${slug}-titre`} className="reveal max-w-[22ch] font-display hyphens-auto text-display-m font-bold text-heading">
           {title}
         </h3>
+        <SkillAxisTags axes={axesFor("parcours", slug)} className="-mt-4" />
 
         {missions && missions.length > 0 ? (
           <div className="grid gap-10">

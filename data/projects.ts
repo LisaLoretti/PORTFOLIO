@@ -37,8 +37,6 @@ export type Project = {
   roles?: ProjectRole[];
   /** Résultats chiffrés. */
   figures?: ProjectFigure[];
-  /** Compétences mobilisées, affichées en étiquettes. */
-  skills?: string[];
   /** Photos du projet, dans l'ordre de la mosaïque (mise en page selon leur nombre). */
   gallery?: ProjectPhoto[];
   image?: {
@@ -91,7 +89,6 @@ export const projects: Project[] = [
       { value: "50", label: "participants" },
       { value: "20", label: "partenaires" },
     ],
-    skills: ["Gestion de projets", "Événementiel", "Animation", "Communication", "Création de contenus"],
     gallery: [
       {
         src: "/images/projects/assemblee-generale-2026/oscars-remise-prix.webp",
@@ -166,7 +163,6 @@ export const projects: Project[] = [
       { value: "14", label: "organismes labellisés" },
       { value: "+1 000", label: "visiteurs" },
     ],
-    skills: ["Scénographie", "Gestion de projets", "Communication visuelle", "Programmation", "Coordination"],
     gallery: [
       {
         src: "/images/projects/village-sejours-linguistiques/espace-declics-atelier.webp",
@@ -231,7 +227,6 @@ export const projects: Project[] = [
       { value: "21", label: "vidéos réalisées" },
       { value: "+30 000", label: "vues" },
     ],
-    skills: ["Gestion de projets", "Relations partenaires", "Interview", "Création vidéo", "Réseaux sociaux"],
     shorts: [{ youtubeId: "Bbk5Sh3JHY4" }, { youtubeId: "bh07cWYqAVM" }],
   },
   {
@@ -266,7 +261,6 @@ export const projects: Project[] = [
       { value: "14", label: "vidéos réalisées" },
       { value: "5", label: "plateformes de diffusion" },
     ],
-    skills: ["Communication digitale", "Stratégie éditoriale", "Montage vidéo", "Réseaux sociaux", "Marketing"],
     cardCover: "phones",
     shorts: [{ youtubeId: "d1-C1g3Ek0U" }, { youtubeId: "jtmo_AyEM0c" }],
   },
