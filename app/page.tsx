@@ -13,6 +13,11 @@ import { parcours } from "@/data/parcours";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 
+// Réalisations mises en avant : une en événementiel, une en communication
+const featuredProjects = ["assemblee-generale-2026", "conseils-de-l-office"].flatMap((slug) =>
+  projects.filter((project) => project.slug === slug),
+);
+
 export default function HomePage() {
   return (
     <>
@@ -117,7 +122,7 @@ export default function HomePage() {
             </Button>
           </div>
           <div className="grid gap-x-10 gap-y-16 md:grid-cols-2">
-            {projects.slice(0, 2).map((project, index) => (
+            {featuredProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
             ))}
           </div>
