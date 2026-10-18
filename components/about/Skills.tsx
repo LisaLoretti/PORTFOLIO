@@ -25,7 +25,7 @@ export function Skills() {
           </Heading>
         </div>
 
-        {/* Les 4 domaines : présentation, sous-catégories dépliables et preuves concrètes */}
+        {/* Les 4 domaines : en-tête, sous-catégories dépliables et preuves concrètes */}
         <ol className="flex flex-col gap-6 lg:gap-8">
           {skillAxes.map((axis) => {
             const count = axis.groups.reduce((total, group) => total + group.skills.length, 0);
@@ -34,68 +34,34 @@ export function Skills() {
                 key={axis.id}
                 id={axis.id}
                 aria-labelledby={`${axis.id}-titre`}
-                className="reveal-card grid grid-cols-1 scroll-mt-[calc(var(--spacing-header)+2rem)] gap-8 rounded-xl bg-cream p-6 shadow-soft ring-1 ring-line sm:p-8 lg:grid-cols-12 lg:gap-12 lg:p-10"
+                className="reveal-card flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-6 rounded-xl bg-cream p-6 shadow-soft ring-1 ring-line sm:p-8 lg:gap-8 lg:p-10"
               >
-                {/* Présentation du domaine */}
-                <div className="flex flex-col gap-5 lg:col-span-5">
-                  <span aria-hidden="true" className="font-display text-[clamp(3rem,2.2rem+3vw,5rem)] leading-none font-extrabold text-sage">
-                    {axis.number}
-                  </span>
-                  <h3 id={`${axis.id}-titre`} className="font-display text-[clamp(1.6rem,1.2rem+1.2vw,2.25rem)] leading-tight font-bold text-heading">
-                    {axis.title}
-                  </h3>
-                  <p className="max-w-prose text-body text-ink-muted">{axis.intro}</p>
+                {/* En-tête du domaine */}
+                <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+                  <div className="flex min-w-0 items-baseline gap-4 sm:gap-6">
+                    <span
+                      aria-hidden="true"
+                      className="font-display text-[clamp(2.75rem,2rem+2.5vw,4.5rem)] leading-none font-extrabold text-sage"
+                    >
+                      {axis.number}
+                    </span>
+                    <h3
+                      id={`${axis.id}-titre`}
+                      className="min-w-0 font-display text-[clamp(1.5rem,1.15rem+1.1vw,2.25rem)] leading-tight font-bold hyphens-auto text-heading"
+                    >
+                      {axis.title}
+                    </h3>
+                  </div>
                   <p className="text-caption font-medium uppercase text-olive">
                     {axis.groups.length} sous-catégories · {count} compétences
                   </p>
-
-                  {axis.proofs.length > 0 && (
-                    <div className="mt-2 flex flex-col gap-3 border-t border-line pt-5">
-                      <p className="text-caption font-medium uppercase text-ink-muted">Quelques réalisations</p>
-                      <ul className="flex flex-col gap-2">
-                        {axis.proofs.map((raw) => {
-                          const proof = resolveProof(raw);
-                          const content = (
-                            <>
-                              <span
-                                aria-hidden="true"
-                                className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1"
-                              >
-                                →
-                              </span>
-                              <span>
-                                <span className="font-medium text-forest">{proof.label}</span>
-                                {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
-                                {proof.page && <span className="text-ink-muted"> · {proof.page}</span>}
-                              </span>
-                            </>
-                          );
-                          return (
-                            <li key={proof.key}>
-                              {proof.href ? (
-                                <Link
-                                  href={proof.href}
-                                  className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
-                                >
-                                  {content}
-                                </Link>
-                              ) : (
-                                <p className="-mx-2 flex items-baseline gap-2 px-2 py-1 text-small">{content}</p>
-                              )}
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  )}
                 </div>
 
                 {/* Sous-catégories : accordéons natifs (clavier : Tab puis Entrée ou Espace) */}
-                <div className="grid content-start items-start gap-3 sm:grid-cols-2 lg:col-span-7">
-                  {axis.groups.map((group, groupIndex) => (
+                <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {axis.groups.map((group) => (
                     <details
                       key={group.title}
-                      open={groupIndex === 0}
                       className="group/sub rounded-lg bg-sand/60 ring-1 ring-line transition-[background-color,box-shadow] duration-(--duration-base) ease-smooth open:bg-sand open:shadow-soft"
                     >
                       <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-3 marker:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest [&::-webkit-details-marker]:hidden">
@@ -123,6 +89,46 @@ export function Skills() {
                     </details>
                   ))}
                 </div>
+
+                {axis.proofs.length > 0 && (
+                  <div className="flex flex-col gap-3 border-t border-line pt-5">
+                    <p className="text-caption font-medium uppercase text-ink-muted">Quelques réalisations</p>
+                    <ul className="grid gap-x-8 gap-y-1 md:grid-cols-2">
+                      {axis.proofs.map((raw) => {
+                        const proof = resolveProof(raw);
+                        const content = (
+                          <>
+                            <span
+                              aria-hidden="true"
+                              className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1"
+                            >
+                              →
+                            </span>
+                            <span>
+                              <span className="font-medium text-forest">{proof.label}</span>
+                              {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
+                              {proof.page && <span className="text-ink-muted"> · {proof.page}</span>}
+                            </span>
+                          </>
+                        );
+                        return (
+                          <li key={proof.key}>
+                            {proof.href ? (
+                              <Link
+                                href={proof.href}
+                                className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
+                              >
+                                {content}
+                              </Link>
+                            ) : (
+                              <p className="-mx-2 flex items-baseline gap-2 px-2 py-1 text-small">{content}</p>
+                            )}
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                )}
               </li>
             );
           })}
