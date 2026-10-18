@@ -34,7 +34,7 @@ export type SkillAxis = {
   proofs: SkillProof[];
 };
 
-/** Les 4 domaines de compétences : sous-catégories, et preuves reliées au parcours et aux réalisations. */
+/** Les domaines de compétences : sous-catégories, et preuves reliées au parcours et aux réalisations. */
 export const skillAxes: SkillAxis[] = [
   {
     id: "axe-evenements",
@@ -100,7 +100,7 @@ export const skillAxes: SkillAxis[] = [
   {
     id: "axe-communication",
     number: "02",
-    title: "Concevoir et déployer des actions de communication",
+    title: "Concevoir et déployer des actions de communication et marketing",
     groups: [
       {
         title: "Stratégie et planification",
@@ -159,13 +159,15 @@ export const skillAxes: SkillAxis[] = [
         ],
       },
       {
-        title: "Gestion de projets de communication",
+        title: "Stratégie marketing",
         skills: [
-          "Coordination des actions de communication",
-          "Gestion des plannings et des priorités",
-          "Coordination des équipes et prestataires",
-          "Suivi de production des supports",
-          "Analyse des performances et bilans",
+          "Analyse des marchés et des tendances",
+          "Identification des cibles et personas",
+          "Élaboration de plans d’actions marketing",
+          "Positionnement et valorisation des offres",
+          "Création de campagnes d’email marketing",
+          "Recherche et développement de partenariats",
+          "Définition et suivi des indicateurs de performance (KPI)",
         ],
       },
     ],
@@ -181,82 +183,8 @@ export const skillAxes: SkillAxis[] = [
     ],
   },
   {
-    id: "axe-marketing",
-    number: "03",
-    title: "Concevoir et déployer des actions marketing",
-    groups: [
-      {
-        title: "Stratégie et analyse marketing",
-        skills: [
-          "Analyse des marchés et des tendances",
-          "Veille concurrentielle et sectorielle",
-          "Identification des cibles et personas",
-          "Analyse des besoins et comportements clients",
-          "Élaboration de plans d’actions marketing",
-          "Positionnement et valorisation des offres",
-        ],
-      },
-      {
-        title: "Marketing opérationnel",
-        skills: [
-          "Déploiement d’actions marketing",
-          "Organisation d’opérations promotionnelles",
-          "Création de supports marketing et commerciaux",
-          "Coordination des campagnes multicanales",
-          "Mise en avant de produits et services",
-          "Coordination des prestataires et partenaires",
-        ],
-      },
-      {
-        title: "Marketing digital",
-        skills: [
-          "Déploiement de campagnes digitales",
-          "Création de campagnes d’email marketing",
-          "Marketing sur les réseaux sociaux",
-          "Création de contenus promotionnels",
-          "Optimisation des contenus web (SEO)",
-          "Suivi des performances digitales",
-        ],
-      },
-      {
-        title: "Marketing relationnel et fidélisation",
-        skills: [
-          "Gestion de la relation client",
-          "Segmentation des bases de contacts",
-          "Création d’actions de fidélisation",
-          "Personnalisation des communications",
-          "Conception de parcours clients",
-          "Réalisation d’enquêtes de satisfaction",
-        ],
-      },
-      {
-        title: "Marketing événementiel et partenariats",
-        skills: [
-          "Organisation d’opérations marketing événementielles",
-          "Participation aux lancements de produits et services",
-          "Valorisation des marques lors de salons",
-          "Recherche et développement de partenariats",
-          "Coordination des actions promotionnelles",
-          "Création d’expériences de marque",
-        ],
-      },
-      {
-        title: "Analyse et suivi des performances",
-        skills: [
-          "Définition et suivi des indicateurs de performance (KPI)",
-          "Analyse des résultats des campagnes",
-          "Suivi des taux d’ouverture et de clics",
-          "Mesure de l’engagement des publics",
-          "Réalisation de bilans et reportings",
-          "Identification des axes d’amélioration",
-        ],
-      },
-    ],
-    proofs: [],
-  },
-  {
     id: "axe-pilotage",
-    number: "04",
+    number: "03",
     title: "Piloter et coordonner des projets",
     groups: [
       {
