@@ -2,9 +2,9 @@ import type { CSSProperties } from "react";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
 import { Eyebrow, Heading } from "@/components/ui/Typography";
-import Link from "next/link";
 import { languages, softSkills, tools, trainings } from "@/data/profile";
 import { resolveProof, skillAxes } from "@/data/skills";
+import { ProofCard } from "./ProofCard";
 import { ToolBadge } from "./ToolBadge";
 
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
@@ -91,43 +91,21 @@ export function Skills() {
                 </div>
 
                 {axis.proofs.length > 0 && (
-                  <div className="flex flex-col gap-3 border-t border-line pt-5">
-                    <p className="text-caption font-medium uppercase text-ink-muted">Quelques réalisations</p>
-                    <ul className="grid gap-x-8 gap-y-1 md:grid-cols-2">
+                  <section aria-labelledby={`${axis.id}-exemples`} className="flex flex-col gap-4 border-t border-line pt-6">
+                    <h4 id={`${axis.id}-exemples`} className="text-caption font-medium uppercase text-ink-muted">
+                      Quelques réalisations
+                    </h4>
+                    <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,14rem),1fr))] gap-4">
                       {axis.proofs.map((raw) => {
                         const proof = resolveProof(raw);
-                        const content = (
-                          <>
-                            <span
-                              aria-hidden="true"
-                              className="text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1"
-                            >
-                              →
-                            </span>
-                            <span>
-                              <span className="font-medium text-forest">{proof.label}</span>
-                              {proof.detail && <span className="text-ink-muted"> — {proof.detail}</span>}
-                              {proof.page && <span className="text-ink-muted"> · {proof.page}</span>}
-                            </span>
-                          </>
-                        );
                         return (
                           <li key={proof.key}>
-                            {proof.href ? (
-                              <Link
-                                href={proof.href}
-                                className="group/proof -mx-2 flex items-baseline gap-2 rounded-md px-2 py-1 text-small transition-colors duration-(--duration-base) ease-smooth hover:bg-sage/40"
-                              >
-                                {content}
-                              </Link>
-                            ) : (
-                              <p className="-mx-2 flex items-baseline gap-2 px-2 py-1 text-small">{content}</p>
-                            )}
+                            <ProofCard proof={proof} />
                           </li>
                         );
                       })}
                     </ul>
-                  </div>
+                  </section>
                 )}
               </li>
             );

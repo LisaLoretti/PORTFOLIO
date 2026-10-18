@@ -15,8 +15,17 @@ export type SkillProof =
       label?: string;
       /** Précision affichée après le nom. */
       detail?: string;
+      /** Image à la place du visuel par défaut (photo du projet ou logo de la structure). */
+      image?: { src: string; alt: string };
     }
-  | { type: "autre"; label: string; detail?: string };
+  | { type: "autre"; label: string; detail?: string; image?: { src: string; alt: string } };
+
+/** Visuel d'une preuve : photo, logo, illustration de téléphones, ou aucun. */
+export type ProofVisual =
+  | { kind: "photo"; src: string; alt: string; position?: string }
+  | { kind: "logo"; src: string; alt: string }
+  | { kind: "phones" }
+  | { kind: "none" };
 
 export type SkillGroup = {
   title: string;
@@ -272,24 +281,47 @@ function findStep(slug: string) {
 
 /** Preuve prête à afficher : nom, lien et type de page (sans lien pour « autre »). */
 export function resolveProof(proof: SkillProof) {
-  if (proof.type === "autre") return { ...proof, key: `autre-${proof.label}`, href: undefined, page: undefined };
+  const override: ProofVisual | undefined = proof.image ? { kind: "photo", ...proof.image } : undefined;
+  if (proof.type === "autre") {
+    return {
+      ...proof,
+      key: `autre-${proof.label}`,
+      href: undefined,
+      page: undefined,
+      visual: override ?? ({ kind: "none" } as ProofVisual),
+    };
+  }
   if (proof.type === "realisation") {
     const project = findProject(proof.slug);
+    // Visuel par défaut : première photo du projet, sinon illustration pour les vidéos verticales
+    const photo = project.gallery?.[0] ?? project.image;
+    const visual: ProofVisual =
+      override ??
+      (project.gallery?.[0]
+        ? { kind: "photo", src: project.gallery[0].src, alt: project.gallery[0].alt, position: project.gallery[0].position }
+        : project.shorts?.length
+          ? { kind: "phones" }
+          : photo
+            ? { kind: "photo", src: photo.src, alt: photo.alt }
+            : { kind: "none" });
     return {
       ...proof,
       key: `realisation-${proof.slug}`,
       label: proof.label ?? project.title,
       href: `/realisations#${proof.slug}`,
       page: "Réalisations",
+      visual,
     };
   }
   const step = findStep(proof.slug);
+  const logo = step.logos?.[0];
   return {
     ...proof,
     key: `parcours-${proof.slug}`,
     label: proof.label ?? step.organisation ?? step.title,
     href: `/parcours#${proof.slug}`,
     page: "Parcours",
+    visual: override ?? (logo ? ({ kind: "logo", src: logo.src, alt: logo.alt } as ProofVisual) : ({ kind: "none" } as ProofVisual)),
   };
 }
 
