@@ -28,8 +28,6 @@ export type SkillAxis = {
   id: string;
   number: string;
   title: string;
-  /** Court texte d'introduction. */
-  intro: string;
   /** Sous-catégories de compétences. */
   groups: SkillGroup[];
   /** Expériences et réalisations qui illustrent l'axe (facultatif). */
@@ -42,8 +40,6 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-evenements",
     number: "01",
     title: "Organiser des événements internes et externes",
-    intro:
-      "De la conception à la réalisation, j’organise et coordonne des événements réunissant de 60 à 300 participants, en veillant à leur bon déroulement et à l’expérience des participants.",
     groups: [
       {
         title: "Conception et planification",
@@ -105,8 +101,6 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-communication",
     number: "02",
     title: "Concevoir et déployer des actions de communication",
-    intro:
-      "De la stratégie à la création de contenus, je contribue à développer la visibilité des projets, à renforcer l’image de marque et à transmettre des messages adaptés à chaque public.",
     groups: [
       {
         title: "Stratégie et planification",
@@ -190,8 +184,6 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-marketing",
     number: "03",
     title: "Concevoir et déployer des actions marketing",
-    intro:
-      "De l’analyse des besoins à la mise en œuvre d’actions opérationnelles, je participe à la valorisation des offres, au développement de la notoriété et à l’engagement des publics.",
     groups: [
       {
         title: "Stratégie et analyse marketing",
@@ -266,8 +258,6 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-pilotage",
     number: "04",
     title: "Piloter et coordonner des projets",
-    intro:
-      "De la définition des objectifs à la réalisation opérationnelle, je pilote et coordonne des projets transversaux en veillant au respect des délais, des ressources et des objectifs fixés.",
     groups: [
       {
         title: "Conception et cadrage de projets",
