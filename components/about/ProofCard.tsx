@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import { PhonesCover } from "@/components/projects/PhonesCover";
 import type { resolveProof } from "@/data/skills";
 
 type Proof = ReturnType<typeof resolveProof>;
@@ -14,24 +13,37 @@ function ProofVisual({ proof }: { proof: Proof }) {
         src={visual.src}
         alt=""
         fill
-        sizes="(min-width: 64rem) 22vw, (min-width: 40rem) 45vw, 100vw"
+        sizes="4.5rem"
         style={{ objectPosition: visual.position }}
-        className="object-cover transition-transform duration-(--duration-slow) ease-smooth group-hover/proof:scale-[1.04]"
+        className="object-cover transition-transform duration-(--duration-slow) ease-smooth group-hover/proof:scale-110"
       />
     );
   }
   if (visual.kind === "logo") {
     return (
-      <span className="absolute inset-0 flex items-center justify-center bg-white p-5 sm:p-8">
-        <Image src={visual.src} alt="" width={240} height={120} sizes="12rem" className="max-h-full w-auto max-w-[60%] object-contain sm:max-w-[70%]" />
+      <span className="absolute inset-0 flex items-center justify-center bg-white p-2">
+        <Image src={visual.src} alt="" width={240} height={120} sizes="4.5rem" className="max-h-full w-auto max-w-full object-contain" />
       </span>
     );
   }
-  if (visual.kind === "phones") return <PhonesCover />;
+  // Séries de vidéos : téléphone avec bouton lecture
+  if (visual.kind === "phones") {
+    return (
+      <span className="absolute inset-0 flex items-center justify-center bg-forest">
+        <span className="flex h-[70%] aspect-9/16 items-center justify-center rounded-md border-2 border-charcoal bg-cream">
+          <span className="flex size-5 items-center justify-center rounded-full bg-forest text-cream">
+            <svg aria-hidden="true" viewBox="0 0 16 16" className="size-2.5 translate-x-px fill-current">
+              <path d="M4 2.5v11l9-5.5-9-5.5Z" />
+            </svg>
+          </span>
+        </span>
+      </span>
+    );
+  }
   // Sans visuel : pictogramme « code » sur fond vert forêt
   return (
     <span className="absolute inset-0 flex items-center justify-center bg-forest text-sage">
-      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="size-8 sm:size-12">
+      <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" className="size-7">
         <path d="m8 8-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14" />
       </svg>
     </span>
@@ -39,22 +51,22 @@ function ProofVisual({ proof }: { proof: Proof }) {
 }
 
 /**
- * Exemple concret d'une compétence : visuel, nom et précision. Toute la carte
- * est cliquable quand l'exemple a une page dédiée (Parcours ou Réalisations).
+ * Exemple concret d'une compétence, en ligne compacte : vignette à gauche,
+ * nom et précision à droite. Toute la ligne est cliquable quand l'exemple a
+ * une page dédiée (Parcours ou Réalisations).
  */
 export function ProofCard({ proof }: { proof: Proof }) {
   return (
-    <article className="group/proof relative flex h-full flex-col overflow-clip rounded-lg bg-sand/60 ring-1 ring-line transition-[translate,box-shadow] duration-(--duration-base) ease-smooth hover:-translate-y-1 hover:shadow-soft">
-      {/* Bandeau plus bas sur mobile pour garder des cartes compactes */}
-      <div aria-hidden="true" className="relative aspect-[5/2] overflow-clip bg-sage sm:aspect-video">
+    <article className="group/proof relative flex h-full items-center gap-4 rounded-lg p-2 transition-colors duration-(--duration-base) ease-smooth hover:bg-sand">
+      <div aria-hidden="true" className="relative size-16 shrink-0 overflow-clip rounded-md bg-sage ring-1 ring-line sm:size-[4.5rem]">
         <ProofVisual proof={proof} />
       </div>
-      <div className="flex min-w-0 flex-1 flex-col gap-1.5 p-4">
-        <h5 className="font-display text-body font-bold text-heading">
+      <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+        <h5 className="font-display text-small font-bold text-heading">
           {proof.href ? (
             <Link
               href={proof.href}
-              className="rounded-sm after:absolute after:inset-0 after:content-[''] focus-visible:outline-none"
+              className="rounded-sm after:absolute after:inset-0 after:rounded-lg after:content-[''] focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-forest"
             >
               {proof.label}
               <span className="sr-only"> : voir sur la page {proof.page}</span>
@@ -63,16 +75,16 @@ export function ProofCard({ proof }: { proof: Proof }) {
             proof.label
           )}
         </h5>
-        {proof.detail && <p className="text-small text-ink-muted">{proof.detail}</p>}
-        {proof.href && (
-          <span aria-hidden="true" className="mt-auto pt-2 text-caption font-medium tracking-normal text-olive">
-            Voir sur la page {proof.page}{" "}
-            <span className="inline-block transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1">
-              →
-            </span>
-          </span>
-        )}
+        {proof.detail && <p className="text-small leading-snug text-ink-muted">{proof.detail}</p>}
       </div>
+      {proof.href && (
+        <span
+          aria-hidden="true"
+          className="shrink-0 pr-1 text-olive transition-transform duration-(--duration-base) ease-smooth group-hover/proof:translate-x-1"
+        >
+          →
+        </span>
+      )}
     </article>
   );
 }
