@@ -18,28 +18,70 @@ export type SkillProof =
     }
   | { type: "autre"; label: string; detail?: string };
 
+export type SkillGroup = {
+  title: string;
+  skills: string[];
+};
+
 export type SkillAxis = {
   /** Ancre de l'axe sur l'accueil (/#id). */
   id: string;
   number: string;
   title: string;
-  skills: string[];
+  /** Court texte d'introduction. */
+  intro: string;
+  /** Sous-catégories de compétences. */
+  groups: SkillGroup[];
+  /** Expériences et réalisations qui illustrent l'axe (facultatif). */
   proofs: SkillProof[];
 };
 
-/** Les 4 axes de compétences, reliés aux expériences et aux réalisations qui les illustrent. */
+/** Les 4 domaines de compétences : sous-catégories, et preuves reliées au parcours et aux réalisations. */
 export const skillAxes: SkillAxis[] = [
   {
     id: "axe-evenements",
     number: "01",
     title: "Organiser des événements internes et externes",
-    skills: [
-      "Organisation d’événements de 60 à 300 personnes",
-      "Séminaires, plénières, webinaires, formations, assemblées générales et salons",
-      "Recherche et coordination des lieux, traiteurs et prestataires",
-      "Animations et temps forts (Halloween, Noël, Octobre rose)",
-      "Logistique et gestion des imprévus le jour J",
-      "Bilans post-événement",
+    intro:
+      "De la conception à la réalisation, j’organise et coordonne des événements réunissant de 60 à 300 participants, en veillant à leur bon déroulement et à l’expérience des participants.",
+    groups: [
+      {
+        title: "Conception et planification",
+        skills: [
+          "Organisation de séminaires, plénières et assemblées générales",
+          "Organisation de salons, webinaires et formations",
+          "Élaboration des programmes et rétroplannings",
+          "Planification et coordination des différentes étapes",
+        ],
+      },
+      {
+        title: "Coordination et logistique",
+        skills: [
+          "Recherche et sélection de lieux",
+          "Recherche et coordination des traiteurs et prestataires",
+          "Gestion des inscriptions et des participants",
+          "Organisation logistique et suivi opérationnel",
+          "Coordination des intervenants et partenaires",
+        ],
+      },
+      {
+        title: "Animation et expérience participant",
+        skills: [
+          "Conception et coordination d’animations",
+          "Organisation de temps forts : Halloween, Noël, Octobre rose",
+          "Création de moments fédérateurs",
+          "Accueil et accompagnement des participants",
+        ],
+      },
+      {
+        title: "Pilotage et bilan",
+        skills: [
+          "Supervision du déroulement le jour J",
+          "Gestion des imprévus et adaptation en temps réel",
+          "Coordination des équipes et prestataires sur place",
+          "Réalisation des bilans post-événement",
+        ],
+      },
     ],
     proofs: [
       {
@@ -62,14 +104,76 @@ export const skillAxes: SkillAxis[] = [
   {
     id: "axe-communication",
     number: "02",
-    title: "Communiquer en interne et en externe",
-    skills: [
-      "Newsletters",
-      "Plans de communication et marque employeur",
-      "Supports et visuels (écrans, signalétique, programmes)",
-      "Intranet\u00a0: contenus et architecture",
-      "Réseaux sociaux et vidéo",
-      "Utilisation de l’IA pour créer et produire",
+    title: "Concevoir et déployer des actions de communication",
+    intro:
+      "De la stratégie à la création de contenus, je contribue à développer la visibilité des projets, à renforcer l’image de marque et à transmettre des messages adaptés à chaque public.",
+    groups: [
+      {
+        title: "Stratégie et planification",
+        skills: [
+          "Élaboration de plans de communication",
+          "Identification des cibles et messages clés",
+          "Création de calendriers éditoriaux",
+          "Déploiement de campagnes de communication",
+          "Veille concurrentielle et sectorielle",
+          "Analyse des résultats des actions de communication",
+        ],
+      },
+      {
+        title: "Communication digitale",
+        skills: [
+          "Animation et gestion des réseaux sociaux",
+          "Community management",
+          "Création et programmation de publications",
+          "Rédaction et mise à jour de contenus web",
+          "Conception de newsletters et emailings",
+          "Suivi des statistiques et de l’engagement",
+        ],
+      },
+      {
+        title: "Création graphique et éditoriale",
+        skills: [
+          "Conception de supports print et digitaux",
+          "Création d’affiches, flyers et brochures",
+          "Création de visuels pour les réseaux sociaux",
+          "Rédaction de contenus éditoriaux",
+          "Déclinaison de chartes graphiques",
+          "Création de présentations professionnelles",
+          "Réalisation et montage de contenus vidéo",
+        ],
+      },
+      {
+        title: "Communication interne",
+        skills: [
+          "Rédaction de communications internes",
+          "Création de newsletters collaborateurs",
+          "Valorisation des projets et réussites internes",
+          "Communication autour des événements d’entreprise",
+          "Création de supports d’information",
+          "Animation des canaux de communication interne",
+        ],
+      },
+      {
+        title: "Communication externe",
+        skills: [
+          "Développement de la visibilité et de la notoriété",
+          "Valorisation de l’image de marque",
+          "Création de supports de communication externe",
+          "Communication auprès des partenaires et publics cibles",
+          "Déploiement de campagnes de sensibilisation",
+          "Communication et promotion événementielle",
+        ],
+      },
+      {
+        title: "Gestion de projets de communication",
+        skills: [
+          "Coordination des actions de communication",
+          "Gestion des plannings et des priorités",
+          "Coordination des équipes et prestataires",
+          "Suivi de production des supports",
+          "Analyse des performances et bilans",
+        ],
+      },
     ],
     proofs: [
       {
@@ -83,71 +187,156 @@ export const skillAxes: SkillAxis[] = [
     ],
   },
   {
-    id: "axe-quotidien",
+    id: "axe-marketing",
     number: "03",
-    title: "Faciliter le quotidien\u00a0: accueil, prestataires et logistique",
-    skills: [
-      "Accueil et conseil",
-      "Ouverture et fermeture d’un lieu",
-      "Suivi et relance des fournisseurs et prestataires",
-      "Gestion des stocks et des fournitures",
-      "Accueil et gestion des appels téléphoniques",
-      "Interlocutrice de référence pour les équipes et les partenaires",
+    title: "Concevoir et déployer des actions marketing",
+    intro:
+      "De l’analyse des besoins à la mise en œuvre d’actions opérationnelles, je participe à la valorisation des offres, au développement de la notoriété et à l’engagement des publics.",
+    groups: [
+      {
+        title: "Stratégie et analyse marketing",
+        skills: [
+          "Analyse des marchés et des tendances",
+          "Veille concurrentielle et sectorielle",
+          "Identification des cibles et personas",
+          "Analyse des besoins et comportements clients",
+          "Élaboration de plans d’actions marketing",
+          "Positionnement et valorisation des offres",
+        ],
+      },
+      {
+        title: "Marketing opérationnel",
+        skills: [
+          "Déploiement d’actions marketing",
+          "Organisation d’opérations promotionnelles",
+          "Création de supports marketing et commerciaux",
+          "Coordination des campagnes multicanales",
+          "Mise en avant de produits et services",
+          "Coordination des prestataires et partenaires",
+        ],
+      },
+      {
+        title: "Marketing digital",
+        skills: [
+          "Déploiement de campagnes digitales",
+          "Création de campagnes d’email marketing",
+          "Marketing sur les réseaux sociaux",
+          "Création de contenus promotionnels",
+          "Optimisation des contenus web (SEO)",
+          "Suivi des performances digitales",
+        ],
+      },
+      {
+        title: "Marketing relationnel et fidélisation",
+        skills: [
+          "Gestion de la relation client",
+          "Segmentation des bases de contacts",
+          "Création d’actions de fidélisation",
+          "Personnalisation des communications",
+          "Conception de parcours clients",
+          "Réalisation d’enquêtes de satisfaction",
+        ],
+      },
+      {
+        title: "Marketing événementiel et partenariats",
+        skills: [
+          "Organisation d’opérations marketing événementielles",
+          "Participation aux lancements de produits et services",
+          "Valorisation des marques lors de salons",
+          "Recherche et développement de partenariats",
+          "Coordination des actions promotionnelles",
+          "Création d’expériences de marque",
+        ],
+      },
+      {
+        title: "Analyse et suivi des performances",
+        skills: [
+          "Définition et suivi des indicateurs de performance (KPI)",
+          "Analyse des résultats des campagnes",
+          "Suivi des taux d’ouverture et de clics",
+          "Mesure de l’engagement des publics",
+          "Réalisation de bilans et reportings",
+          "Identification des axes d’amélioration",
+        ],
+      },
     ],
-    proofs: [
-      {
-        type: "parcours",
-        slug: "etam",
-        detail: "ouverture et fermeture de la boutique, accueil, gestion des stocks (2019 – 2022)",
-      },
-      {
-        type: "parcours",
-        slug: "partenaires-fc",
-        detail: "commandes, stocks, inventaires, suivi des fournisseurs, accueil téléphonique",
-      },
-      {
-        type: "parcours",
-        slug: "ebp-informatique",
-        detail: "présentation et visite des bureaux lors des journées d’intégration",
-      },
-      {
-        type: "realisation",
-        slug: "village-sejours-linguistiques",
-        detail: "coordination du photographe, interface avec Le Figaro Étudiant",
-      },
-    ],
+    proofs: [],
   },
   {
-    id: "axe-collaborateurs",
+    id: "axe-pilotage",
     number: "04",
-    title: "Accueillir et accompagner les collaborateurs",
-    skills: [
-      "Onboarding des alternants (accueil et suivi)",
-      "Animation des journées d’intégration pour l’ensemble des salariés (présentation de l’entreprise, des règles et des avantages, visite des bureaux)",
-      "Conception et mise en place du livret d’accueil",
-      "Supports pour managers et collaborateurs (guide du manager, charte de télétravail)",
-      "Procédures RH simplifiées",
-      "Entretiens et orientation de candidats",
+    title: "Piloter et coordonner des projets",
+    intro:
+      "De la définition des objectifs à la réalisation opérationnelle, je pilote et coordonne des projets transversaux en veillant au respect des délais, des ressources et des objectifs fixés.",
+    groups: [
+      {
+        title: "Conception et cadrage de projets",
+        skills: [
+          "Analyse des besoins et définition des objectifs",
+          "Élaboration de cahiers des charges",
+          "Identification des parties prenantes",
+          "Définition des livrables et des échéances",
+          "Évaluation des ressources nécessaires",
+          "Identification des contraintes et des risques",
+        ],
+      },
+      {
+        title: "Planification et organisation",
+        skills: [
+          "Élaboration de plannings et rétroplannings",
+          "Définition des étapes et priorités",
+          "Répartition et coordination des missions",
+          "Gestion des ressources humaines et matérielles",
+          "Anticipation des besoins et contraintes",
+          "Gestion simultanée de plusieurs projets",
+        ],
+      },
+      {
+        title: "Coordination et management transversal",
+        skills: [
+          "Coordination d’équipes pluridisciplinaires",
+          "Collaboration entre différents services",
+          "Animation de réunions et points d’avancement",
+          "Communication avec les parties prenantes",
+          "Coordination des prestataires et partenaires",
+          "Mobilisation des acteurs autour d’objectifs communs",
+        ],
+      },
+      {
+        title: "Pilotage opérationnel",
+        skills: [
+          "Suivi de l’avancement des projets",
+          "Gestion des délais et des priorités",
+          "Suivi des budgets et des ressources",
+          "Contrôle de la qualité des livrables",
+          "Gestion des imprévus et résolution des problèmes",
+          "Ajustement des actions selon les besoins",
+        ],
+      },
+      {
+        title: "Suivi et évaluation des performances",
+        skills: [
+          "Définition et suivi des indicateurs de performance (KPI)",
+          "Création de tableaux de bord",
+          "Analyse des résultats et des écarts",
+          "Réalisation de reportings et bilans",
+          "Recueil des retours des parties prenantes",
+          "Identification des axes d’amélioration",
+        ],
+      },
+      {
+        title: "Optimisation et amélioration continue",
+        skills: [
+          "Analyse des processus existants",
+          "Identification des leviers d’optimisation",
+          "Mise en place d’actions correctives",
+          "Formalisation de procédures et bonnes pratiques",
+          "Capitalisation sur les retours d’expérience",
+          "Optimisation des méthodes de travail",
+        ],
+      },
     ],
-    proofs: [
-      {
-        type: "parcours",
-        slug: "ebp-informatique",
-        detail:
-          "onboarding des alternants, journées d’intégration, livret d’accueil conçu et mis en place, guide du manager, charte de télétravail, procédures RH simplifiées",
-      },
-      {
-        type: "parcours",
-        slug: "impact-sales-marketing",
-        detail: "entretiens avec des candidats, partenariats avec des écoles",
-      },
-      {
-        type: "parcours",
-        slug: "office-sejours-linguistiques",
-        label: "L’Office",
-        detail: "accompagnement des membres et communication interne",
-      },
-    ],
+    proofs: [],
   },
 ];
 
