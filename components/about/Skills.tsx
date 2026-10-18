@@ -95,7 +95,7 @@ export function Skills() {
                     <h4 id={`${axis.id}-exemples`} className="text-caption font-medium uppercase text-ink-muted">
                       Quelques réalisations
                     </h4>
-                    <ul className="grid grid-cols-[repeat(auto-fill,minmax(min(100%,14rem),1fr))] gap-4">
+                    <ul className="grid gap-x-6 gap-y-2 md:grid-cols-2">
                       {axis.proofs.map((raw) => {
                         const proof = resolveProof(raw);
                         return (
