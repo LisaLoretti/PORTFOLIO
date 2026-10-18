@@ -301,13 +301,6 @@ export const skillAxes: SkillAxis[] = [
     proofs: [
       {
         type: "parcours",
-        slug: "ebp-informatique",
-        label: "Pilotage de la refonte d’un intranet d’entreprise",
-        detail:
-          "Gestion complète d’un projet de refonte d’intranet, de l’identification des besoins à sa mise en ligne. Coordination des parties prenantes, structuration des contenus, suivi des différentes étapes et amélioration de l’expérience utilisateur afin de faciliter l’accès à l’information et la communication interne.",
-      },
-      {
-        type: "parcours",
         slug: "office-sejours-linguistiques",
         label: "Pilotage de la refonte d’un site internet",
         detail:
