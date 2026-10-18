@@ -93,7 +93,7 @@ export function Skills() {
                 {axis.proofs.length > 0 && (
                   <section aria-labelledby={`${axis.id}-exemples`} className="flex flex-col gap-4 border-t border-line pt-6">
                     <h4 id={`${axis.id}-exemples`} className="text-caption font-medium uppercase text-ink-muted">
-                      {axis.proofsTitle ?? "Quelques réalisations"}
+                      Quelques réalisations
                     </h4>
                     <ul className="grid gap-x-6 gap-y-2 md:grid-cols-2">
                       {axis.proofs.map((raw) => {
