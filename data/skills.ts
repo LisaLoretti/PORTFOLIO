@@ -298,7 +298,29 @@ export const skillAxes: SkillAxis[] = [
         ],
       },
     ],
-    proofs: [],
+    proofs: [
+      {
+        type: "parcours",
+        slug: "ebp-informatique",
+        label: "Pilotage de la refonte d’un intranet d’entreprise",
+        detail:
+          "Gestion complète d’un projet de refonte d’intranet, de l’identification des besoins à sa mise en ligne. Coordination des parties prenantes, structuration des contenus, suivi des différentes étapes et amélioration de l’expérience utilisateur afin de faciliter l’accès à l’information et la communication interne.",
+      },
+      {
+        type: "parcours",
+        slug: "office-sejours-linguistiques",
+        label: "Pilotage de la refonte d’un site internet",
+        detail:
+          "Responsabilité du projet de refonte d’un site internet, du cadrage initial à sa mise en œuvre. Définition des besoins, coordination des intervenants, organisation des contenus et suivi des évolutions pour moderniser l’interface, améliorer l’ergonomie et renforcer la visibilité de l’organisation.",
+      },
+      {
+        type: "realisation",
+        slug: "village-sejours-linguistiques",
+        label: "Création du Village des séjours linguistiques — Salon Figaro Étudiant",
+        detail:
+          "Conception et pilotage d’un espace thématique dédié aux séjours linguistiques au sein du Salon Figaro Étudiant. Coordination des organismes participants, identification de leurs besoins et organisation des différentes étapes du projet, de sa préparation à sa réalisation.",
+      },
+    ],
   },
 ];
 
