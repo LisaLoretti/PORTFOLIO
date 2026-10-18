@@ -10,7 +10,7 @@ import { ToolBadge } from "./ToolBadge";
 const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 /**
- * Section « Mes compétences en action » : 4 domaines de compétences
+ * Section « Mes compétences en action » : domaines de compétences
  * (data/skills.ts) avec sous-catégories dépliables et preuves reliées au
  * parcours et aux réalisations, puis outils, savoir-être, langues et formations.
  */
@@ -25,7 +25,7 @@ export function Skills() {
           </Heading>
         </div>
 
-        {/* Les 4 domaines : en-tête, sous-catégories dépliables et preuves concrètes */}
+        {/* Les domaines : en-tête, sous-catégories dépliables et preuves concrètes */}
         <ol className="flex flex-col gap-6 lg:gap-8">
           {skillAxes.map((axis) => {
             const count = axis.groups.reduce((total, group) => total + group.skills.length, 0);
