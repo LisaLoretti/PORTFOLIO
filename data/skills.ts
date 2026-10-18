@@ -39,6 +39,8 @@ export type SkillAxis = {
   title: string;
   /** Sous-catégories de compétences. */
   groups: SkillGroup[];
+  /** Intitulé de la liste des preuves (par défaut « Quelques réalisations »). */
+  proofsTitle?: string;
   /** Expériences et réalisations qui illustrent l'axe (facultatif). */
   proofs: SkillProof[];
 };
@@ -88,21 +90,43 @@ export const skillAxes: SkillAxis[] = [
         ],
       },
     ],
+    proofsTitle: "Quelques réalisations",
     proofs: [
       {
         type: "parcours",
         slug: "ebp-informatique",
-        detail: "journées d’intégration, séminaires, plénières, animations mensuelles",
+        label: "Organisation d’une plénière de 300 personnes",
+        detail: "Organisation et coordination d’un événement interne réunissant 300 collaborateurs.",
       },
       {
-        type: "realisation",
-        slug: "assemblee-generale-2026",
-        detail: "inscriptions, logistique, coordination des temps forts",
+        type: "parcours",
+        slug: "ebp-informatique",
+        label: "Organisation d’un séminaire managers",
+        detail: "Conception et coordination d’un séminaire dédié aux managers et aux échanges professionnels.",
+      },
+      {
+        type: "parcours",
+        slug: "ebp-informatique",
+        label: "Octobre Rose — Sensibilisation en entreprise",
+        detail: "Mise en place d’une action de prévention avec distribution d’un kit à toutes les collaboratrices de l’entreprise.",
+      },
+      {
+        type: "parcours",
+        slug: "ebp-informatique",
+        label: "Noël — Calendrier de l’Avent géant",
+        detail: "Création d’un calendrier de l’Avent géant pour animer la vie interne de l’entreprise.",
       },
       {
         type: "realisation",
         slug: "village-sejours-linguistiques",
-        detail: "coordination et suivi des besoins des organismes",
+        label: "Village des séjours linguistiques — Salon Figaro Étudiant",
+        detail: "Création d’un espace dédié aux organismes de séjours linguistiques au sein du salon.",
+      },
+      {
+        type: "realisation",
+        slug: "assemblee-generale-2026",
+        label: "Assemblées générales — Rouen et Corse",
+        detail: "Organisation et coordination de deux assemblées générales.",
       },
     ],
   },
@@ -180,15 +204,38 @@ export const skillAxes: SkillAxis[] = [
         ],
       },
     ],
+    proofsTitle: "Mes réalisations",
     proofs: [
       {
         type: "parcours",
         slug: "ebp-informatique",
-        detail: "plan de communication marque employeur, newsletters, optimisation de l’intranet",
+        label: "Création du Guide du bon manager",
+        detail: "Conception d’un guide regroupant des conseils et bonnes pratiques destinés aux managers.",
       },
-      { type: "realisation", slug: "tournee-membres", detail: "21 vidéos, +30\u00a0000 vues" },
-      { type: "realisation", slug: "conseils-de-l-office", detail: "14 vidéos sur les bénéfices et bienfaits des séjours" },
-      { type: "autre", label: "Ce portfolio", detail: "conçu et développé avec Claude Code" },
+      {
+        type: "realisation",
+        slug: "conseils-de-l-office",
+        label: "Série de vidéos-conseils",
+        detail: "Création de contenus vidéo pédagogiques pour transmettre des conseils pratiques.",
+      },
+      {
+        type: "parcours",
+        slug: "ebp-informatique",
+        label: "Refonte d’un intranet d’entreprise",
+        detail: "Refonte d’un espace digital interne pour faciliter l’accès à l’information.",
+      },
+      {
+        type: "parcours",
+        slug: "office-sejours-linguistiques",
+        label: "Refonte d’un site internet",
+        detail: "Participation à la modernisation d’un site internet et de ses contenus.",
+      },
+      {
+        type: "realisation",
+        slug: "tournee-membres",
+        label: "Meet Our Members",
+        detail: "Création d’une série de portraits pour valoriser les membres d’une organisation.",
+      },
     ],
   },
   {
@@ -306,7 +353,7 @@ export function resolveProof(proof: SkillProof) {
             : { kind: "none" });
     return {
       ...proof,
-      key: `realisation-${proof.slug}`,
+      key: `realisation-${proof.slug}-${proof.label ?? ""}`,
       label: proof.label ?? project.title,
       href: `/realisations#${proof.slug}`,
       page: "Réalisations",
@@ -317,7 +364,7 @@ export function resolveProof(proof: SkillProof) {
   const logo = step.logos?.[0];
   return {
     ...proof,
-    key: `parcours-${proof.slug}`,
+    key: `parcours-${proof.slug}-${proof.label ?? ""}`,
     label: proof.label ?? step.organisation ?? step.title,
     href: `/parcours#${proof.slug}`,
     page: "Parcours",
