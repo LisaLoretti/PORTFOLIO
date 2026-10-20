@@ -1,7 +1,5 @@
 import Image from "next/image";
 import { Skills } from "@/components/about/Skills";
-import { ParcoursSummary } from "@/components/about/ParcoursSummary";
-import { Timeline } from "@/components/about/Timeline";
 import { ContactBand } from "@/components/layout/ContactBand";
 import { Container } from "@/components/layout/Container";
 import { Section } from "@/components/layout/Section";
@@ -9,7 +7,6 @@ import { ProjectCard } from "@/components/projects/ProjectCard";
 import { Marquee } from "@/components/ui/Marquee";
 import { Button } from "@/components/ui/Button";
 import { Eyebrow, Heading } from "@/components/ui/Typography";
-import { parcours } from "@/data/parcours";
 import { projects } from "@/data/projects";
 import { siteConfig } from "@/data/site";
 
@@ -104,29 +101,6 @@ export default function HomePage() {
             {featuredProjects.map((project, index) => (
               <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
             ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* overflow-x-clip : les textes qui arrivent de la droite ne créent pas de défilement horizontal */}
-      <Section tone="sand" id="parcours" aria-labelledby="parcours-titre" className="overflow-x-clip">
-        <Container className="grid gap-12 lg:grid-cols-12">
-          <div className="flex flex-col gap-8 self-start lg:col-span-4 lg:[@media(min-height:46rem)]:sticky lg:[@media(min-height:46rem)]:top-[calc(var(--spacing-header)+2rem)]">
-            <div className="reveal flex flex-col gap-4">
-              <Eyebrow>Formation & expériences</Eyebrow>
-              <Heading id="parcours-titre" size="display-l" underline>
-                Mon parcours
-              </Heading>
-            </div>
-            <ParcoursSummary steps={parcours} />
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <Timeline steps={parcours} />
-            <div className="reveal mt-12 md:ml-6">
-              <Button href="/parcours" arrow>
-                Voir mon parcours détaillé
-              </Button>
-            </div>
           </div>
         </Container>
       </Section>
