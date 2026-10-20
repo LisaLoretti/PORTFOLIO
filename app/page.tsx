@@ -102,6 +102,11 @@ export default function HomePage() {
               <ProjectCard key={project.slug} project={project} className={index % 2 === 1 ? "md:mt-24" : undefined} />
             ))}
           </div>
+          <div className="reveal flex justify-center">
+            <Button href="/parcours" arrow>
+              Découvrir mon parcours
+            </Button>
+          </div>
         </Container>
       </Section>
 
