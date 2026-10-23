@@ -21,6 +21,8 @@ export const tools: { category: string; items: Tool[] }[] = [
     items: [
       { name: "Microsoft Office", url: "https://www.microsoft.com/fr-fr/microsoft-365", image: { src: "/images/tools/microsoft-office.webp", fit: "contain" }, background: "#FFFFFF" },
       { name: "Google Workspace", url: "https://workspace.google.com/intl/fr/", image: { src: "/images/tools/google.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Microsoft Teams", url: "https://www.microsoft.com/fr-fr/microsoft-teams/group-chat-software", image: { src: "/images/tools/microsoft-teams.webp", fit: "contain" }, background: "#FFFFFF" },
+      { name: "Zoom", url: "https://zoom.us/", icon: "zoom" },
     ],
   },
   {
