@@ -58,13 +58,13 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "assemblee-generale-2026",
-    title: "Assemblée Générale 2026 en Corse",
+    title: "Assemblée générale 2026 en Corse",
     category: "Événementiel · Gestion de projets · Communication",
     initiative: "collective",
     summary:
-      "Organisation d’une Assemblée Générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
+      "Organisation d’une Assemblée générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
     context: [
-      "Organisation d’une Assemblée Générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
+      "Organisation d’une Assemblée générale de trois jours en Corse, réunissant les membres et partenaires de L’Office. L’objectif : associer temps institutionnels, découverte du territoire et expériences collectives pour renforcer les liens entre les participants.",
     ],
     roles: [
       {
@@ -98,7 +98,7 @@ export const projects: Project[] = [
       },
       {
         src: "/images/projects/assemblee-generale-2026/carte-bienvenue.webp",
-        alt: "Carte « Bienvenue à bord » présentant le programme et le quiz de l’Assemblée Générale",
+        alt: "Carte « Bienvenue à bord » présentant le programme et le quiz de l’Assemblée générale",
         caption: "Carte de bienvenue personnalisée",
         position: "50% 65%",
       },
@@ -122,7 +122,7 @@ export const projects: Project[] = [
     ],
     image: {
       src: "/images/projects/assemblee-generale-2026.webp",
-      alt: "Participants de l’Assemblée Générale 2026 applaudissant lors d’un dîner",
+      alt: "Participants de l’Assemblée générale 2026 applaudissant lors d’un dîner",
     },
     video: { youtubeId: "Fz8vciLSsBo" },
   },
@@ -207,7 +207,7 @@ export const projects: Project[] = [
     roles: [
       {
         title: "Conception",
-        text: "Imagination du concept, définition du format et des objectifs de communication.",
+        text: "Création du concept, définition du format et des objectifs de communication.",
       },
       {
         title: "Organisation",

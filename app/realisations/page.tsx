@@ -12,7 +12,7 @@ import { siteConfig } from "@/data/site";
 export const metadata: Metadata = {
   title: "Réalisations",
   description:
-    "Assemblée Générale 2026, Village des séjours linguistiques et éducatifs, tournée à la rencontre des membres et série de vidéos de conseils : quelques réalisations en événementiel et communication chez L’Office.",
+    "Assemblée générale 2026, Village des séjours linguistiques et éducatifs, tournée à la rencontre des membres et série de vidéos de conseils : quelques réalisations en événementiel et communication chez L’Office.",
 };
 
 export default function ProjectsPage() {
@@ -28,7 +28,7 @@ export default function ProjectsPage() {
         eyebrow="Mes réalisations"
         title="De l’idée à la concrétisation"
         titleSize="display-m"
-        intro="Événementiel, communication, marketing et création de contenus : découvrez quatre projets auxquels j’ai contribué, de la réflexion stratégique à leur mise en œuvre opérationnelle."
+        intro="Événementiel, communication, marketing et création de contenus : découvrez quatre projets que j’ai menés ou auxquels j’ai contribué, de la réflexion stratégique à leur mise en œuvre opérationnelle."
         aside={<ProjectIndex projects={projects} />}
       />
 
