@@ -19,7 +19,7 @@ const tiles: Tile[] = [
   { kind: "Alternance", label: ["alternance", "alternances"], layout: "" },
   { kind: "Stage", label: ["stage", "stages"], layout: "" },
   { kind: "Job étudiant", label: ["job étudiant", "jobs étudiants"], layout: "" },
-  { kind: "Freelance", label: ["activité freelance", "activités freelance"], layout: "", art: "sparkle" },
+  { kind: "Freelance", label: ["mission freelance", "missions freelance"], layout: "", art: "sparkle" },
   // Un an en Australie + un an d'études en Irlande et en Espagne (Bachelor)
   { kind: "International", label: ["an à l’étranger", "ans à l’étranger"], layout: "col-span-2", art: "flight", value: 2 },
 ];

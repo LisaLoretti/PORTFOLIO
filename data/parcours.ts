@@ -39,11 +39,37 @@ export const parcours: ParcoursStep[] = [
     period: "Depuis septembre 2026",
   },
   {
+    slug: "freelance-site-web",
+    title: "Cheffe de projet web & contenus",
+    kind: "Freelance",
+    organisation: "L’Office National de Garantie des Séjours Linguistiques et Éducatifs",
+    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office National de Garantie des Séjours Linguistiques et Éducatifs", width: 420, height: 117 }],
+    place: "Paris",
+    period: "2026 – aujourd’hui",
+    missions: [
+      {
+        title: "Refonte du site internet : pilotage de projet",
+        items: [
+          "Coordination du projet, du brief à la mise en ligne, en binôme avec un développeur.",
+          "Rédaction du brief projet et conception de la maquette.",
+          "Définition de la direction artistique et de l’identité visuelle du site.",
+        ],
+      },
+      {
+        title: "Contenus & expérience utilisateur",
+        items: [
+          "Conception et rédaction de l’ensemble des contenus, adaptés aux différents publics (familles, jeunes, organismes, partenaires).",
+          "Refonte de l’arborescence et du parcours utilisateur pour une navigation plus fluide et intuitive.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "office-sejours-linguistiques",
-    title: "Chargée d’événementiel et de communication",
+    title: "Chargée de communication et événementiel",
     kind: "Alternance",
-    organisation: "L’Office national de garantie des séjours linguistiques et éducatifs",
-    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office national de garantie des séjours linguistiques et éducatifs", width: 420, height: 117 }],
+    organisation: "L’Office National de Garantie des Séjours Linguistiques et Éducatifs",
+    logos: [{ src: "/images/parcours/office.webp", alt: "Logo de L’Office National de Garantie des Séjours Linguistiques et Éducatifs", width: 420, height: 117 }],
     place: "Paris",
     period: "2024 – 2026",
     detail: "Stratégie et plans de communication, contenus pour les réseaux sociaux, refonte du site web, et organisation d’événements de A à Z : assemblées générales, Village des séjours linguistiques, tournée « Meet Our Members », webinaires.",
@@ -57,14 +83,14 @@ export const parcours: ParcoursStep[] = [
           "Création et gestion de contenus pour LinkedIn, Instagram, Facebook, TikTok et YouTube.",
           "Représentation de L’Office sur des salons, forums et rencontres institutionnelles, dont des rendez-vous avec des ambassades.",
           "Accompagnement des membres et contribution à la communication interne.",
-          "Pilotage de projets variés : refonte et lancement du nouveau site web (prévu en novembre 2026), campagne de rentrée et planning éditorial des réseaux sociaux construit jusqu’à décembre 2026.",
+          "Pilotage de projets variés : campagne de rentrée et planning éditorial des réseaux sociaux construit jusqu’à décembre 2026.",
         ],
       },
       {
         title: "Événementiel & gestion de projet",
         items: [
           "Gestion d’événements de A à Z, de la conception et du budget à la logistique et à la coordination sur place.",
-          "Organisation d’événements variés : assemblées générales, Village des séjours linguistiques en partenariat avec le salon du Figaro Étudiant, tournée nationale « Meet Our Members », webinaires et formations.",
+          "Organisation d’événements variés : assemblées générales, Village des séjours linguistiques en partenariat avec le Salon Post Bac du Figaro Étudiant, tournée nationale « Meet Our Members », webinaires et formations.",
           "Coordination de multiples parties prenantes, anticipation des besoins et gestion des imprévus sur place.",
           "Conception de l’expérience des participants avant, pendant et après les événements.",
           "Bilans qualitatifs et quantitatifs, analyse des retours des participants et identification de pistes d’amélioration.",
@@ -113,7 +139,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "ebp-informatique",
-    title: "Assistante en événementiel et communication interne",
+    title: "Assistante chargée de communication RH et événementiel",
     kind: "Alternance",
     organisation: "EBP Informatique",
     logos: [{ src: "/images/parcours/ebp.webp", alt: "Logo EBP", width: 360, height: 148 }],
@@ -141,7 +167,7 @@ export const parcours: ParcoursStep[] = [
   },
   {
     slug: "impact-sales-marketing",
-    title: "Assistante en gestion de projets",
+    title: "Assistante chef de projet",
     kind: "Stage",
     organisation: "Impact Sales & Marketing",
     logos: [{ src: "/images/parcours/impact-sales-marketing.webp", alt: "Logo Impact Sales & Marketing", width: 240, height: 239 }],

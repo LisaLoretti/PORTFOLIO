@@ -68,7 +68,7 @@ export const tools: { category: string; items: Tool[] }[] = [
       { name: "Facebook", url: "https://www.facebook.com/", icon: "facebook" },
       { name: "TikTok", url: "https://www.tiktok.com/", icon: "tiktok" },
       { name: "YouTube", url: "https://www.youtube.com/", icon: "youtube" },
-      { name: "Meta", url: "https://www.meta.com/", icon: "meta" },
+      { name: "Meta Business Suite", url: "https://business.facebook.com/", icon: "meta" },
       { name: "Metricool", url: "https://metricool.com/fr/", image: { src: "/images/tools/metricool.webp", fit: "cover" } },
     ],
   },

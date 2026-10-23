@@ -108,7 +108,7 @@ export const skillAxes: SkillAxis[] = [
       {
         type: "realisation",
         slug: "village-sejours-linguistiques",
-        label: "Village des séjours linguistiques — Salon Figaro Étudiant",
+        label: "Village des séjours linguistiques et éducatifs — Salon Post Bac du Figaro Étudiant",
         detail: "Création d’un espace dédié aux organismes de séjours linguistiques au sein du salon.",
       },
       {
@@ -214,9 +214,9 @@ export const skillAxes: SkillAxis[] = [
       },
       {
         type: "parcours",
-        slug: "office-sejours-linguistiques",
+        slug: "freelance-site-web",
         label: "Refonte d’un site internet",
-        detail: "Participation à la modernisation d’un site internet et de ses contenus.",
+        detail: "Pilotage de la refonte d’un site internet : maquette, direction artistique, contenus et parcours utilisateur.",
       },
       {
         type: "realisation",
@@ -301,7 +301,7 @@ export const skillAxes: SkillAxis[] = [
     proofs: [
       {
         type: "parcours",
-        slug: "office-sejours-linguistiques",
+        slug: "freelance-site-web",
         label: "Pilotage de la refonte d’un site internet",
         detail:
           "Responsabilité du projet de refonte d’un site internet, du cadrage initial à sa mise en œuvre. Définition des besoins, coordination des intervenants, organisation des contenus et suivi des évolutions pour moderniser l’interface, améliorer l’ergonomie et renforcer la visibilité de l’organisation.",
@@ -309,9 +309,9 @@ export const skillAxes: SkillAxis[] = [
       {
         type: "realisation",
         slug: "village-sejours-linguistiques",
-        label: "Création du Village des séjours linguistiques — Salon Figaro Étudiant",
+        label: "Création du Village des séjours linguistiques et éducatifs — Salon Post Bac du Figaro Étudiant",
         detail:
-          "Conception et pilotage d’un espace thématique dédié aux séjours linguistiques au sein du Salon Figaro Étudiant. Coordination des organismes participants, identification de leurs besoins et organisation des différentes étapes du projet, de sa préparation à sa réalisation.",
+          "Conception et pilotage d’un espace thématique dédié aux séjours linguistiques au sein du Salon Post Bac du Figaro Étudiant. Coordination des organismes participants, identification de leurs besoins et organisation des différentes étapes du projet, de sa préparation à sa réalisation.",
       },
     ],
   },

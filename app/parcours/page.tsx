@@ -12,8 +12,8 @@ export const metadata: Metadata = {
   description: "Mes expériences en événementiel et communication, et mes formations, en détail.",
 };
 
-// Étapes présentées sur cette page (le freelance n'y est pas détaillé)
-const pageSteps = parcours.filter((step) => step.kind !== "Freelance");
+// Étapes présentées sur cette page (l'activité freelance générale n'y est pas détaillée)
+const pageSteps = parcours.filter((step) => step.slug !== "freelance");
 // Étapes déjà classées du plus récent au plus ancien dans les données
 const groups = [
   { id: "experiences", title: "Expériences", steps: pageSteps.filter((step) => step.kind !== "Formation") },
