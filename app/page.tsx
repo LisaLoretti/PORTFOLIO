@@ -21,7 +21,7 @@ export default function HomePage() {
       <Section spacing="none" className="relative overflow-hidden pt-section-compact pb-section">
         <Container className="grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
           {/* Portrait découpé dans une forme organique, posé sur la bulle verte */}
-          <div className="relative w-56 justify-self-start motion-safe:animate-fade-up sm:w-72 lg:order-last lg:col-span-5 lg:w-full lg:max-w-md lg:justify-self-end">
+          <div className="relative w-48 justify-self-start motion-safe:animate-fade-up sm:w-60 lg:order-last lg:col-span-5 lg:w-full lg:max-w-88 lg:justify-self-end">
             <svg
               aria-hidden="true"
               viewBox="20 40 540 520"
@@ -39,7 +39,7 @@ export default function HomePage() {
                 alt="Portrait de Lisa Loretti"
                 fill
                 priority
-                sizes="(min-width: 64rem) 28rem, 18rem"
+                sizes="(min-width: 64rem) 22rem, 15rem"
                 className="object-cover"
               />
             </div>
