@@ -16,7 +16,7 @@ export const siteConfig = {
     /** Affichage lisible et format international pour le lien tel:. */
     phone: { label: "+33 6 51 82 15 49", href: "tel:+33651821549" },
     location: "France",
-    availability: "Disponible dès novembre 2026",
+    availability: "Disponible dès décembre 2026",
     /** Types de contrat recherchés. */
     lookingFor: ["CDI", "CDD", "Freelance"],
     linkedin: "https://www.linkedin.com/in/lisa-loretti-8040b4223/",
