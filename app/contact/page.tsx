@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const { email, phone, location, availability } = siteConfig.contact;
+  const { email, phone, location } = siteConfig.contact;
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <dl className="stagger grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4">
+          <dl className="stagger grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3">
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Téléphone</dt>
               <dd>
@@ -55,10 +55,6 @@ export default function ContactPage() {
                   {phone.label}
                 </a>
               </dd>
-            </div>
-            <div className="flex flex-col gap-1 border-t border-line pt-4">
-              <dt className="text-caption font-medium uppercase text-ink-muted">Disponibilité</dt>
-              <dd className="text-lead">{availability}</dd>
             </div>
             <div className="flex flex-col gap-1 border-t border-line pt-4">
               <dt className="text-caption font-medium uppercase text-ink-muted">Localisation</dt>

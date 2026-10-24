@@ -56,13 +56,6 @@ export default function HomePage() {
               <p className="inline-flex items-center gap-2 rounded-full bg-forest px-4 py-1.5 font-medium text-cream">
                 Recherche {siteConfig.contact.lookingFor.join(" · ")}
               </p>
-              <p className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-cream/70 px-4 py-1.5">
-                <span aria-hidden="true" className="relative flex size-2">
-                  <span className="absolute inset-0 rounded-full bg-olive motion-safe:animate-ping-soft" />
-                  <span className="relative size-2 rounded-full bg-olive" />
-                </span>
-                {siteConfig.contact.availability}
-              </p>
             </div>
             <div className="flex flex-wrap items-center gap-4">
               <Button href={siteConfig.contact.linkedin} target="_blank" rel="noopener noreferrer" arrow>
