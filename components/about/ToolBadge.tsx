@@ -15,7 +15,8 @@ export function ToolBadge({ tool }: { tool: Tool }) {
   const icon = "icon" in tool ? toolIcons[tool.icon] : undefined;
   const image = "image" in tool ? tool.image : undefined;
   const background = tool.background ?? icon?.hex ?? "#183D2E";
-  const color = background.startsWith("#") ? glyphColor(background) : "#FFFFFF";
+  const color =
+    ("color" in tool ? tool.color : undefined) ?? (background.startsWith("#") ? glyphColor(background) : "#FFFFFF");
 
   return (
     <li className="w-18">

@@ -11,8 +11,8 @@ export type Tool = {
   | { icon: ToolIconKey; background?: string }
   /** Logo fourni en image (public/images/tools) : « cover » remplit la tuile, « contain » laisse une marge */
   | { image: { src: string; fit: "cover" | "contain" }; background?: string }
-  /** Monogramme dans la couleur de la marque (logo indisponible) */
-  | { monogram: string; background: string }
+  /** Monogramme dans la couleur de la marque (logo indisponible) ; `color` : couleur des lettres */
+  | { monogram: string; background: string; color?: string }
 );
 
 export const tools: { category: string; items: Tool[] }[] = [
@@ -43,6 +43,11 @@ export const tools: { category: string; items: Tool[] }[] = [
     category: "Création multimédia",
     items: [
       { name: "Adobe Creative Cloud", url: "https://www.adobe.com/fr/creativecloud.html", image: { src: "/images/tools/adobe-creative-cloud.webp", fit: "cover" } },
+      // Icônes Adobe recréées en monogramme (logos absents de Simple Icons)
+      { name: "Photoshop", url: "https://www.adobe.com/fr/products/photoshop.html", monogram: "Ps", background: "#001E36", color: "#31A8FF" },
+      { name: "Illustrator", url: "https://www.adobe.com/fr/products/illustrator.html", monogram: "Ai", background: "#330000", color: "#FF9A00" },
+      { name: "InDesign", url: "https://www.adobe.com/fr/products/indesign.html", monogram: "Id", background: "#49021F", color: "#FF3366" },
+      { name: "Premiere Pro", url: "https://www.adobe.com/fr/products/premiere.html", monogram: "Pr", background: "#00005B", color: "#9999FF" },
       { name: "Canva", url: "https://www.canva.com/", image: { src: "/images/tools/canva.webp", fit: "cover" } },
       { name: "CapCut", url: "https://www.capcut.com/", image: { src: "/images/tools/capcut.webp", fit: "contain" }, background: "#000000" },
     ],
