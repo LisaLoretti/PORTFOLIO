@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Sora } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SiteHeader } from "@/components/layout/SiteHeader";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { CustomCursor } from "@/components/ui/CustomCursor";
@@ -54,6 +55,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </main>
         <SiteFooter />
         <CustomCursor />
+        {/* Statistiques de visite anonymes (Vercel Web Analytics, sans cookies) */}
+        <Analytics />
       </body>
     </html>
   );
