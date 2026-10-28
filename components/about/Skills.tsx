@@ -52,11 +52,13 @@ export function Skills() {
                 </div>
 
                 {/* Compétences clés */}
-                <ul className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+                <ul className="reveal-bounce-children flex flex-wrap gap-2">
                   {axis.skills.map((skill) => (
-                    <li key={skill} className="flex gap-3 text-body">
-                      <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-olive" />
-                      <span>{skill}</span>
+                    <li
+                      key={skill}
+                      className="rounded-full bg-sage px-4 py-1.5 text-small text-forest transition-[background-color,color,translate] duration-(--duration-base) ease-smooth hover:-translate-y-0.5 hover:bg-forest hover:text-cream"
+                    >
+                      {skill}
                     </li>
                   ))}
                 </ul>
