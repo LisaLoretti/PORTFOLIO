@@ -7,7 +7,7 @@ export const siteConfig = {
   title: "Lisa Loretti — Gestion de projets en événementiel, communication & marketing",
   /** Présentation affichée sous le nom, sur l'accueil. */
   intro:
-    "Diplômée d’un Master en Management de l’Événementiel, je conçois, coordonne et pilote des projets en événementiel, communication et marketing, aussi bien en interne qu’en externe. De la réflexion stratégique à la mise en œuvre opérationnelle, j’allie créativité, organisation et sens du relationnel pour donner vie à des projets porteurs de sens et d’impact.",
+    "Diplômée d’un Master Manager de projets événementiels, je conçois, coordonne et pilote des projets en événementiel, communication et marketing, aussi bien en interne qu’en externe. De la réflexion stratégique à la mise en œuvre opérationnelle, j’allie créativité, organisation et sens du relationnel pour donner vie à des projets porteurs de sens et d’impact.",
   description:
     "Créer du lien, des rencontres et du partage. Valoriser les projets qui ont du sens. Portfolio de Lisa Loretti, gestion de projets en événementiel et communication.",
   locale: "fr_FR",

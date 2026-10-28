@@ -11,8 +11,8 @@ const CEFR_LEVELS = ["A1", "A2", "B1", "B2", "C1", "C2"];
 
 /**
  * Section « Mes compétences en action » : domaines de compétences
- * (data/skills.ts) avec sous-catégories dépliables et preuves reliées au
- * parcours et aux réalisations, puis outils, savoir-être, langues et formations.
+ * (data/skills.ts) avec compétences clés et preuves reliées au parcours et
+ * aux réalisations, puis outils, savoir-être, langues et formations.
  */
 export function Skills() {
   return (
@@ -25,10 +25,9 @@ export function Skills() {
           </Heading>
         </div>
 
-        {/* Les domaines : en-tête, sous-catégories dépliables et preuves concrètes */}
+        {/* Les domaines : en-tête, compétences clés et preuves concrètes */}
         <ol className="flex flex-col gap-6 lg:gap-8">
           {skillAxes.map((axis) => {
-            const count = axis.groups.reduce((total, group) => total + group.skills.length, 0);
             return (
               <li
                 key={axis.id}
@@ -37,58 +36,30 @@ export function Skills() {
                 className="reveal-card flex scroll-mt-[calc(var(--spacing-header)+2rem)] flex-col gap-6 rounded-xl bg-cream p-6 shadow-soft ring-1 ring-line sm:p-8 lg:gap-8 lg:p-10"
               >
                 {/* En-tête du domaine */}
-                <div className="flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
-                  <div className="flex min-w-0 items-baseline gap-4 sm:gap-6">
-                    <span
-                      aria-hidden="true"
-                      className="font-display text-[clamp(2.75rem,2rem+2.5vw,4.5rem)] leading-none font-extrabold text-sage"
-                    >
-                      {axis.number}
-                    </span>
-                    <h3
-                      id={`${axis.id}-titre`}
-                      className="min-w-0 font-display text-[clamp(1.5rem,1.15rem+1.1vw,2.25rem)] leading-tight font-bold hyphens-auto text-heading"
-                    >
-                      {axis.title}
-                    </h3>
-                  </div>
-                  <p className="text-caption font-medium uppercase text-olive">
-                    {axis.groups.length} sous-catégories · {count} compétences
-                  </p>
+                <div className="flex min-w-0 items-baseline gap-4 sm:gap-6">
+                  <span
+                    aria-hidden="true"
+                    className="font-display text-[clamp(2.75rem,2rem+2.5vw,4.5rem)] leading-none font-extrabold text-sage"
+                  >
+                    {axis.number}
+                  </span>
+                  <h3
+                    id={`${axis.id}-titre`}
+                    className="min-w-0 font-display text-[clamp(1.5rem,1.15rem+1.1vw,2.25rem)] leading-tight font-bold hyphens-auto text-heading"
+                  >
+                    {axis.title}
+                  </h3>
                 </div>
 
-                {/* Sous-catégories : accordéons natifs (clavier : Tab puis Entrée ou Espace) */}
-                <div className="grid items-start gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {axis.groups.map((group) => (
-                    <details
-                      key={group.title}
-                      className="group/sub rounded-lg bg-sand/60 ring-1 ring-line transition-[background-color,box-shadow] duration-(--duration-base) ease-smooth open:bg-sand open:shadow-soft"
-                    >
-                      <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-lg px-4 py-3 marker:hidden focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest [&::-webkit-details-marker]:hidden">
-                        <h4 className="font-display text-body font-bold text-heading">{group.title}</h4>
-                        <span className="flex shrink-0 items-center gap-2 text-caption font-medium text-ink-muted">
-                          {group.skills.length}
-                          <span className="sr-only"> compétences</span>
-                          <svg
-                            aria-hidden="true"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                            className="size-4 text-olive transition-transform duration-(--duration-base) ease-smooth group-open/sub:rotate-180"
-                          >
-                            <path d="m4 6 4 4 4-4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </span>
-                      </summary>
-                      <ul className="flex flex-wrap gap-2 px-4 pt-1 pb-4">
-                        {group.skills.map((skill) => (
-                          <li key={skill} className="rounded-full bg-sage px-3 py-1 text-small text-forest">
-                            {skill}
-                          </li>
-                        ))}
-                      </ul>
-                    </details>
+                {/* Compétences clés */}
+                <ul className="grid gap-x-8 gap-y-3 md:grid-cols-2">
+                  {axis.skills.map((skill) => (
+                    <li key={skill} className="flex gap-3 text-body">
+                      <span aria-hidden="true" className="mt-2.5 size-1.5 shrink-0 rounded-full bg-olive" />
+                      <span>{skill}</span>
+                    </li>
                   ))}
-                </div>
+                </ul>
 
                 {axis.proofs.length > 0 && (
                   <section aria-labelledby={`${axis.id}-exemples`} className="flex flex-col gap-4 border-t border-line pt-6">

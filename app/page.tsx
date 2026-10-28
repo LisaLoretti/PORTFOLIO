@@ -75,8 +75,6 @@ export default function HomePage() {
         items={["Événementiel", "Communication", "Gestion de projets", "Coordination", "Créer du lien", "Rassembler"]}
       />
 
-      <Skills />
-
       <Section aria-labelledby="realisations-titre">
         <Container className="flex flex-col gap-12">
           <div className="reveal flex flex-wrap items-end justify-between gap-6">
@@ -102,6 +100,8 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
+      <Skills />
 
       <ContactBand />
     </>

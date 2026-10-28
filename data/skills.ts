@@ -18,67 +18,29 @@ export type SkillProof =
     }
   | { type: "autre"; label: string; detail?: string };
 
-
-export type SkillGroup = {
-  title: string;
-  skills: string[];
-};
-
 export type SkillAxis = {
   /** Ancre de l'axe sur l'accueil (/#id). */
   id: string;
   number: string;
   title: string;
-  /** Sous-catégories de compétences. */
-  groups: SkillGroup[];
+  /** Compétences clés du domaine. */
+  skills: string[];
   /** Expériences et réalisations qui illustrent l'axe (facultatif). */
   proofs: SkillProof[];
 };
 
-/** Les domaines de compétences : sous-catégories, et preuves reliées au parcours et aux réalisations. */
+/** Les domaines de compétences : compétences clés, et preuves reliées au parcours et aux réalisations. */
 export const skillAxes: SkillAxis[] = [
   {
     id: "axe-evenements",
     number: "01",
     title: "Organiser des événements internes et externes",
-    groups: [
-      {
-        title: "Conception et planification",
-        skills: [
-          "Organisation de séminaires, plénières et assemblées générales",
-          "Organisation de salons, webinaires et formations",
-          "Élaboration des programmes et rétroplannings",
-          "Planification et coordination des différentes étapes",
-        ],
-      },
-      {
-        title: "Coordination et logistique",
-        skills: [
-          "Recherche et sélection de lieux",
-          "Recherche et coordination des traiteurs et prestataires",
-          "Gestion des inscriptions et des participants",
-          "Organisation logistique et suivi opérationnel",
-          "Coordination des intervenants et partenaires",
-        ],
-      },
-      {
-        title: "Animation et expérience participant",
-        skills: [
-          "Conception et coordination d’animations",
-          "Organisation de temps forts : Halloween, Noël, Octobre rose",
-          "Création de moments fédérateurs",
-          "Accueil et accompagnement des participants",
-        ],
-      },
-      {
-        title: "Pilotage et bilan",
-        skills: [
-          "Supervision du déroulement le jour J",
-          "Gestion des imprévus et adaptation en temps réel",
-          "Coordination des équipes et prestataires sur place",
-          "Réalisation des bilans post-événement",
-        ],
-      },
+    skills: [
+      "Organisation de séminaires, plénières, assemblées générales et salons",
+      "Recherche de lieux et coordination des traiteurs et prestataires",
+      "Élaboration des programmes, rétroplannings et gestion des inscriptions",
+      "Supervision du jour J et gestion des imprévus",
+      "Bilans post-événement",
     ],
     proofs: [
       {
@@ -109,13 +71,13 @@ export const skillAxes: SkillAxis[] = [
         type: "realisation",
         slug: "village-sejours-linguistiques",
         label: "Village des séjours linguistiques et éducatifs — Salon Post Bac du Figaro Étudiant",
-        detail: "Création d’un espace dédié aux organismes de séjours linguistiques au sein du salon.",
+        detail: "Création d’un espace dédié aux organismes de séjours linguistiques au sein du salon, qui a accueilli plus de 1 000 visiteurs.",
       },
       {
         type: "realisation",
         slug: "assemblee-generale-2026",
         label: "Assemblées générales — Rouen et Corse",
-        detail: "Organisation et coordination de deux assemblées générales.",
+        detail: "Organisation et coordination de deux assemblées générales de 3 jours (40 et 50 participants).",
       },
     ],
   },
@@ -123,75 +85,12 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-communication",
     number: "02",
     title: "Concevoir et déployer des actions de communication et marketing",
-    groups: [
-      {
-        title: "Stratégie et planification",
-        skills: [
-          "Élaboration de plans de communication",
-          "Identification des cibles et messages clés",
-          "Création de calendriers éditoriaux",
-          "Déploiement de campagnes de communication",
-          "Veille concurrentielle et sectorielle",
-          "Analyse des résultats des actions de communication",
-        ],
-      },
-      {
-        title: "Communication digitale",
-        skills: [
-          "Animation et gestion des réseaux sociaux",
-          "Community management",
-          "Création et programmation de publications",
-          "Rédaction et mise à jour de contenus web",
-          "Conception de newsletters et emailings",
-          "Suivi des statistiques et de l’engagement",
-        ],
-      },
-      {
-        title: "Création graphique et éditoriale",
-        skills: [
-          "Conception de supports print et digitaux",
-          "Création d’affiches, flyers et brochures",
-          "Création de visuels pour les réseaux sociaux",
-          "Rédaction de contenus éditoriaux",
-          "Déclinaison de chartes graphiques",
-          "Création de présentations professionnelles",
-          "Réalisation et montage de contenus vidéo",
-        ],
-      },
-      {
-        title: "Communication interne",
-        skills: [
-          "Rédaction de communications internes",
-          "Création de newsletters collaborateurs",
-          "Valorisation des projets et réussites internes",
-          "Communication autour des événements d’entreprise",
-          "Création de supports d’information",
-          "Animation des canaux de communication interne",
-        ],
-      },
-      {
-        title: "Communication externe",
-        skills: [
-          "Développement de la visibilité et de la notoriété",
-          "Valorisation de l’image de marque",
-          "Création de supports de communication externe",
-          "Communication auprès des partenaires et publics cibles",
-          "Déploiement de campagnes de sensibilisation",
-          "Communication et promotion événementielle",
-        ],
-      },
-      {
-        title: "Stratégie marketing",
-        skills: [
-          "Analyse des marchés et des tendances",
-          "Identification des cibles et personas",
-          "Élaboration de plans d’actions marketing",
-          "Positionnement et valorisation des offres",
-          "Création de campagnes d’email marketing",
-          "Recherche et développement de partenariats",
-          "Définition et suivi des indicateurs de performance (KPI)",
-        ],
-      },
+    skills: [
+      "Élaboration de plans de communication et calendriers éditoriaux",
+      "Animation des réseaux sociaux et création de contenus vidéo",
+      "Conception de supports print et digitaux",
+      "Newsletters, e-mailings et communication interne",
+      "Suivi des indicateurs de performance (KPI)",
     ],
     proofs: [
       {
@@ -230,73 +129,11 @@ export const skillAxes: SkillAxis[] = [
     id: "axe-pilotage",
     number: "03",
     title: "Piloter et coordonner des projets",
-    groups: [
-      {
-        title: "Conception et cadrage de projets",
-        skills: [
-          "Analyse des besoins et définition des objectifs",
-          "Élaboration de cahiers des charges",
-          "Identification des parties prenantes",
-          "Définition des livrables et des échéances",
-          "Évaluation des ressources nécessaires",
-          "Identification des contraintes et des risques",
-        ],
-      },
-      {
-        title: "Planification et organisation",
-        skills: [
-          "Élaboration de plannings et rétroplannings",
-          "Définition des étapes et priorités",
-          "Répartition et coordination des missions",
-          "Gestion des ressources humaines et matérielles",
-          "Anticipation des besoins et contraintes",
-          "Gestion simultanée de plusieurs projets",
-        ],
-      },
-      {
-        title: "Coordination et management transversal",
-        skills: [
-          "Coordination d’équipes pluridisciplinaires",
-          "Collaboration entre différents services",
-          "Animation de réunions et points d’avancement",
-          "Communication avec les parties prenantes",
-          "Coordination des prestataires et partenaires",
-          "Mobilisation des acteurs autour d’objectifs communs",
-        ],
-      },
-      {
-        title: "Pilotage opérationnel",
-        skills: [
-          "Suivi de l’avancement des projets",
-          "Gestion des délais et des priorités",
-          "Suivi des budgets et des ressources",
-          "Contrôle de la qualité des livrables",
-          "Gestion des imprévus et résolution des problèmes",
-          "Ajustement des actions selon les besoins",
-        ],
-      },
-      {
-        title: "Suivi et évaluation des performances",
-        skills: [
-          "Définition et suivi des indicateurs de performance (KPI)",
-          "Création de tableaux de bord",
-          "Analyse des résultats et des écarts",
-          "Réalisation de reportings et bilans",
-          "Recueil des retours des parties prenantes",
-          "Identification des axes d’amélioration",
-        ],
-      },
-      {
-        title: "Optimisation et amélioration continue",
-        skills: [
-          "Analyse des processus existants",
-          "Identification des leviers d’optimisation",
-          "Mise en place d’actions correctives",
-          "Formalisation de procédures et bonnes pratiques",
-          "Capitalisation sur les retours d’expérience",
-          "Optimisation des méthodes de travail",
-        ],
-      },
+    skills: [
+      "Analyse des besoins et rédaction de cahiers des charges",
+      "Coordination d’équipes, de prestataires et de partenaires",
+      "Suivi des budgets, des délais et des priorités",
+      "Reportings, bilans et amélioration continue",
     ],
     proofs: [
       {
