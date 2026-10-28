@@ -69,7 +69,7 @@ export function SiteFooter() {
       </Container>
 
       <Container size="wide" className="border-t border-line py-4">
-        <p className="text-caption text-ink-muted">© {siteConfig.name}</p>
+        <p className="text-caption text-ink-muted">© {siteConfig.name} · Site conçu avec Claude Code</p>
       </Container>
     </footer>
   );
